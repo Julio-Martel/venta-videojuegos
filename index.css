@@ -44,12 +44,12 @@ body {
     align-items: center;
 }
 
-.slide{
+.contenedor{
     height: 90%;
     max-height: 500px;
 }
 
-.slide {
+.contenedor {
   background: yellowgreen;
   border: solid 1px #000;
   border-radius: 5px;
