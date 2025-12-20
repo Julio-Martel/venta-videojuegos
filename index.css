@@ -3,9 +3,48 @@
     padding: 0;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 .login-logout{
     background: darkred;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.titulo{
+    color: #fff;
+    margin-left: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.formulario{
+    margin-right: 5px;
+}
+
+.texto-label{
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.contenido-principal{
+    display: flex;
+    flex: 1;
+    
+}
+
+.pie-pagina {
+    background: #000;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 10px;
 }
