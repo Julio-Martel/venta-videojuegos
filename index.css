@@ -37,8 +37,31 @@ body {
 
 .contenido-principal{
     display: flex;
+    flex-direction: column;
     flex: 1;
-    
+    justify-content: center;
+    gap: 5%;
+    align-items: center;
+}
+
+.slide{
+    height: 90%;
+    max-height: 500px;
+}
+
+.slide {
+  background: yellowgreen;
+  border: solid 1px #000;
+  border-radius: 5px;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.boton {
+    width: 50%;
 }
 
 .pie-pagina {
