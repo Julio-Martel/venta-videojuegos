@@ -36,6 +36,8 @@ body {
 }
 
 .contenido-principal{
+    background: url('./images/fondo.png');
+    background-size: cover;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -66,6 +68,10 @@ body {
     
 }
 
+.slide{
+    display: flex;
+    align-items: center;
+}
 
 .imagen-flecha{
     width: 50%;
@@ -82,7 +88,7 @@ body {
 }
 
 .imagen-producto{
-    max-width: 500px;
+    max-width: 550px;
     border-radius: 5px;
     
 }
