@@ -64,6 +64,24 @@ body {
     width: 50%;
 }
 
+.imagen-flecha{
+    width: 50%;
+}
+
+.imagen-flecha{
+    max-width: 100px;
+}
+
+.imagen-producto{
+   width: 100%; 
+}
+
+.imagen-producto{
+    max-width: 500px;
+    border-radius: 5px;
+    
+}
+
 .pie-pagina {
     background: #000;
     color: #fff;
