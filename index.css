@@ -62,7 +62,10 @@ body {
 
 .boton {
     width: 50%;
+    cursor: pointer;
+    
 }
+
 
 .imagen-flecha{
     width: 50%;
@@ -70,10 +73,12 @@ body {
 
 .imagen-flecha{
     max-width: 100px;
+    cursor: pointer;
 }
 
 .imagen-producto{
    width: 100%; 
+   cursor: pointer;
 }
 
 .imagen-producto{
