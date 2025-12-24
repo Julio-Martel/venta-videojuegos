@@ -1,6 +1,6 @@
 const imagen = document.getElementById("nro-imagen-1");
 
-function actualizarEstado() {
+const actualizarEstado = () => {
   const partesId = imagen.id.split("-");
 
   if (partesId[2] === "1") {
