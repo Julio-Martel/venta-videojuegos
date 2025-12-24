@@ -1,6 +1,3 @@
-
-/*AGREGAR LA LOGICA DE CAMBIO DE IMAGENES*/
-
 const imagen = document.getElementById("nro-imagen-1");
 
 function actualizarEstado() {
