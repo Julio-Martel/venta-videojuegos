@@ -2,20 +2,6 @@ const imagen = document.getElementById("nro-imagen-1");
 
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
-
-/*async function transicionImagenOcultarMostrar(partesId) {
-
-    imagen.classList.add("ocultar");
-    await delay(300);
-    imagen.classList.remove("ocultar");
-    imagen.classList.add("mostrar");
-
-      await delay(300);
-    imagen.classList.remove("mostrar");
-  
-    
-}*/
-
 const slide = {
   botonDerecho: document.getElementById("flecha-uno"),
   botonIzquierdo: document.getElementById("flecha-dos"),
