@@ -28,10 +28,25 @@ function actualizarEstado() {
 actualizarEstado();
 
 slide.botonIzquierdo.addEventListener("click", async () => {
+  const partesId = imagen.id.split("-");
+
+
+
+
+  console.log(partesId[2])
+
+
+
   imagen.classList.add("ocultar");
   await delay(300);
-  imagen.id = "nro-imagen-2";
-  imagen.src = "./images/imagen2.jpg";
+
+
+  if(partesId[2] === "1"){
+      imagen.id = "nro-imagen-2";
+    imagen.src = "./images/imagen2.jpg";
+  }
+
+
   imagen.classList.remove("ocultar");
   imagen.classList.add("mostrar");
   await delay(300);
