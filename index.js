@@ -29,15 +29,7 @@ function actualizarEstado() {
     slide.botonDerecho.style.opacity = "1";
     slide.botonDerecho.style.pointerEvents  = "auto";
   }
-  
-  
-  /*else {
-    slide.botonIzquierdo.style.opacity = "0.5";
-    slide.botonIzquierdo.style.pointerEvents = "none";
 
-    slide.botonDerecho.style.opacity = "1";
-    slide.botonDerecho.style.pointerEvents = "auto";
-  }*/
 }
 
 actualizarEstado();
@@ -54,7 +46,7 @@ slide.botonIzquierdo.addEventListener("click", async () => {
   } else if(partesId[2] === "2"){
     imagen.id = "nro-imagen-3";
     imagen.src = "./images/imagen3.jpg";
-  } 
+  }
 
   imagen.classList.remove("ocultar");
   imagen.classList.add("mostrar");
@@ -64,10 +56,19 @@ slide.botonIzquierdo.addEventListener("click", async () => {
 });
 
 slide.botonDerecho.addEventListener("click", async () => {
+  const partesId = imagen.id.split("-");
+  
   imagen.classList.add("ocultar");
   await delay(300);   
-  imagen.id = "nro-imagen-1";
-  imagen.src = "./images/imagen1.jpg";
+  
+  if(partesId[2] === "3"){
+    imagen.id = "nro-imagen-2";
+    imagen.src = "./images/imagen2.jpg";
+  } else {
+    imagen.id = "nro-imagen-1";
+    imagen.src = "./images/imagen1.jpg";
+  }
+  
   imagen.classList.remove("ocultar");
   imagen.classList.add("mostrar");
   await delay(300);
