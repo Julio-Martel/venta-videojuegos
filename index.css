@@ -62,7 +62,7 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .boton{
@@ -81,7 +81,9 @@ body {
 .titulo-inicial {
     color:#fff;
     text-align: center;
-
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border: solid 1px darkgray;
+    padding: 3px;
 }
 
 .slide{
@@ -120,6 +122,24 @@ body {
 
 .imagen-producto.mostrar{
     opacity: 1;
+}
+
+.galeria-clickeable{
+    display: flex;
+    gap: 10px;
+    justify-content:center;
+}
+
+.imagen-pequeña{
+    max-width: 100px;
+}
+
+.imagen-pequeña{
+    width: 100%;
+    border-radius: 5px;
+    border: solid 1px darkgray;
+    cursor: pointer;
+    opacity: 0.5;
 }
 
 
