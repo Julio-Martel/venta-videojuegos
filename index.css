@@ -60,6 +60,9 @@ body {
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
 .boton{
@@ -73,6 +76,12 @@ body {
 
 #boton-productos{
    width: 50%;
+}
+
+.titulo-inicial {
+    color:#fff;
+    text-align: center;
+
 }
 
 .slide{
@@ -99,6 +108,20 @@ body {
     max-width: 600px;
     border-radius: 5px;   
 }
+
+.imagen-producto{
+    opacity: 1;
+    transition: opacity .6s ease;
+}
+
+.imagen-producto.ocultar{
+  opacity: 0; /* desaparece gradualmente */
+}
+
+.imagen-producto.mostrar{
+    opacity: 1;
+}
+
 
 .pie-pagina {
     background: #000;
