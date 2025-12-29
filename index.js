@@ -5,7 +5,12 @@ const delay = (ms) => new Promise(r => setTimeout(r, ms));
 const slide = {
   botonDerecho: document.getElementById("flecha-uno"),
   botonIzquierdo: document.getElementById("flecha-dos"),
+  imagen1: document.getElementById("img-1"),
+  imagen2: document.getElementById("img-2"),
+  imagen3: document.getElementById("img-3")
 };
+
+
 
 function actualizarEstado() {
   const partesId = imagen.id.split("-");
@@ -75,3 +80,15 @@ slide.botonDerecho.addEventListener("click", async () => {
   imagen.classList.remove("mostrar");
   actualizarEstado();
 });
+
+slide.imagen1.addEventListener('click', () => {
+  imagen.src = "./images/imagen1.jpg";
+});
+
+slide.imagen2.addEventListener('click',() => {
+  imagen.src = "./images/imagen2.jpg";
+})
+
+slide.imagen3.addEventListener('click', () => {
+  imagen.src = "./images/imagen3.jpg";
+})
