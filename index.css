@@ -139,7 +139,11 @@ body {
     border-radius: 5px;
     border: solid 1px darkgray;
     cursor: pointer;
-    opacity: 0.5;
+    transition: filter .3s ease;
+}
+
+.imagen-pequeña:hover{
+    filter: brightness(1.3);
 }
 
 
