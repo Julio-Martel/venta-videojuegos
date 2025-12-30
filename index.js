@@ -1,6 +1,7 @@
+import { generarContidoProductos } from "./productos";
+
 const imagen = document.getElementById("nro-imagen-1");
 const verProductos = document.getElementById("boton-productos");
-
 
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
@@ -98,3 +99,5 @@ slide.imagen3.addEventListener('click', () => {
   imagen.src = "./images/imagen3.jpg";
   actualizarEstado();
 })
+
+verProductos.addEventListener('click', );
