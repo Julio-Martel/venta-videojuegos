@@ -1,4 +1,4 @@
-export const generarContenidoProductos = (contenidoPrincipal) => {
-
+export const generarContenidoProductos = () => {
+    return `<div>holaaaaa</div>`;
 
 }
