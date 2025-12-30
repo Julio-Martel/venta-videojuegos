@@ -1,4 +1,6 @@
 const imagen = document.getElementById("nro-imagen-1");
+const verProductos = document.getElementById("boton-productos");
+
 
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
