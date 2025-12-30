@@ -1,7 +1,3 @@
-/*
-  AGREGAR LA LOGICA QUE HACE QUE SI PASO POR EL CURSOR A UNA IMAGEN PEQUEÑA, LAS FLECHAS SIGAN EN SU FUNCIONAMIENTO NORMAL
-*/
-
 const imagen = document.getElementById("nro-imagen-1");
 
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
@@ -45,7 +41,7 @@ slide.botonIzquierdo.addEventListener("click", async () => {
   const partesId = imagen.id.split("-");
 
   imagen.classList.add("ocultar");
-  await delay(300);
+  await delay(100);
 
   if(partesId[2] === "1"){
     imagen.id = "nro-imagen-2";
@@ -57,7 +53,7 @@ slide.botonIzquierdo.addEventListener("click", async () => {
 
   imagen.classList.remove("ocultar");
   imagen.classList.add("mostrar");
-  await delay(300);
+  await delay(100);
   imagen.classList.remove("mostrar");
   actualizarEstado();
 });
@@ -66,7 +62,7 @@ slide.botonDerecho.addEventListener("click", async () => {
   const partesId = imagen.id.split("-");
   
   imagen.classList.add("ocultar");
-  await delay(300);   
+  await delay(100);   
   
   if(partesId[2] === "3"){
     imagen.id = "nro-imagen-2";
