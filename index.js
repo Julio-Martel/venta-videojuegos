@@ -1,3 +1,7 @@
+/*
+  AGREGAR LA LOGICA QUE HACE QUE SI PASO POR EL CURSOR A UNA IMAGEN PEQUEÑA, LAS FLECHAS SIGAN EN SU FUNCIONAMIENTO NORMAL
+*/
+
 const imagen = document.getElementById("nro-imagen-1");
 
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
@@ -9,8 +13,6 @@ const slide = {
   imagen2: document.getElementById("img-2"),
   imagen3: document.getElementById("img-3")
 };
-
-
 
 function actualizarEstado() {
   const partesId = imagen.id.split("-");
