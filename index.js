@@ -84,13 +84,19 @@ slide.botonDerecho.addEventListener("click", async () => {
 });
 
 slide.imagen1.addEventListener('click', () => {
+  imagen.id = "nro-imagen-1";
   imagen.src = "./images/imagen1.jpg";
+  actualizarEstado();
 });
 
 slide.imagen2.addEventListener('click',() => {
+  imagen.id = "nro-imagen-2";
   imagen.src = "./images/imagen2.jpg";
+  actualizarEstado();
 })
 
 slide.imagen3.addEventListener('click', () => {
+  imagen.id = "nro-imagen-3";
   imagen.src = "./images/imagen3.jpg";
+  actualizarEstado();
 })
