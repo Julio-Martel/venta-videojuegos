@@ -1,5 +1,6 @@
 import { generarContenidoProductos } from "./productos";
 
+const mainContent = document.getElementById('contenido-principal')
 const imagen = document.getElementById("nro-imagen-1");
 const verProductos = document.getElementById("boton-productos");
 
@@ -100,4 +101,4 @@ slide.imagen3.addEventListener('click', () => {
   actualizarEstado();
 })
 
-verProductos.addEventListener('click', generarContenidoProductos);
+verProductos.addEventListener('click', generarContenidoProductos(mainContent));
