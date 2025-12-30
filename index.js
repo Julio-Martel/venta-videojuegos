@@ -1,6 +1,6 @@
-import { generarContenidoProductos } from "./productos";
+import { generarContenidoProductos } from "./productos.js";
 
-const mainContent = document.getElementById('contenido-principal')
+const mainContent = document.getElementById('main-content')
 const imagen = document.getElementById("nro-imagen-1");
 const verProductos = document.getElementById("boton-productos");
 
@@ -101,4 +101,6 @@ slide.imagen3.addEventListener('click', () => {
   actualizarEstado();
 })
 
-verProductos.addEventListener('click', generarContenidoProductos(mainContent));
+verProductos.addEventListener('click', () => {
+   mainContent.replaceChildren(generarContenidoProductos);
+});
