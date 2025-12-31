@@ -3,6 +3,7 @@ import { generarContenidoProductos } from "./productos.js";
 const mainContent = document.getElementById('main-content')
 const imagen = document.getElementById("nro-imagen-1");
 const verProductos = document.getElementById("boton-productos");
+const contenedorImagenes = document.getElementById('contenedor-imagenes')
 
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
@@ -101,6 +102,8 @@ slide.imagen3.addEventListener('click', () => {
   actualizarEstado();
 })
 
-verProductos.addEventListener('click', () => {
-   mainContent.replaceChildren(generarContenidoProductos);
+verProductos.addEventListener('click', async() => {
+   contenedorImagenes.classList.add('ocultar-contenido-imagenes');
+   await delay(100);
+   //mainContent.replaceChildren(generarContenidoProductos());
 });
