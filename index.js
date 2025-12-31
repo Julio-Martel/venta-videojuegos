@@ -105,5 +105,5 @@ slide.imagen3.addEventListener('click', () => {
 verProductos.addEventListener('click', async() => {
    contenedorImagenes.classList.add('ocultar-contenido-imagenes');
    await delay(100);
-   //mainContent.replaceChildren(generarContenidoProductos());
+   mainContent.replaceChildren(generarContenidoProductos());
 });
