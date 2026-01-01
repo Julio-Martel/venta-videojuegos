@@ -163,7 +163,7 @@ body {
     display: flex;
     gap: 25px;
     padding: 1rem;
-    background: rgba(0,0,0,1);
+    background: rgba(0, 0, 0, 0.6);
     opacity: 0;
     transition: opacity .10s ease-out;
 }
@@ -173,7 +173,7 @@ body {
 }
 
 .contedor-productos{
-    background: greenyellow;
+    background: darkblue;
     width: 80%;
     height: 100%;
     display: grid;
@@ -191,7 +191,7 @@ body {
 }
 
 .contenedor-carrito{
-    background: purple;
+    background: #000;
     width: 50%;
     height: 100%;
     display: flex;
@@ -212,6 +212,7 @@ body {
     align-items: center;
     gap: 5px;
     justify-content: center;
+    overflow-y: hidden;
 }
 
 .casilla-producto{
