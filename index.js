@@ -3,9 +3,14 @@ import { generarContenidoProductos } from "./productos.js";
 const mainContent = document.getElementById('main-content')
 const imagen = document.getElementById("nro-imagen-1");
 const verProductos = document.getElementById("boton-productos");
-const contenedorImagenes = document.getElementById('contenedor-imagenes')
+const contenedorImagenes = document.getElementById('contenedor-imagenes');
+const botonLogeo = document.getElementById('boton-log');
 
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
+
+const usuariosRegistrados = {
+    /*agregar la logica del registro de usuario*/ 
+}
 
 const slide = {
   botonDerecho: document.getElementById("flecha-uno"),
@@ -113,3 +118,4 @@ verProductos.addEventListener('click', async() => {
   nuevoContenido.classList.add('mostrar-contenido-carrito');
    
 });
+
