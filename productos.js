@@ -54,9 +54,8 @@ export const generarContenidoProductos = () => {
         agregarStock.displayStock.id = 'display-stock';
         agregarStock.displayStock.className = "display";
 
-        /*agregar la logica del display de stock*/
-
-
+        agregarStock.displayStock.value = productos.listadoProductos[i].stock;
+        
         stock.append(agregarStock.simboloMenos,agregarStock.displayStock,agregarStock.simboloMas);
 
         casilla.append(nombre, imagen, stock);
@@ -78,7 +77,8 @@ export const generarContenidoProductos = () => {
                 case 0:
                     nombreProducto.textContent = productos.listadoProductos[0].nombreVideojuego
                     imagenProducto.src = './images/portada1.jpg';
-                break;
+
+                    break;
                 case 1:
                     nombreProducto.textContent = productos.listadoProductos[1].nombreVideojuego
                     imagenProducto.src = './images/portada2.jpg';
