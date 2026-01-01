@@ -45,9 +45,6 @@ export const generarContenidoProductos = () => {
 
     const todasLasCasillas = productos.contedorProductos.querySelectorAll('.casilla-producto');
    
-    console.log(todasLasCasillas)
-
-
     let i = 0;
     for (const casilla of todasLasCasillas) {
         const idCasilla = casilla.id;
