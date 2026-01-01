@@ -4,9 +4,12 @@ export const generarContenidoProductos = () => {
     const productos = {
         contedorProductos: document.createElement('div'),
         totalCasillasProductos: 4,
-        listadoProductos: {
-            
-        }
+        listadoProductos: [
+            {nombreVideojuego: 'Resident Evil Requiem', descripcion: '', precio: 53000},
+            {nombreVideojuego: 'Silent Hill F', descripcion: '', precio: 45000},
+            {nombreVideojuego: 'Battelfield 6', descripcion: '', precio: 50000},
+            {nombreVideojuego: 'Resident Evil 4', descripcion:'', precio: 25000}
+        ]
     };
     
     const carrito = document.createElement('div');
@@ -23,8 +26,13 @@ export const generarContenidoProductos = () => {
 
     for(let i = 0; i < productos.totalCasillasProductos; i++){
         const casilla = document.createElement('div');
+        
+        
         casilla.classList.add('casilla');
         casilla.id = `casilla-${i}`;
+
+
+
 
         productos.contedorProductos.appendChild(casilla);
     }
