@@ -248,6 +248,15 @@ body {
     max-height: 50px;
 }
 
+.boton-stock{
+    width: 50px;
+}
+
+.display{
+    
+}
+
+
 .pie-pagina {
     background: #000;
     color: #fff;
