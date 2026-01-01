@@ -178,7 +178,7 @@ body {
     height: 100%;
     display: grid;
     gap: 5px;
-    grid-template-rows: repeat(2, auto);
+    grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(2, 1fr);
     border-radius: 5px;
     border:  solid 1px darkgray;
@@ -206,12 +206,30 @@ body {
 .casilla-producto{
     background: #000;
     width: 100%; 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.casilla-producto{
     max-height: 500px;
 }
 
 .nombre-producto{
     color: #fff;
     text-align: center;
+}
+
+.imag-prod{
+    width: 100%;
+    border: solid 1px darkgray;
+    border-radius: 5px;
+}
+
+.imag-prod{
+    max-width: 150px;
 }
 
 .pie-pagina {
