@@ -173,7 +173,6 @@ body {
 }
 
 .contedor-productos{
-    background: darkblue;
     width: 80%;
     height: 100%;
     display: grid;
@@ -181,7 +180,6 @@ body {
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(2, 1fr);
     border-radius: 5px;
-    border:  solid 1px darkgray;
     overflow-y: hidden;
     padding: 1px;
 }
@@ -196,7 +194,6 @@ body {
     height: 100%;
     display: flex;
     border-radius: 5px;
-    border: solid 1px darkgray;
 }
 
 .contenedor-carrito{
@@ -213,6 +210,8 @@ body {
     gap: 5px;
     justify-content: center;
     overflow-y: hidden;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .casilla-producto{
@@ -254,13 +253,15 @@ body {
 
 .boton-stock{
     width: 20px;
+    cursor: pointer;
 }
 
 .display{
    border: solid 1px #000;
    border-radius: 5px;
    height: 50%;
-
+   font-family: Arial, Helvetica, sans-serif;
+    padding-left: 1px;
 }
 
 .display{
