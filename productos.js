@@ -21,12 +21,13 @@ export const generarContenidoProductos = () => {
    
     contenidoProductoCarrito.appendChild(carrito);
 
-    productos.contedorProductos.classList.add('contedor-productos')
+    productos.contedorProductos.classList.add('contedor-productos');
+
     carrito.classList.add("contenedor-carrito");
     
     for (let i = 0; i < productos.totalCasillasProductos; i++) {
         const casilla = document.createElement('div');
-        casilla.className = 'casilla';
+        casilla.className = 'casilla-producto';
         casilla.id = `casilla-${i}`;
 
         const nombre = document.createElement('h3');
@@ -42,11 +43,38 @@ export const generarContenidoProductos = () => {
         productos.contedorProductos.appendChild(casilla);
     }
 
-    const todasLasCasillas = document.querySelectorAll('casilla');
+    const todasLasCasillas = productos.contedorProductos.querySelectorAll('.casilla-producto');
+   
+    console.log(todasLasCasillas)
 
-    for(casilla of todasLasCasillas){
-        
+
+    let i = 0;
+    for (const casilla of todasLasCasillas) {
+        const idCasilla = casilla.id;
+        console.log(idCasilla)
+        const nombreProducto = casilla.querySelector('h3');
+
+        if(idCasilla === `casilla-${i}`){
+            switch(i){
+                case 0:
+                    nombreProducto.textContent = productos.listadoProductos[0].nombreVideojuego
+                break;
+                case 1:
+                    nombreProducto.textContent = productos.listadoProductos[1].nombreVideojuego
+                break;
+                case 2:
+                    nombreProducto.textContent = productos.listadoProductos[2].nombreVideojuego
+                break;
+                case 3:
+                    nombreProducto.textContent = productos.listadoProductos[3].nombreVideojuego
+                break;
+
+            }
+        }
+        i++;
     }
+
+
 
     return contenidoProductoCarrito;
 
