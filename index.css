@@ -210,7 +210,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
+    gap: 5px;
+    justify-content: center;
 }
 
 .casilla-producto{
@@ -220,6 +221,8 @@ body {
 .nombre-producto{
     color: #fff;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
 }
 
 .imag-prod{
@@ -230,6 +233,18 @@ body {
 
 .imag-prod{
     max-width: 150px;
+}
+
+.stock-producto{
+    background: darkred;
+    width: 90%;
+    height: 100%;
+    border: solid 1px darkgray;
+    border-radius: 5px;
+}
+
+.stock-producto{
+    max-height: 50px;
 }
 
 .pie-pagina {
