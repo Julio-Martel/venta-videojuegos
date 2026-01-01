@@ -42,7 +42,11 @@ export const generarContenidoProductos = () => {
         productos.contedorProductos.appendChild(casilla);
     }
 
+    const todasLasCasillas = document.querySelectorAll('casilla');
 
+    for(casilla of todasLasCasillas){
+        
+    }
 
     return contenidoProductoCarrito;
 
