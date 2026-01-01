@@ -203,10 +203,15 @@ body {
     max-height: 1000px;
 }
 
-.casilla{
+.casilla-producto{
     background: #000;
     width: 100%; 
     max-height: 500px;
+}
+
+.nombre-producto{
+    color: #fff;
+    text-align: center;
 }
 
 .pie-pagina {
