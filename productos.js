@@ -45,8 +45,8 @@ export const generarContenidoProductos = () => {
             displayStock: document.createElement('input')
         }
 
-        agregarStock.simboloMenos.src = './imagenes/botonMenos.png';
-        agregarStock.simboloMas.src = './imagenes/botonMas.png';
+        agregarStock.simboloMenos.src = './images/botonMenos.png';
+        agregarStock.simboloMas.src = './images/botonMas.png';
        
         agregarStock.simboloMenos.className = "boton-stock";
         agregarStock.simboloMas.className = "boton-stock";
