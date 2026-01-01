@@ -39,6 +39,26 @@ export const generarContenidoProductos = () => {
         const stock = document.createElement('div');
         stock.className = 'stock-producto';
 
+        const agregarStock = {
+            simboloMenos: document.createElement('img'),
+            simboloMas: document.createElement('img'),
+            displayStock: document.createElement('input')
+        }
+
+        agregarStock.simboloMenos.src = './imagenes/botonMenos.png';
+        agregarStock.simboloMas.src = './imagenes/botonMas.png';
+       
+        agregarStock.simboloMenos.className = "boton-stock";
+        agregarStock.simboloMas.className = "boton-stock";
+
+        agregarStock.displayStock.id = 'display-stock';
+        agregarStock.displayStock.className = "display";
+
+        /*agregar la logica del display de stock*/
+
+
+        stock.append(agregarStock.simboloMenos,agregarStock.displayStock,agregarStock.simboloMas);
+
         casilla.append(nombre, imagen, stock);
         productos.contedorProductos.appendChild(casilla);
     }
@@ -48,22 +68,28 @@ export const generarContenidoProductos = () => {
     let i = 0;
     for (const casilla of todasLasCasillas) {
         const idCasilla = casilla.id;
-        console.log(idCasilla)
+
         const nombreProducto = casilla.querySelector('h3');
+        const imagenProducto = casilla.querySelector('img');
+        const stockProducto  = casilla.querySelector('stock-producto');
 
         if(idCasilla === `casilla-${i}`){
             switch(i){
                 case 0:
                     nombreProducto.textContent = productos.listadoProductos[0].nombreVideojuego
+                    imagenProducto.src = './images/portada1.jpg';
                 break;
                 case 1:
                     nombreProducto.textContent = productos.listadoProductos[1].nombreVideojuego
+                    imagenProducto.src = './images/portada2.jpg';
                 break;
                 case 2:
                     nombreProducto.textContent = productos.listadoProductos[2].nombreVideojuego
+                    imagenProducto.src = './images/portada3.jpg';
                 break;
                 case 3:
                     nombreProducto.textContent = productos.listadoProductos[3].nombreVideojuego
+                    imagenProducto.src = './images/portada4.jpg';
                 break;
 
             }
