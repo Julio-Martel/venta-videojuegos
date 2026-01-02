@@ -129,7 +129,7 @@ verProductos.addEventListener('click', async() => {
 
 botonLogeo.addEventListener('click', (e) => {
     e.preventDefault();
-    
+
     const usuarioValido = usuariosRegistrados.some(user =>
         user.nombreUsuario === logeo.nomUsuario.value &&
         user.password === logeo.pasUsuario.value
@@ -138,7 +138,7 @@ botonLogeo.addEventListener('click', (e) => {
     if (usuarioValido) {
       console.log("El usuario está registrado");
     } else {
-      console.log("Usuario o contraseña incorrectos");
+      alert("Usuario o contraseña incorrectos");
     }
 
 } )
