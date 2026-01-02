@@ -5,6 +5,8 @@ const imagen = document.getElementById("nro-imagen-1");
 const verProductos = document.getElementById("boton-productos");
 const contenedorImagenes = document.getElementById('contenedor-imagenes');
 const botonLogeo = document.getElementById('boton-log');
+const formularioLogeo = document.getElementById('formulario-logeo');
+const encabezado = document.getElementById('encabezado');
 
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
@@ -136,7 +138,18 @@ botonLogeo.addEventListener('click', (e) => {
     );
 
     if (usuarioValido) {
+      const bienvenidaUsuario = document.createElement('div');
+      bienvenidaUsuario.className = 'bienvenida-usuario';
       
+      const tituloBienvenido = document.createElement('h3');
+      tituloBienvenido.className = 'titulo-usuario';
+      tituloBienvenido.textContent = `Bienvenido ${String(logeo.nomUsuario.value)}`;
+
+      formularioLogeo.remove();
+
+      encabezado.appendChild(bienvenidaUsuario);
+      bienvenidaUsuario.appendChild(tituloBienvenido);
+
     } else {
       alert("El usuario o contraseña son incorrectos");
     }
