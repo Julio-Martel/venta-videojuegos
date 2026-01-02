@@ -71,7 +71,8 @@ slide.botonIzquierdo.addEventListener("click", async () => {
   }
 
   imagen.classList.remove("ocultar");
-  imagen.classList.add("mostrar");
+  imagen.classList.
+  add("mostrar");
   await delay(100);
   imagen.classList.remove("mostrar");
   actualizarEstado();
@@ -141,7 +142,7 @@ botonLogeo.addEventListener('click', (e) => {
       const bienvenidaUsuario = document.createElement('div');
       bienvenidaUsuario.className = 'bienvenida-usuario';
       
-      const tituloBienvenido = document.createElement('h3');
+      const tituloBienvenido = document.createElement('h5');
       tituloBienvenido.className = 'titulo-usuario';
       tituloBienvenido.textContent = `Bienvenido ${String(logeo.nomUsuario.value)}`;
 
