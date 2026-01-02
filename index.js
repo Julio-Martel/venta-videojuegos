@@ -8,9 +8,16 @@ const botonLogeo = document.getElementById('boton-log');
 
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
-const usuariosRegistrados = {
-    /*agregar la logica del registro de usuario*/ 
+const usuariosRegistrados = [
+  { nombreUsuario: 'julio4561',password: 1234},
+  { nombreUsuario: 'marco123', password: 2312}
+];
+
+const logeo = {
+    nomUsuario: document.getElementById('usuario'),
+    pasUsuario: document.getElementById('password')
 }
+
 
 const slide = {
   botonDerecho: document.getElementById("flecha-uno"),
@@ -119,3 +126,6 @@ verProductos.addEventListener('click', async() => {
    
 });
 
+botonLogeo.addEventListener('click', (valorUsuario,valorPassword) => {
+/*AGREGAR LOGICA AQUI   */
+} )
