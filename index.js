@@ -9,13 +9,13 @@ const botonLogeo = document.getElementById('boton-log');
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
 const usuariosRegistrados = [
-  { nombreUsuario: 'julio4561',password: 1234},
-  { nombreUsuario: 'marco123', password: 2312}
+  { nombreUsuario: 'julio4561',password: '1234'},
+  { nombreUsuario: 'marco123', password: '2312'}
 ];
 
 const logeo = {
     nomUsuario: document.getElementById('usuario'),
-    pasUsuario: document.getElementById('password')
+    pasUsuario: document.getElementById('contraseña')
 }
 
 
@@ -126,6 +126,19 @@ verProductos.addEventListener('click', async() => {
    
 });
 
-botonLogeo.addEventListener('click', (valorUsuario,valorPassword) => {
-/*AGREGAR LOGICA AQUI   */
+
+botonLogeo.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    const usuarioValido = usuariosRegistrados.some(user =>
+        user.nombreUsuario === logeo.nomUsuario.value &&
+        user.password === logeo.pasUsuario.value
+    );
+
+    if (usuarioValido) {
+      console.log("El usuario está registrado");
+    } else {
+      console.log("Usuario o contraseña incorrectos");
+    }
+
 } )
