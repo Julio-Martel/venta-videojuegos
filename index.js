@@ -136,9 +136,9 @@ botonLogeo.addEventListener('click', (e) => {
     );
 
     if (usuarioValido) {
-      console.log("El usuario está registrado");
+      
     } else {
-      alert("Usuario o contraseña incorrectos");
+      alert("El usuario o contraseña son incorrectos");
     }
 
 } )
