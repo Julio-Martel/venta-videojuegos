@@ -268,6 +268,19 @@ body {
     max-height: 50px;
 }
 
+.bienvenida-usuario{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    padding-right: 5px;
+}
+
+.titulo-usuario{
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
 .pie-pagina {
     background: #000;
     color: #fff;
