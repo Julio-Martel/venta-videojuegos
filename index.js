@@ -146,10 +146,13 @@ botonLogeo.addEventListener('click', (e) => {
       tituloBienvenido.className = 'titulo-usuario';
       tituloBienvenido.textContent = `Bienvenido ${String(logeo.nomUsuario.value)}`;
 
+      const botonSalir = document.createElement('button');
+      botonSalir.textContent = "Cerrar sesion";
+
       formularioLogeo.remove();
 
-      encabezado.appendChild(bienvenidaUsuario);
-      bienvenidaUsuario.appendChild(tituloBienvenido);
+      encabezado.appendChild(bienvenidaUsuario,);
+      bienvenidaUsuario.append(tituloBienvenido,botonSalir);
 
     } else {
       alert("El usuario o contraseña son incorrectos");
