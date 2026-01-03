@@ -273,6 +273,7 @@ body {
     text-align: center;
     align-items: center;
     padding-right: 5px;
+    gap: 5px;
 }
 
 .titulo-usuario{
