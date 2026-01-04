@@ -1,4 +1,5 @@
 import { generarContenidoProductos } from "./productos.js";
+import { volverACrearPaginaInicial } from "./generarPaginaPrincipal.js";
 
 const mainContent = document.getElementById('main-content')
 const imagen = document.getElementById("nro-imagen-1");
@@ -7,6 +8,10 @@ const contenedorImagenes = document.getElementById('contenedor-imagenes');
 const botonLogeo = document.getElementById('boton-log');
 const formularioLogeo = document.getElementById('formulario-logeo');
 const encabezado = document.getElementById('encabezado');
+const cuerpoPagina = document.getElementById('cuerpo')
+let sesionIniciada = false;
+
+
 
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
@@ -17,7 +22,9 @@ const usuariosRegistrados = [
 
 const logeo = {
     nomUsuario: document.getElementById('usuario'),
-    pasUsuario: document.getElementById('contraseña')
+    pasUsuario: document.getElementById('contraseña'),
+    labelUsuario: document.getElementById('label-usuario'),
+    labelPassword: document.getElementById('label-contraseña')
 }
 
 
@@ -132,37 +139,44 @@ verProductos.addEventListener('click', async() => {
 
 botonLogeo.addEventListener('click', (e) => {
     e.preventDefault();
-
-    const usuarioValido = usuariosRegistrados.some(user =>
-        user.nombreUsuario === logeo.nomUsuario.value &&
-        user.password === logeo.pasUsuario.value
-    );
-
-    if (usuarioValido) {
+ const textoLabel = document.querySelectorAll('.texto-label')
+ const inputs = document.querySelectorAll('.input-dato')
+  
+ if(!sesionIniciada){
+     
       const bienvenidaUsuario = document.createElement('div');
       bienvenidaUsuario.className = 'bienvenida-usuario';
-      
+        
       const tituloBienvenido = document.createElement('h5');
       tituloBienvenido.className = 'titulo-usuario';
-      tituloBienvenido.textContent = `Bienvenido ${String(logeo.nomUsuario.value)}`;
+      tituloBienvenido.textContent = `Bienvenido ${String(logeo.nomUsuario.value)}`;  
 
-      const botonSalir = document.createElement('button');
-      botonSalir.textContent = "Cerrar sesion";
-      botonSalir.id = "boton-salir";
+      const usuarioValido = usuariosRegistrados.some(user =>
+          user.nombreUsuario === logeo.nomUsuario.value &&
+          user.password === logeo.pasUsuario.value
+      );
+      
+      if (usuarioValido) {
+  
+        textoLabel.forEach(lab => lab.classList.add('oculto'))
+        inputs.forEach(inp => inp.classList.add('ocult'))
+      
+        botonLogeo.textContent = 'Cerrar Sesion';
+        formularioLogeo.append(tituloBienvenido); 
+        sesionIniciada = true;
+      } else { 
+          alert("El usuario o contraseña son incorrectos");
+      }
+  
+    } else {
 
-      formularioLogeo.remove();
+      const tituloDeBienvenida = document.querySelector('.titulo-usuario')
 
-      encabezado.appendChild(bienvenidaUsuario,);
-      bienvenidaUsuario.append(tituloBienvenido,botonSalir);
-
-      const obtenerBoton = document.getElementById('boton-salir');
-
-      obtenerBoton.addEventListener('click', () => console.log('saliste'));
-
-
-
-    } else { 
-      alert("El usuario o contraseña son incorrectos");
+      textoLabel.forEach(lab => lab.classList.remove('oculto'))
+      inputs.forEach(inp => inp.classList.remove('ocult')) 
+      sesionIniciada = false;
+      botonLogeo.textContent = "Iniciar Sesion"
+      tituloDeBienvenida.remove()
     }
 
 } )
