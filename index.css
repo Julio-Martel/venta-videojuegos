@@ -36,6 +36,8 @@ body {
 
 .formulario{
     margin-right: 5px;
+    display: flex;
+    gap: 3px;
 }
 
 .texto-label{
@@ -280,6 +282,22 @@ body {
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
 
+}
+
+.titulo-usuario.ocultar-titulo{
+    display: none;
+}
+
+.input-dato.ocult{
+    display: none;
+}
+
+
+
+
+
+.texto-label.oculto{
+    display: none;
 }
 
 .pie-pagina {
