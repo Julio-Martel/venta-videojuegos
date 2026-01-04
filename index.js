@@ -148,13 +148,20 @@ botonLogeo.addEventListener('click', (e) => {
 
       const botonSalir = document.createElement('button');
       botonSalir.textContent = "Cerrar sesion";
+      botonSalir.id = "boton-salir";
 
       formularioLogeo.remove();
 
       encabezado.appendChild(bienvenidaUsuario,);
       bienvenidaUsuario.append(tituloBienvenido,botonSalir);
 
-    } else {
+      const obtenerBoton = document.getElementById('boton-salir');
+
+      obtenerBoton.addEventListener('click', () => console.log('saliste'));
+
+
+
+    } else { 
       alert("El usuario o contraseña son incorrectos");
     }
 
