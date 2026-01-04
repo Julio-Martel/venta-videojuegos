@@ -139,44 +139,44 @@ verProductos.addEventListener('click', async() => {
 
 botonLogeo.addEventListener('click', (e) => {
     e.preventDefault();
- const textoLabel = document.querySelectorAll('.texto-label')
- const inputs = document.querySelectorAll('.input-dato')
+    const textoLabel = document.querySelectorAll('.texto-label')
+    const inputs = document.querySelectorAll('.input-dato')
   
- if(!sesionIniciada){
-     
-      const bienvenidaUsuario = document.createElement('div');
-      bienvenidaUsuario.className = 'bienvenida-usuario';
+    if(!sesionIniciada){
         
-      const tituloBienvenido = document.createElement('h5');
-      tituloBienvenido.className = 'titulo-usuario';
-      tituloBienvenido.textContent = `Bienvenido ${String(logeo.nomUsuario.value)}`;  
+          const bienvenidaUsuario = document.createElement('div');
+          bienvenidaUsuario.className = 'bienvenida-usuario';
+            
+          const tituloBienvenido = document.createElement('h5');
+          tituloBienvenido.className = 'titulo-usuario';
+          tituloBienvenido.textContent = `Bienvenido ${String(logeo.nomUsuario.value)}`;  
 
-      const usuarioValido = usuariosRegistrados.some(user =>
-          user.nombreUsuario === logeo.nomUsuario.value &&
-          user.password === logeo.pasUsuario.value
-      );
+          const usuarioValido = usuariosRegistrados.some(user =>
+              user.nombreUsuario === logeo.nomUsuario.value &&
+              user.password === logeo.pasUsuario.value
+          );
+          
+          if (usuarioValido) {
       
-      if (usuarioValido) {
-  
-        textoLabel.forEach(lab => lab.classList.add('oculto'))
-        inputs.forEach(inp => inp.classList.add('ocult'))
+            textoLabel.forEach(lab => lab.classList.add('oculto'))
+            inputs.forEach(inp => inp.classList.add('ocult'))
+          
+            botonLogeo.textContent = 'Cerrar Sesion';
+            formularioLogeo.append(tituloBienvenido); 
+            sesionIniciada = true;
+          } else { 
+              alert("El usuario o contraseña son incorrectos");
+          }
       
-        botonLogeo.textContent = 'Cerrar Sesion';
-        formularioLogeo.append(tituloBienvenido); 
-        sesionIniciada = true;
-      } else { 
-          alert("El usuario o contraseña son incorrectos");
-      }
-  
     } else {
 
-      const tituloDeBienvenida = document.querySelector('.titulo-usuario')
+          const tituloDeBienvenida = document.querySelector('.titulo-usuario')
 
-      textoLabel.forEach(lab => lab.classList.remove('oculto'))
-      inputs.forEach(inp => inp.classList.remove('ocult')) 
-      sesionIniciada = false;
-      botonLogeo.textContent = "Iniciar Sesion"
-      tituloDeBienvenida.remove()
+          textoLabel.forEach(lab => lab.classList.remove('oculto'))
+          inputs.forEach(inp => inp.classList.remove('ocult')) 
+          sesionIniciada = false;
+          botonLogeo.textContent = "Iniciar Sesion"
+          tituloDeBienvenida.remove()
     }
 
 } )
