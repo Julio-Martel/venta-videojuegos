@@ -151,13 +151,26 @@ botonLogeo.addEventListener('click', (e) => {
           tituloBienvenido.className = 'titulo-usuario';
           tituloBienvenido.textContent = `Bienvenido ${String(logeo.nomUsuario.value)}`;  
 
+          const saldoUsuario = document.createElement('input');
+
           const usuarioValido = usuariosRegistrados.some(user =>
               user.nombreUsuario === logeo.nomUsuario.value &&
               user.password === logeo.pasUsuario.value
-          );
+            );
           
-          if (usuarioValido) {
-      
+            if (usuarioValido) {
+            
+            const obtenerSaldoUsuario = () => {
+              for(let i = 0; i < usuariosRegistrados.length; i++){
+                if(logeo.nomUsuario.value === usuariosRegistrados[i].nombreUsuario){
+                  return usuariosRegistrados[i].saldo;
+                }
+              }
+            } 
+
+            saldoUsuario.value  = String(obtenerSaldoUsuario());
+            formularioLogeo.appendChild(saldoUsuario);
+
             textoLabel.forEach(lab => lab.classList.add('oculto'))
             inputs.forEach(inp => inp.classList.add('ocult'))
           
