@@ -1,7 +1,6 @@
 /*AGREGAR LA LOGICA FALTANTE*/
 
 import { generarContenidoProductos } from "./productos.js";
-import { volverACrearPaginaInicial } from "./generarPaginaPrincipal.js";
 
 const mainContent = document.getElementById('main-content')
 const imagen = document.getElementById("nro-imagen-1");
