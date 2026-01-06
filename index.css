@@ -38,6 +38,7 @@ body {
     margin-right: 5px;
     display: flex;
     gap: 3px;
+    align-items: center;
 }
 
 .texto-label{
