@@ -1,3 +1,5 @@
+/*AGREGAR LA LOGICA FALTANTE*/
+
 import { generarContenidoProductos } from "./productos.js";
 import { volverACrearPaginaInicial } from "./generarPaginaPrincipal.js";
 
