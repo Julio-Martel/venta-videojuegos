@@ -9,8 +9,6 @@ const verProductos = document.getElementById("boton-productos");
 const contenedorImagenes = document.getElementById('contenedor-imagenes');
 const botonLogeo = document.getElementById('boton-log');
 const formularioLogeo = document.getElementById('formulario-logeo');
-const encabezado = document.getElementById('encabezado');
-const cuerpoPagina = document.getElementById('cuerpo')
 let sesionIniciada = false;
 
 
