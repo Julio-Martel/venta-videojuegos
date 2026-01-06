@@ -16,8 +16,8 @@ let sesionIniciada = false;
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
 const usuariosRegistrados = [
-  { nombreUsuario: 'julio4561',password: '1234'},
-  { nombreUsuario: 'marco123', password: '2312'}
+  { nombreUsuario: 'julio4561',password: '1234', saldo: 45611},
+  { nombreUsuario: 'marco123', password: '2312', saldo: 12374}
 ];
 
 const logeo = {
