@@ -173,9 +173,12 @@ botonLogeo.addEventListener('click', (e) => {
 
             textoLabel.forEach(lab => lab.classList.add('oculto'))
             inputs.forEach(inp => inp.classList.add('ocult'))
-          
+        
             botonLogeo.textContent = 'Cerrar Sesion';
             formularioLogeo.append(tituloBienvenido); 
+
+            formularioLogeo.style.flexDirection = 'row-reverse';
+
             sesionIniciada = true;
           } else { 
               alert("El usuario o contraseña son incorrectos");
@@ -192,6 +195,7 @@ botonLogeo.addEventListener('click', (e) => {
           botonLogeo.textContent = "Iniciar Sesion"
           tituloDeBienvenida.remove()
           saldoUsuairo.remove();
+          formularioLogeo.style.flexDirection = "row";
     }
 
 } )
