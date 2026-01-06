@@ -151,6 +151,7 @@ botonLogeo.addEventListener('click', (e) => {
           tituloBienvenido.textContent = `Bienvenido ${String(logeo.nomUsuario.value)}`;  
 
           const saldoUsuario = document.createElement('input');
+          saldoUsuario.className = "saldo";
 
           const usuarioValido = usuariosRegistrados.some(user =>
               user.nombreUsuario === logeo.nomUsuario.value &&
@@ -183,12 +184,14 @@ botonLogeo.addEventListener('click', (e) => {
     } else {
 
           const tituloDeBienvenida = document.querySelector('.titulo-usuario')
+          const saldoUsuairo = document.querySelector('.saldo');
 
           textoLabel.forEach(lab => lab.classList.remove('oculto'))
           inputs.forEach(inp => inp.classList.remove('ocult')) 
           sesionIniciada = false;
           botonLogeo.textContent = "Iniciar Sesion"
           tituloDeBienvenida.remove()
+          saldoUsuairo.remove();
     }
 
 } )
