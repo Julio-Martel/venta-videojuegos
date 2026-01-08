@@ -99,7 +99,7 @@ export const generarContenidoProductos = () => {
 
     for(const casilla of todasLasCasillas){
         casilla.addEventListener('mouseover',() => {
-            // agregar logica aqui
+            
         })
     }
 
