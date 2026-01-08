@@ -55,7 +55,7 @@ export const generarContenidoProductos = () => {
         agregarStock.displayStock.className = "display";
 
         agregarStock.displayStock.value = productos.listadoProductos[i].stock;
-        
+
         stock.append(agregarStock.simboloMenos,agregarStock.displayStock,agregarStock.simboloMas);
 
         casilla.append(nombre, imagen, stock);
@@ -70,15 +70,14 @@ export const generarContenidoProductos = () => {
 
         const nombreProducto = casilla.querySelector('h3');
         const imagenProducto = casilla.querySelector('img');
-        const stockProducto  = casilla.querySelector('stock-producto');
 
         if(idCasilla === `casilla-${i}`){
             switch(i){
                 case 0:
                     nombreProducto.textContent = productos.listadoProductos[0].nombreVideojuego
                     imagenProducto.src = './images/portada1.jpg';
-
                     break;
+                    
                 case 1:
                     nombreProducto.textContent = productos.listadoProductos[1].nombreVideojuego
                     imagenProducto.src = './images/portada2.jpg';
@@ -95,6 +94,13 @@ export const generarContenidoProductos = () => {
             }
         }
         i++;
+    }
+
+
+    for(const casilla of todasLasCasillas){
+        casilla.addEventListener('mouseover',() => {
+            // agregar logica aqui
+        })
     }
 
 
