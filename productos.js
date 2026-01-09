@@ -21,6 +21,8 @@ export const generarContenidoProductos = () => {
    
     contenidoProductoCarrito.appendChild(carrito);
 
+    carrito.id = "contenedor-carrito";
+
     productos.contedorProductos.classList.add('contedor-productos');
 
     carrito.classList.add("contenedor-carrito");
