@@ -23,6 +23,21 @@ export const generarContenidoProductos = () => {
 
     carrito.id = "contenedor-carrito";
 
+    const contenidoVideojuego = {
+        contVideojuego: document.createElement('div'),
+        tituloVideojuego: document.createElement('h3'),
+        imagenVideojuego: document.createElement('img'),
+        descripcionVideojuego: document.createElement('p'),
+        precioVideojuego: document.createElement('input'),
+        sotckVideojuego: document.createElement('input'),
+        botonAgregarAlCarrito: document.createElement('button')
+    }
+
+
+
+
+
+
     productos.contedorProductos.classList.add('contedor-productos');
 
     carrito.classList.add("contenedor-carrito");
