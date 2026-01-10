@@ -1,3 +1,5 @@
+/*Completar el codigo con el faltante para el mouseenter de las casillas para la visualizacion del producto*/
+
 export const generarContenidoProductos = () => {
     const contenidoProductoCarrito = document.createElement('div');
     
@@ -108,23 +110,38 @@ export const generarContenidoProductos = () => {
         i++;
     }
 
-
     for(const casilla of todasLasCasillas){
         casilla.addEventListener('mouseenter',() => {
             const obtenerId = casilla.id; 
             const separarString = obtenerId.split('-');
             const valorNumeroId = parseInt(separarString[1]);
 
-            if(valorNumeroId >= 0 && valorNumeroId <= 3){
-                const imagenProducto = casilla.getElementsByTagName('img');
-            
-                console.log(imagenProducto)
-            }
+           switch(valorNumeroId){
+                case 0:
+                    contenidoVideojuego.tituloVideojuego.textContent = "Resident Evil Requiem";
+                    contenidoVideojuego.imagenVideojuego.src = './images/portada1.jpg';   
+                    contenidoVideojuego.imagenVideojuego.className = 'img-prod';
+                    contenidoVideojuego.tituloVideojuego.className = 'nombre-producto'
+                    contenidoVideojuego.descripcionVideojuego.className = "descripcion"
+                    contenidoVideojuego.descripcionVideojuego.textContent = "Una nueva era del survival horror llega con Resident Evil Requiem, el capítulo más reciente e inmersivo hasta ahora de la icónica serie Resident Evil. Vive el terror del survival horror con la analista del FBI Grace Ashcroft y sumérgete en acción trepidante con el legendario agente Leon S. Kennedy. Sus dos caminos y estilos singulares de juego se entrelazan en una experiencia electrizante que te helará la sangre."          
+                    break;
 
+                case 1:
+                break;
+
+                case 2:
+                
+                case 3:
+                break;
+
+           }
+
+           carrito.append(contenidoVideojuego.tituloVideojuego,contenidoVideojuego.imagenVideojuego,contenidoVideojuego.descripcionVideojuego)
+        
+        
+        
         })
     }
-
-
 
     return contenidoProductoCarrito;
 
