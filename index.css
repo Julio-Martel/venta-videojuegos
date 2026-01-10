@@ -197,6 +197,9 @@ body {
     height: 100%;
     display: flex;
     border-radius: 5px;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
 }
 
 .contenedor-carrito{
