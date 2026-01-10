@@ -33,11 +33,6 @@ export const generarContenidoProductos = () => {
         botonAgregarAlCarrito: document.createElement('button')
     }
 
-
-
-
-
-
     productos.contedorProductos.classList.add('contedor-productos');
 
     carrito.classList.add("contenedor-carrito");
@@ -115,8 +110,17 @@ export const generarContenidoProductos = () => {
 
 
     for(const casilla of todasLasCasillas){
-        casilla.addEventListener('mouseover',() => {
+        casilla.addEventListener('mouseenter',() => {
+            const obtenerId = casilla.id; 
+            const separarString = obtenerId.split('-');
+            const valorNumeroId = parseInt(separarString[1]);
+
+            if(valorNumeroId >= 0 && valorNumeroId <= 3){
+                const imagenProducto = casilla.getElementsByTagName('img');
             
+                console.log(imagenProducto)
+            }
+
         })
     }
 
