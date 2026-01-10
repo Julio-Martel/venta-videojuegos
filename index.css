@@ -198,7 +198,7 @@ body {
     display: flex;
     border-radius: 5px;
     flex-direction: column;
-    gap: 5px;
+    gap: 3px;
     align-items: center;
 }
 
@@ -239,6 +239,16 @@ body {
 
 .imag-prod{
     max-width: 150px;
+}
+
+.img-prod{
+    width: 90%;
+    border: solid 1px darkgray;
+    border-radius: 5px;
+}
+
+.img-prod{
+    max-width: 350px;
 }
 
 .stock-producto{
@@ -299,6 +309,13 @@ body {
 .texto-label.oculto{
     display: none;
 }
+
+
+.descripcion{
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 
 .pie-pagina {
     background: #000;
