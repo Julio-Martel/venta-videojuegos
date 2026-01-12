@@ -140,17 +140,15 @@ export const generarContenidoProductos = () => {
         
         
         
-        })
-    
-       
-    
-    
-    
-        
-    
-    
+        })    
     }
 
+    agregarStock.simboloMenos.addEventListener('click');
+    agregarStock.simboloMas.addEventListener('click');
+
+
+
+    
     return contenidoProductoCarrito;
 
 }
