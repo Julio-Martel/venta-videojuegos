@@ -141,6 +141,14 @@ export const generarContenidoProductos = () => {
         
         
         })
+    
+       
+    
+    
+    
+        
+    
+    
     }
 
     return contenidoProductoCarrito;
