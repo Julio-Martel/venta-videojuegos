@@ -200,6 +200,7 @@ body {
     flex-direction: column;
     gap: 3px;
     align-items: center;
+    justify-content: center;
 }
 
 .contenedor-carrito{
@@ -248,7 +249,7 @@ body {
 }
 
 .img-prod{
-    max-width: 350px;
+    max-width: 250px;
 }
 
 .stock-producto{
@@ -315,7 +316,9 @@ body {
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
     font-size: small;
-    
+    text-align: justify;
+    text-justify: inter-word;
+    margin: 1rem;
 }
 
 
