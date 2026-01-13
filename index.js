@@ -1,5 +1,3 @@
-/*AGREGAR LA LOGICA FALTANTE*/
-
 import { generarContenidoProductos } from "./productos.js";
 
 const mainContent = document.getElementById('main-content')
@@ -9,8 +7,6 @@ const contenedorImagenes = document.getElementById('contenedor-imagenes');
 const botonLogeo = document.getElementById('boton-log');
 const formularioLogeo = document.getElementById('formulario-logeo');
 let sesionIniciada = false;
-
-
 
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
@@ -25,7 +21,6 @@ const logeo = {
     labelUsuario: document.getElementById('label-usuario'),
     labelPassword: document.getElementById('label-contraseña')
 }
-
 
 const slide = {
   botonDerecho: document.getElementById("flecha-uno"),
@@ -133,6 +128,72 @@ verProductos.addEventListener('click', async() => {
   await delay(200);
   nuevoContenido.classList.add('mostrar-contenido-carrito');
    
+  const todosLosDisplays = document.querySelectorAll('.display');
+
+
+/*
+  VER ESTO, Y ARREGLAR EL TEMA DE LOS BOTONES DE CONTROLADORES DE STOCK
+*/
+
+  let i = 0;
+  for(const display of todosLosDisplays){
+    const botonMenos = document.getElementById(`boton-menos-${i}`);
+    const botonMas = document.getElementById(`boton-mas-${i}`);
+    const valorDisplay = display.value;
+    const strNum = parseInt(valorDisplay);
+    let stockActual = strNum;
+
+    if(stockActual === strNum){
+      botonMas.style.opacity = "0.5";
+      botonMas.style.pointerEvents = "none";
+    } else if(stockActual === 1) {
+      botonMenos.style.opacity = "0.5";
+      botonMenos.style.pointerEvents = "none";
+    }
+
+    botonMenos.addEventListener('click', () => {
+     
+      if(stockActual > 1 && stockActual <= strNum){
+        stockActual--; 
+        const numStr = String(stockActual);
+        display.value = numStr;
+        
+        if(stockActual === 1){
+          botonMenos.style.opacity = "0.5";
+          botonMenos.style.pointerEvents = "none";          
+        } else {
+          botonMenos.style.opacity = "1";
+          botonMenos.style.pointerEvents = "auto";
+          botonMas.style.pointerEvents = "auto";
+          botonMas.style.opacity = "1";    
+        }
+      
+      } 
+    })
+
+   botonMas.addEventListener('click', () => {
+      if(stockActual  >= 1 && stockActual <= strNum){
+        stockActual++;
+        const numStr = String(stockActual);
+        display.value = numStr;
+        if(stockActual === strNum){
+          botonMas.style.opacity = "0.5";
+          botonMas.style.pointerEvents = "none";
+        } else {
+          botonMas.style.opacity = "1";
+          botonMas.style.pointerEvents = "auto";
+          botonMenos.style.opacity = "1";
+          botonMenos.style.pointerEvents = "auto";
+        }
+      } 
+    })
+
+    i++;
+
+  }
+
+  
+
 });
 
 
@@ -199,3 +260,4 @@ botonLogeo.addEventListener('click', (e) => {
     }
 
 } )
+
