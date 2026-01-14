@@ -158,20 +158,17 @@ verProductos.addEventListener('click', async() => {
 
     botonMenos.addEventListener('click', () => {
      
-      if(stockActual > 1 && stockActual <= strNum){
+      if(stockActual >= 1 && stockActual <= strNum){
         stockActual--; 
         const numStr = String(stockActual);
         display.value = numStr;
         
         if(stockActual === 1){
           botonMenos.style.opacity = "0.5";
-          botonMenos.style.pointerEvents = "none";          
-        } else {
-          botonMenos.style.opacity = "1";
-          botonMenos.style.pointerEvents = "auto";
+          botonMenos.style.pointerEvents = "none";    
           botonMas.style.pointerEvents = "auto";
-          botonMas.style.opacity = "1";    
-        }
+          botonMas.style.opacity = "1";                   
+        } 
       
       } 
     })
@@ -184,12 +181,9 @@ verProductos.addEventListener('click', async() => {
         if(stockActual === strNum){
           botonMas.style.opacity = "0.5";
           botonMas.style.pointerEvents = "none";
-        } else {
-          botonMas.style.opacity = "1";
-          botonMas.style.pointerEvents = "auto";
           botonMenos.style.opacity = "1";
-          botonMenos.style.pointerEvents = "auto";
-        }
+          botonMenos.style.pointerEvents = "auto";       
+        } 
       } 
     })
 
