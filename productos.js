@@ -39,6 +39,9 @@ export const generarContenidoProductos = () => {
 
     carrito.classList.add("contenedor-carrito");
     
+    contenidoVideojuego.botonAgregarAlCarrito.textContent = "AGREGAR AL CARRITO"
+
+
     for (let i = 0; i < productos.totalCasillasProductos; i++) {
         const casilla = document.createElement('div');
         casilla.className = 'casilla-producto';
@@ -61,7 +64,10 @@ export const generarContenidoProductos = () => {
 
         agregarStock.simboloMenos.src = './images/botonMenos.png';
         agregarStock.simboloMas.src = './images/botonMas.png';
-       
+
+        agregarStock.simboloMenos.id = `boton-menos-${i}`;
+        agregarStock.simboloMas.id = `boton-mas-${i}`;
+
         agregarStock.simboloMenos.className = "boton-stock";
         agregarStock.simboloMas.className = "boton-stock";
 
@@ -77,7 +83,7 @@ export const generarContenidoProductos = () => {
     }
 
     const todasLasCasillas = productos.contedorProductos.querySelectorAll('.casilla-producto');
-   
+
     let i = 0;
     for (const casilla of todasLasCasillas) {
         const idCasilla = casilla.id;
@@ -111,7 +117,8 @@ export const generarContenidoProductos = () => {
     }
 
     for(const casilla of todasLasCasillas){
-        casilla.addEventListener('mouseenter',() => {
+        
+        casilla.addEventListener('click',() => {
             const obtenerId = casilla.id; 
             const separarString = obtenerId.split('-');
             const valorNumeroId = parseInt(separarString[1]);
@@ -121,34 +128,52 @@ export const generarContenidoProductos = () => {
                     contenidoVideojuego.tituloVideojuego.textContent = "Resident Evil Requiem";
                     contenidoVideojuego.imagenVideojuego.src = './images/portada1.jpg';   
                     contenidoVideojuego.imagenVideojuego.className = 'img-prod';
-                    contenidoVideojuego.tituloVideojuego.className = 'nombre-producto'
-                    contenidoVideojuego.descripcionVideojuego.className = "descripcion"
+                    contenidoVideojuego.tituloVideojuego.className = 'nombre-producto';
+                    contenidoVideojuego.descripcionVideojuego.className = "descripcion";
                     contenidoVideojuego.descripcionVideojuego.textContent = "Una nueva era del survival horror llega con Resident Evil Requiem, el capítulo más reciente e inmersivo hasta ahora de la icónica serie Resident Evil. Vive el terror del survival horror con la analista del FBI Grace Ashcroft y sumérgete en acción trepidante con el legendario agente Leon S. Kennedy. Sus dos caminos y estilos singulares de juego se entrelazan en una experiencia electrizante que te helará la sangre."          
                     break;
 
                 case 1:
+                    contenidoVideojuego.tituloVideojuego.textContent = "Silent Hill F";
+                    contenidoVideojuego.imagenVideojuego.src = './images/portada2.jpg';   
+                    contenidoVideojuego.imagenVideojuego.className = 'img-prod';
+                    contenidoVideojuego.tituloVideojuego.className = 'nombre-producto';
+                    contenidoVideojuego.descripcionVideojuego.className = "descripcion";
+                    contenidoVideojuego.descripcionVideojuego.textContent = "La ciudad natal de Hinako está sumida en la niebla, lo que la obliga a luchar contra monstruos grotescos y a resolver rompecabezas espeluznantes. Descubre la belleza del terror en este thriller psicológico."
                 break;
 
                 case 2:
-                
+                    contenidoVideojuego.tituloVideojuego.textContent = "Battlefield 6";
+                    contenidoVideojuego.imagenVideojuego.src = './images/portada3.jpg';   
+                    contenidoVideojuego.imagenVideojuego.className = 'img-prod';
+                    contenidoVideojuego.tituloVideojuego.className = 'nombre-producto';
+                    contenidoVideojuego.descripcionVideojuego.className = "descripcion";
+                    contenidoVideojuego.descripcionVideojuego.textContent = "La experiencia bélica definitiva. En una guerra de tanques, cazas y gigantescos arsenales de combate, el arma más mortífera es tu patrulla."                
+                break;
+
                 case 3:
+                    contenidoVideojuego.tituloVideojuego.textContent = "Resident Evil 4";
+                    contenidoVideojuego.imagenVideojuego.src = './images/portada4.jpg';   
+                    contenidoVideojuego.imagenVideojuego.className = 'img-prod';
+                    contenidoVideojuego.tituloVideojuego.className = 'nombre-producto';
+                    contenidoVideojuego.descripcionVideojuego.className = "descripcion";
+                    contenidoVideojuego.descripcionVideojuego.textContent = "La historia de Resident Evil 4 sigue a Leon S. Kennedy, seis años después de Raccoon City, mientras es enviado a una remota zona rural de España para rescatar a Ashley Graham, la hija secuestrada del presidente de EE.UU. Allí, descubre una secta misteriosa, los Ganados, aldeanos controlados por parásitos llamados Las Plagas, que atacan violentamente a extraños, llevando a Leon a una lucha por la supervivencia y el rescate de Ashley en un entorno de terror y acción."
                 break;
 
            }
 
-           carrito.append(contenidoVideojuego.tituloVideojuego,contenidoVideojuego.imagenVideojuego,contenidoVideojuego.descripcionVideojuego)
+           carrito.append(contenidoVideojuego.tituloVideojuego,contenidoVideojuego.imagenVideojuego,contenidoVideojuego.descripcionVideojuego, contenidoVideojuego.botonAgregarAlCarrito)
         
         
         
         })    
+
+       /* agregarStock.simboloMenos.addEventListener();
+    
+        agregarStock.simboloMas.addEventListener();*/
+
     }
 
-    agregarStock.simboloMenos.addEventListener('click');
-    agregarStock.simboloMas.addEventListener('click');
-
-
-
-    
     return contenidoProductoCarrito;
 
 }
