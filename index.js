@@ -129,12 +129,7 @@ verProductos.addEventListener('click', async() => {
   nuevoContenido.classList.add('mostrar-contenido-carrito');
    
   const todosLosDisplays = document.querySelectorAll('.display');
-
-
-/*
-  VER ESTO, Y ARREGLAR EL TEMA DE LOS BOTONES DE CONTROLADORES DE STOCK
-*/
-
+  
   let i = 0;
   for(const display of todosLosDisplays){
     const botonMenos = document.getElementById(`boton-menos-${i}`);
