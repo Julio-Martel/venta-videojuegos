@@ -129,7 +129,7 @@ verProductos.addEventListener('click', async() => {
   nuevoContenido.classList.add('mostrar-contenido-carrito');
    
   const todosLosDisplays = document.querySelectorAll('.display');
-  
+
   let i = 0;
   for(const display of todosLosDisplays){
     const botonMenos = document.getElementById(`boton-menos-${i}`);
@@ -154,6 +154,7 @@ verProductos.addEventListener('click', async() => {
     botonMenos.addEventListener('click', () => {
      
       if(stockActual >= 1 && stockActual <= strNum){
+       
         stockActual--; 
         const numStr = String(stockActual);
         display.value = numStr;
@@ -170,9 +171,11 @@ verProductos.addEventListener('click', async() => {
 
    botonMas.addEventListener('click', () => {
       if(stockActual  >= 1 && stockActual <= strNum){
+       
         stockActual++;
         const numStr = String(stockActual);
         display.value = numStr;
+      
         if(stockActual === strNum){
           botonMas.style.opacity = "0.5";
           botonMas.style.pointerEvents = "none";
