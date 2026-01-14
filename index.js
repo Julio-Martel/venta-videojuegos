@@ -143,12 +143,17 @@ verProductos.addEventListener('click', async() => {
     const strNum = parseInt(valorDisplay);
     let stockActual = strNum;
 
-    if(stockActual === strNum){
+    if(stockActual === strNum && stockActual !== 0){
       botonMas.style.opacity = "0.5";
       botonMas.style.pointerEvents = "none";
     } else if(stockActual === 1) {
       botonMenos.style.opacity = "0.5";
       botonMenos.style.pointerEvents = "none";
+    } else {
+      botonMenos.style.opacity = "0.5";
+      botonMenos.style.pointerEvents = "none";
+      botonMas.style.opacity = "0.5";
+      botonMas.style.pointerEvents = "none";    
     }
 
     botonMenos.addEventListener('click', () => {
