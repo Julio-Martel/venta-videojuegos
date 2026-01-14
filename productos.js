@@ -39,8 +39,8 @@ export const generarContenidoProductos = () => {
 
     carrito.classList.add("contenedor-carrito");
     
-    contenidoVideojuego.botonAgregarAlCarrito.textContent = "AGREGAR AL CARRITO"
-
+    contenidoVideojuego.botonAgregarAlCarrito.textContent = "AGREGAR AL CARRITO";
+    contenidoVideojuego.botonAgregarAlCarrito.id = "boton-agregar-carrito";
 
     for (let i = 0; i < productos.totalCasillasProductos; i++) {
         const casilla = document.createElement('div');
