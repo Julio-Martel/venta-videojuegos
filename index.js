@@ -72,8 +72,7 @@ slide.botonIzquierdo.addEventListener("click", async () => {
   }
 
   imagen.classList.remove("ocultar");
-  imagen.classList.
-  add("mostrar");
+  imagen.classList.add("mostrar");
   await delay(100);
   imagen.classList.remove("mostrar");
   actualizarEstado();
