@@ -71,7 +71,6 @@ export const generarContenidoProductos = () => {
         agregarStock.simboloMenos.className = "boton-stock";
         agregarStock.simboloMas.className = "boton-stock";
 
-        agregarStock.displayStock.id = 'display-stock';
         agregarStock.displayStock.className = "display";
 
         agregarStock.displayStock.value = productos.listadoProductos[i].stock;
@@ -163,9 +162,7 @@ export const generarContenidoProductos = () => {
            }
 
            carrito.append(contenidoVideojuego.tituloVideojuego,contenidoVideojuego.imagenVideojuego,contenidoVideojuego.descripcionVideojuego, contenidoVideojuego.botonAgregarAlCarrito)
-        
-        
-        
+
         })    
 
     }
