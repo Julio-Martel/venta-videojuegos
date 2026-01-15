@@ -11,8 +11,8 @@ let sesionIniciada = false;
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
 const usuariosRegistrados = [
-  { nombreUsuario: 'julio4561',password: '1234', saldo: 45611},
-  { nombreUsuario: 'marco123', password: '2312', saldo: 12374}
+  { nombreUsuario: 'julio4561',password: '1234', saldo: 45611, acumladorPrecio:0},
+  { nombreUsuario: 'marco123', password: '2312', saldo: 12374, acumladorPrecio: 0}
 ];
 
 const logeo = {
@@ -199,7 +199,11 @@ verProductos.addEventListener('click', async() => {
       const botonAgregarAlCarrito = document.getElementById('boton-agregar-carrito');
       
       botonAgregarAlCarrito.addEventListener('click', () => {
-        if(!sesionIniciada){console.log('Deberas iniciar Sesion para comprar')} else {console.log('ahora puedes comprar')}
+        if(!sesionIniciada){console.log('Deberas iniciar Sesion para comprar')}
+        
+        else {
+            
+        }
       })
 
     })
