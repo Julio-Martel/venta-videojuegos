@@ -122,7 +122,8 @@ export const generarContenidoProductos = () => {
 
     for(const casilla of todasLasCasillas){
         
-        casilla.addEventListener('click',() => {
+        casilla.addEventListener('click',(e) => {
+           if (e.target !== e.currentTarget) return;
             const obtenerId = casilla.id; 
             const separarString = obtenerId.split('-');
             const valorNumeroId = parseInt(separarString[1]);
