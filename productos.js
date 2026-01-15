@@ -87,6 +87,8 @@ export const generarContenidoProductos = () => {
     }
 
     const todasLasCasillas = productos.contedorProductos.querySelectorAll('.casilla-producto');
+    const todasLasImagenes = productos.contedorProductos.querySelectorAll('.imag-prod')
+
 
     let i = 0;
     for (const casilla of todasLasCasillas) {
@@ -100,19 +102,23 @@ export const generarContenidoProductos = () => {
                 case 0:
                     nombreProducto.textContent = productos.listadoProductos[0].nombreVideojuego
                     imagenProducto.src = './images/portada1.jpg';
+                    imagenProducto.id  = "imag-0";
                     break;
                     
                 case 1:
                     nombreProducto.textContent = productos.listadoProductos[1].nombreVideojuego
                     imagenProducto.src = './images/portada2.jpg';
+                    imagenProducto.id  = "imag-1";
                 break;
                 case 2:
                     nombreProducto.textContent = productos.listadoProductos[2].nombreVideojuego
                     imagenProducto.src = './images/portada3.jpg';
+                    imagenProducto.id  = "imag-2";
                 break;
                 case 3:
                     nombreProducto.textContent = productos.listadoProductos[3].nombreVideojuego
                     imagenProducto.src = './images/portada4.jpg';
+                    imagenProducto.id  = "imag-3";
                 break;
 
             }
@@ -120,11 +126,11 @@ export const generarContenidoProductos = () => {
         i++;
     }
 
-    for(const casilla of todasLasCasillas){
+    for(const imagen of todasLasImagenes){
         
-        casilla.addEventListener('click',(e) => {
+        imagen.addEventListener('click',(e) => {
            if (e.target !== e.currentTarget) return;
-            const obtenerId = casilla.id; 
+            const obtenerId = imagen.id; 
             const separarString = obtenerId.split('-');
             const valorNumeroId = parseInt(separarString[1]);
 
