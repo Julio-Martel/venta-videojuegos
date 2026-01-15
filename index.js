@@ -120,8 +120,8 @@ slide.imagen3.addEventListener('click', () => {
 
 verProductos.addEventListener('click', async() => {
   
-  const nuevoContenido = generarContenidoProductos();
-  
+  const nuevoContenido = generarContenidoProductos()
+
   contenedorImagenes.classList.add('ocultar-contenido-imagenes');
   await delay(200);
   mainContent.replaceChildren(nuevoContenido); 
@@ -129,6 +129,10 @@ verProductos.addEventListener('click', async() => {
   nuevoContenido.classList.add('mostrar-contenido-carrito');
    
   const todosLosDisplays = document.querySelectorAll('.display');
+
+  const todasLasCasillas = document.querySelectorAll('.casilla-producto');
+
+  console.log(todasLasCasillas)
 
   let i = 0;
   for(const display of todosLosDisplays){
@@ -186,13 +190,26 @@ verProductos.addEventListener('click', async() => {
     })
 
     i++;
-
   }
 
-  
+  /*ARREGLAR ESTO SI O SI ANTES DEL FIN DE SEMANA*/
+
+  for(const casilla of todasLasCasillas){
+    const obtenerId = casilla.id;
+    const casillaId = document.getElementById(obtenerId);
+    
+    casillaId.addEventListener('click', () => {
+      const botonAgregarAlCarrito = document.getElementById('boton-agregar-carrito');
+      
+      botonAgregarAlCarrito.addEventListener('click', () => {
+        if(!sesionIniciada){console.log('Deberas iniciar Sesion para comprar')} else {console.log('ahora puedes comprar')}
+      })
+
+    })
+  }
+
 
 });
-
 
 botonLogeo.addEventListener('click', (e) => {
     e.preventDefault();
