@@ -168,10 +168,6 @@ export const generarContenidoProductos = () => {
         
         })    
 
-       /* agregarStock.simboloMenos.addEventListener();
-    
-        agregarStock.simboloMas.addEventListener();*/
-
     }
 
     return contenidoProductoCarrito;
