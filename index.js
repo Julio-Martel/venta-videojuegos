@@ -10,8 +10,10 @@ let sesionIniciada = false;
 
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
+let totalAcumulado = 0;
+
 const usuariosRegistrados = [
-  { nombreUsuario: 'julio4561',password: '1234', saldo: 45611, acumladorPrecio:0},
+  { nombreUsuario: 'julio4561',password: '1234', saldo: 45611, acumladorPrecio: 0},
   { nombreUsuario: 'marco123', password: '2312', saldo: 12374, acumladorPrecio: 0}
 ];
 
@@ -130,6 +132,7 @@ verProductos.addEventListener('click', async() => {
   const todosLosDisplays = document.querySelectorAll('.display');
 
   const todasLasCasillas = document.querySelectorAll('.casilla-producto');
+  const todasLasImagenes = document.querySelectorAll('.imag-prod');
 
   console.log(todasLasCasillas)
 
@@ -155,24 +158,24 @@ verProductos.addEventListener('click', async() => {
     }
 
     botonMenos.addEventListener('click', () => {
-     
+   
       if(stockActual >= 1 && stockActual <= strNum){
-       
+ 
         stockActual--; 
         const numStr = String(stockActual);
         display.value = numStr;
-        
+  
         if(stockActual === 1){
           botonMenos.style.opacity = "0.5";
           botonMenos.style.pointerEvents = "none";    
           botonMas.style.pointerEvents = "auto";
-          botonMas.style.opacity = "1";                   
-        } 
-      
+          botonMas.style.opacity = "1";      
+        }       
       } 
     })
 
    botonMas.addEventListener('click', () => {
+
       if(stockActual  >= 1 && stockActual <= strNum){
        
         stockActual++;
@@ -191,11 +194,11 @@ verProductos.addEventListener('click', async() => {
     i++;
   }
 
-  for(const casilla of todasLasCasillas){
-    const obtenerId = casilla.id;
-    const casillaId = document.getElementById(obtenerId);
+  for(const imagen of todasLasImagenes){
+    const obtenerId = imagen.id;
+    const imagenId = document.getElementById(obtenerId);
     
-    casillaId.addEventListener('click', () => {
+    imagenId.addEventListener('click', () => {
       const botonAgregarAlCarrito = document.getElementById('boton-agregar-carrito');
       
       botonAgregarAlCarrito.addEventListener('click', () => {
@@ -208,6 +211,7 @@ verProductos.addEventListener('click', async() => {
 
     })
   }
+
 
 
 });
