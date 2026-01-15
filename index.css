@@ -218,7 +218,6 @@ body {
     justify-content: center;
     overflow-y: hidden;
     border-radius: 5px;
-    cursor: pointer;
 }
 
 .casilla-producto{
@@ -236,6 +235,7 @@ body {
     width: 100%;
     border: solid 1px darkgray;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .imag-prod{
@@ -319,6 +319,14 @@ body {
     text-align: justify;
     text-justify: inter-word;
     margin: 1rem;
+}
+
+.boton-finalizar{
+    height: 100%;
+}
+
+.boton-finalizar{
+    max-height: 30px;
 }
 
 
