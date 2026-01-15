@@ -191,8 +191,6 @@ verProductos.addEventListener('click', async() => {
     i++;
   }
 
-  /*ARREGLAR ESTO SI O SI ANTES DEL FIN DE SEMANA*/
-
   for(const casilla of todasLasCasillas){
     const obtenerId = casilla.id;
     const casillaId = document.getElementById(obtenerId);
