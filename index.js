@@ -11,6 +11,7 @@ let sesionIniciada = false;
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
 let totalAcumulado = 0;
+let totalFinal = 0;
 
 const usuariosRegistrados = [
   { nombreUsuario: 'julio4561',password: '1234', saldo: 45611, acumladorPrecio: 0},
@@ -160,7 +161,8 @@ verProductos.addEventListener('click', async() => {
     botonMenos.addEventListener('click', () => {
    
       if(stockActual >= 1 && stockActual <= strNum){
- 
+        totalAcumulado = stockActual;
+        console.log(totalAcumulado)
         stockActual--; 
         const numStr = String(stockActual);
         display.value = numStr;
@@ -169,7 +171,8 @@ verProductos.addEventListener('click', async() => {
           botonMenos.style.opacity = "0.5";
           botonMenos.style.pointerEvents = "none";    
           botonMas.style.pointerEvents = "auto";
-          botonMas.style.opacity = "1";      
+          botonMas.style.opacity = "1";  
+          totalAcumulado = stockActual;
         }       
       } 
     })
@@ -177,7 +180,7 @@ verProductos.addEventListener('click', async() => {
    botonMas.addEventListener('click', () => {
 
       if(stockActual  >= 1 && stockActual <= strNum){
-       
+       totalAcumulado = stockActual;
         stockActual++;
         const numStr = String(stockActual);
         display.value = numStr;
@@ -186,7 +189,8 @@ verProductos.addEventListener('click', async() => {
           botonMas.style.opacity = "0.5";
           botonMas.style.pointerEvents = "none";
           botonMenos.style.opacity = "1";
-          botonMenos.style.pointerEvents = "auto";       
+          botonMenos.style.pointerEvents = "auto";   
+          totalAcumulado = stockActual;    
         } 
       } 
     })
@@ -205,7 +209,8 @@ verProductos.addEventListener('click', async() => {
         if(!sesionIniciada){console.log('Deberas iniciar Sesion para comprar')}
         
         else {
-            
+            totalFinal = totalFinal + totalAcumulado;
+            console.log(totalFinal)
         }
       })
 
