@@ -158,7 +158,6 @@ verProductos.addEventListener('click', async() => {
    
       if(stockActual >= 1 && stockActual <= strNum){
         totalAcumulado = stockActual;
-        console.log(totalAcumulado)
         stockActual--; 
         const numStr = String(stockActual);
         display.value = numStr;
