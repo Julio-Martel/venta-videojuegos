@@ -131,8 +131,6 @@ verProductos.addEventListener('click', async() => {
   nuevoContenido.classList.add('mostrar-contenido-carrito');
    
   const todosLosDisplays = document.querySelectorAll('.display');
-
-  const todasLasCasillas = document.querySelectorAll('.casilla-producto');
   const todasLasImagenes = document.querySelectorAll('.imag-prod');
 
   let i = 0;
