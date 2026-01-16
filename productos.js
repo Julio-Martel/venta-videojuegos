@@ -76,6 +76,7 @@ export const generarContenidoProductos = () => {
         agregarStock.simboloMas.className = "boton-stock";
 
         agregarStock.displayStock.className = "display";
+        agregarStock.displayStock.id = `display-${i}`;
         agregarStock.displayStock.readOnly  = true;
 
         agregarStock.displayStock.value = productos.listadoProductos[i].stock;
