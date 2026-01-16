@@ -6,6 +6,7 @@ const verProductos = document.getElementById("boton-productos");
 const contenedorImagenes = document.getElementById('contenedor-imagenes');
 const botonLogeo = document.getElementById('boton-log');
 const formularioLogeo = document.getElementById('formulario-logeo');
+let primerValorStockAgregadoAlCarrito = true;
 let sesionIniciada = false;
 
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
@@ -161,14 +162,19 @@ verProductos.addEventListener('click', async() => {
         stockActual--; 
         const numStr = String(stockActual);
         display.value = numStr;
-  
+
         if(stockActual === 1){
           botonMenos.style.opacity = "0.5";
           botonMenos.style.pointerEvents = "none";    
           botonMas.style.pointerEvents = "auto";
           botonMas.style.opacity = "1";  
           totalAcumulado = stockActual;
-        }       
+        } else {
+          botonMas.style.pointerEvents = "auto";
+          botonMas.style.opacity = "1";
+        }      
+        
+
       } 
     })
 
@@ -186,17 +192,26 @@ verProductos.addEventListener('click', async() => {
           botonMenos.style.opacity = "1";
           botonMenos.style.pointerEvents = "auto";   
           totalAcumulado = stockActual;    
-        } 
+        } else {
+          botonMenos.style.pointerEvents = "auto";
+          botonMenos.style.opacity = "1"
+        }
+      
       } 
+    
     })
 
     i++;
   }
 
+  let j = 0;
   for(const imagen of todasLasImagenes){
     const obtenerId = imagen.id;
-    const imagenId = document.getElementById(obtenerId);
-    
+    const imagenId = document.getElementById(obtenerId);(j)
+    const obtenerIdDisplay = document.getElementById(`display-${j}`);
+    const valorDelDisplay = obtenerIdDisplay.value;
+    const strToNumber = parseInt(valorDelDisplay);
+
     imagenId.addEventListener('click', () => {
       const botonAgregarAlCarrito = document.getElementById('boton-agregar-carrito');
       
@@ -204,12 +219,15 @@ verProductos.addEventListener('click', async() => {
         if(!sesionIniciada){  
           console.log('Deberas iniciar Sesion para comprar')}
         else {
-            totalFinal = totalFinal + totalAcumulado;
-            console.log(totalFinal)
+
+              totalAcumulado = strToNumber;
+              totalFinal = totalFinal + totalAcumulado;
+
         }
       })
 
     })
+    j++;
   }
 
 
