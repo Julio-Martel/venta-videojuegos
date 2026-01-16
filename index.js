@@ -13,6 +13,7 @@ const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
 let totalAcumulado = 0;
 let totalFinal = 0;
+let totalAcumuladoBotones = 0;
 
 const usuariosRegistrados = [
   { nombreUsuario: 'julio4561',password: '1234', saldo: 45611, acumladorPrecio: 0},
@@ -158,45 +159,47 @@ verProductos.addEventListener('click', async() => {
     botonMenos.addEventListener('click', () => {
    
       if(stockActual >= 1 && stockActual <= strNum){
-        totalAcumulado = stockActual;
+        totalAcumuladoBotones = stockActual;
         stockActual--; 
         const numStr = String(stockActual);
         display.value = numStr;
-
+          totalAcumuladoBotones = stockActual;   
+          console.log(typeof totalAcumuladoBotones) 
         if(stockActual === 1){
           botonMenos.style.opacity = "0.5";
           botonMenos.style.pointerEvents = "none";    
           botonMas.style.pointerEvents = "auto";
           botonMas.style.opacity = "1";  
-          totalAcumulado = stockActual;
+          totalAcumuladoBotones = stockActual;
         } else {
           botonMas.style.pointerEvents = "auto";
           botonMas.style.opacity = "1";
         }      
         
-
+        primerValorStockAgregadoAlCarrito = false;
       } 
     })
 
    botonMas.addEventListener('click', () => {
 
       if(stockActual  >= 1 && stockActual <= strNum){
-       totalAcumulado = stockActual;
+       totalAcumuladoBotones = stockActual;
         stockActual++;
         const numStr = String(stockActual);
         display.value = numStr;
-      
+          totalAcumuladoBotones = stockActual;   
+          console.log(typeof totalAcumuladoBotones)       
         if(stockActual === strNum){
           botonMas.style.opacity = "0.5";
           botonMas.style.pointerEvents = "none";
           botonMenos.style.opacity = "1";
           botonMenos.style.pointerEvents = "auto";   
-          totalAcumulado = stockActual;    
+
         } else {
           botonMenos.style.pointerEvents = "auto";
           botonMenos.style.opacity = "1"
         }
-      
+       primerValorStockAgregadoAlCarrito = false;
       } 
     
     })
@@ -220,8 +223,12 @@ verProductos.addEventListener('click', async() => {
           console.log('Deberas iniciar Sesion para comprar')}
         else {
 
+            if(primerValorStockAgregadoAlCarrito){
               totalAcumulado = strToNumber;
               totalFinal = totalFinal + totalAcumulado;
+            } else {
+              totalFinal = totalFinal + totalAcumuladoBotones;
+            }
 
         }
       })
