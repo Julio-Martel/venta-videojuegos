@@ -135,8 +135,6 @@ verProductos.addEventListener('click', async() => {
   const todasLasCasillas = document.querySelectorAll('.casilla-producto');
   const todasLasImagenes = document.querySelectorAll('.imag-prod');
 
-  console.log(todasLasCasillas)
-
   let i = 0;
   for(const display of todosLosDisplays){
     const botonMenos = document.getElementById(`boton-menos-${i}`);
@@ -206,7 +204,7 @@ verProductos.addEventListener('click', async() => {
       const botonAgregarAlCarrito = document.getElementById('boton-agregar-carrito');
       
       botonAgregarAlCarrito.addEventListener('click', () => {
-        if(!sesionIniciada){
+        if(!sesionIniciada){  
           console.log('Deberas iniciar Sesion para comprar')}
         else {
             totalFinal = totalFinal + totalAcumulado;
