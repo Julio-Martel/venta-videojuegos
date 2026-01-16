@@ -206,8 +206,8 @@ verProductos.addEventListener('click', async() => {
       const botonAgregarAlCarrito = document.getElementById('boton-agregar-carrito');
       
       botonAgregarAlCarrito.addEventListener('click', () => {
-        if(!sesionIniciada){console.log('Deberas iniciar Sesion para comprar')}
-        
+        if(!sesionIniciada){
+          console.log('Deberas iniciar Sesion para comprar')}
         else {
             totalFinal = totalFinal + totalAcumulado;
             console.log(totalFinal)
