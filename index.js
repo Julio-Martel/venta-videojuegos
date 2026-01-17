@@ -9,6 +9,14 @@ const formularioLogeo = document.getElementById('formulario-logeo');
 let primerValorStockAgregadoAlCarrito = true;
 let sesionIniciada = false;
 
+
+     const listadoProductos = [
+        {nombreVideojuego: 'Resident Evil Requiem', descripcion: '', precio: 53000, stock: 5},
+        {nombreVideojuego: 'Silent Hill F', descripcion: '', precio: 45000, stock: 8},
+        {nombreVideojuego: 'Battelfield 6', descripcion: '', precio: 50000, stock: 0},
+        {nombreVideojuego: 'Resident Evil 4', descripcion:'', precio: 25000, stock: 2}
+      ]
+
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
 let totalAcumulado = 0;
@@ -230,6 +238,7 @@ verProductos.addEventListener('click', async() => {
               totalFinal = totalFinal + totalAcumuladoBotones;
             }
 
+            console.log('total final',totalFinal)
         }
       })
 
