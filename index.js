@@ -237,8 +237,6 @@ verProductos.addEventListener('click', async() => {
             } else {
               totalFinal = totalFinal + totalAcumuladoBotones;
             }
-
-            console.log('total final',totalFinal)
         }
       })
 
