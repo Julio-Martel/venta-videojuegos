@@ -6,16 +6,15 @@ const verProductos = document.getElementById("boton-productos");
 const contenedorImagenes = document.getElementById('contenedor-imagenes');
 const botonLogeo = document.getElementById('boton-log');
 const formularioLogeo = document.getElementById('formulario-logeo');
-let primerValorStockAgregadoAlCarrito = true;
 let sesionIniciada = false;
 
 
-     const listadoProductos = [
-        {nombreVideojuego: 'Resident Evil Requiem', descripcion: '', precio: 53000, stock: 5},
-        {nombreVideojuego: 'Silent Hill F', descripcion: '', precio: 45000, stock: 8},
-        {nombreVideojuego: 'Battelfield 6', descripcion: '', precio: 50000, stock: 0},
-        {nombreVideojuego: 'Resident Evil 4', descripcion:'', precio: 25000, stock: 2}
-      ]
+const listadoProductos = [
+  {idVideojuego: 0, nombreVideojuego: 'Resident Evil Requiem', descripcion: '', precio: 53000, stock: 5},
+  {idVideojuego: 1, nombreVideojuego: 'Silent Hill F', descripcion: '', precio: 45000, stock: 8},
+  {idVideojuego: 2, nombreVideojuego: 'Battelfield 6', descripcion: '', precio: 50000, stock: 0},
+  {idVideojuego: 3, nombreVideojuego: 'Resident Evil 4', descripcion:'', precio: 25000, stock: 2}
+]
 
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
@@ -203,31 +202,42 @@ verProductos.addEventListener('click', async() => {
     i++;
   }
 
-
   const descontarStock = (indice,cantidad) => {
     for(let i = 0; i < listadoProductos.length; i++){
-      if(indice === i){
-        if(listadoProductos[i].stock <= cantidad){
+      if(indice === listadoProductos[i].idVideojuego){
+        if(cantidad <= listadoProductos[i].stock ){
           listadoProductos[i].stock = listadoProductos[i].stock - cantidad;
+          break;
         }
       }
     }
   }
   
-
-console.log(todasLasImagenes)
-
   for(const imagen of todasLasImagenes){
     const obtenerId = imagen.id;
     const separarString = obtenerId.split('-');
     const valorNumericoImagen = parseInt(separarString[1]);
     imagen.addEventListener('click', () => {
-      const obtenerIdDisplay = document.getElementById(`display-${valorNumericoImagen}`);
+     
+      const botonAgregarAlCarrito = document.getElementById('boton-agregar-carrito');
+      
+      botonAgregarAlCarrito.addEventListener('click', () => {
+     
+        if(!sesionIniciada){
+          console.log('Se debe iniciar sesion para poder agregar productos al carrito y comprar')
+        } else {
+          const obtenerIdDisplay = document.getElementById(`display-${valorNumericoImagen}`);
+          const valorDisplayNumerico = parseInt(obtenerIdDisplay.value);
+
+          console.log(valorDisplayNumerico)
+
+          descontarStock(valorNumericoImagen,valorDisplayNumerico);
+        
+          console.log(`El videojuego ${listadoProductos[valorNumericoImagen].nombreVideojuego}, se le ha actualizado el stock de ${listadoProductos[valorNumericoImagen].stock}`)
+        }
+      })
+    
     });
-
-
-
-
   }
 
 
