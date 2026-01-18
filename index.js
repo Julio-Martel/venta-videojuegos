@@ -233,17 +233,8 @@ verProductos.addEventListener('click', async() => {
           const numberToString = String(listadoProductos[valorNumericoImagen].stock);
           obtenerIdDisplay.value = numberToString;
           
-          /*
-            AGREGAR LOGICA DE CAMBIO DE OPACIDAD Y EVENTO DE BOTONES
-          */
+          
 
-
-
-
-
-
-
-          console.log(`El videojuego ${listadoProductos[valorNumericoImagen].nombreVideojuego}, se le ha actualizado el stock de ${listadoProductos[valorNumericoImagen].stock}`)
         }
       })
     
