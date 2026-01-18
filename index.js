@@ -8,7 +8,6 @@ const botonLogeo = document.getElementById('boton-log');
 const formularioLogeo = document.getElementById('formulario-logeo');
 let sesionIniciada = false;
 
-
 const listadoProductos = [
   {idVideojuego: 0, nombreVideojuego: 'Resident Evil Requiem', descripcion: '', precio: 53000, stock: 5},
   {idVideojuego: 1, nombreVideojuego: 'Silent Hill F', descripcion: '', precio: 45000, stock: 8},
