@@ -1,5 +1,3 @@
-/*Completar el codigo con el faltante para el mouseenter de las casillas para la visualizacion del producto*/
-
 export const generarContenidoProductos = () => {
     const contenidoProductoCarrito = document.createElement('div');
     
