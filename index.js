@@ -253,7 +253,7 @@ verProductos.addEventListener('click', async() => {
           const numberToString = String(listadoProductos[valorNumericoImagen].stock);
           obtenerIdDisplay.value = numberToString;
           
-          /**/
+          /*AGREGAR LA LOGICA DE COMO SERIA PARA QUE CUANDO SE ACTUALIZEN LOS STOCKS TRAS AGREGAR AL CARRITO */
 
 
 
