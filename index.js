@@ -7,6 +7,7 @@ const contenedorImagenes = document.getElementById('contenedor-imagenes');
 const botonLogeo = document.getElementById('boton-log');
 const formularioLogeo = document.getElementById('formulario-logeo');
 let sesionIniciada = false;
+let primerProductoAgregado = false
 
 const listadoProductos = [
   {idVideojuego: 0, nombreVideojuego: 'Resident Evil Requiem', descripcion: '', precio: 53000, stock: 5},
@@ -227,13 +228,30 @@ verProductos.addEventListener('click', async() => {
           const valorDisplayNumerico = parseInt(obtenerIdDisplay.value);
           const botonIncrementar = document.getElementById(`boton-mas-${valorNumericoImagen}`);
           const botonDecrementar = document.getElementById(`boton-mas-${valorNumericoImagen}`);
+          const stockActual = valorDisplayNumerico;
 
+
+          if(stockActual === valorDisplayNumerico){
+            botonIncrementar.style.opacity = "0.5";
+            botonIncrementar.style.pointerEvents = "none";
+          } else if(stockActual === 1) {
+            botonDecrementar.style.opacity = "0.5";
+            botonDecrementar.style.pointerEvents = "none";
+          } else {
+            botonDecrementar.style.opacity = "0.5";
+            botonDecrementar.style.pointerEvents = "none";
+            botonIncrementar.style.opacity = "0.5";
+            botonIncrementar.style.pointerEvents = "none";    
+          }    
+          
           descontarStock(valorNumericoImagen,valorDisplayNumerico);
 
           const numberToString = String(listadoProductos[valorNumericoImagen].stock);
           obtenerIdDisplay.value = numberToString;
           
-          
+    
+
+
 
         }
       })
