@@ -146,6 +146,8 @@ verProductos.addEventListener('click', async() => {
     const valorDisplay = display.value;
     const strNum = parseInt(valorDisplay);
     let stockActual = strNum;
+  
+    /*EL PROBLEMA RADICA EN ESTA VARIABLE, QUE AL ASUMIR EL VALOR PREDETERMINADO DEL DISPLAY, HACE QUE SE VUELVA A HACER CLICK EN LOS BOTONES*/
 
     if(stockActual === strNum){
       botonMas.style.opacity = "0.5";
@@ -161,7 +163,6 @@ verProductos.addEventListener('click', async() => {
     }
 
     botonMenos.addEventListener('click', () => {
-      
       if(stockActual >= 1 && stockActual <= strNum){
        console.log(stockActual)
         stockActual--;
@@ -253,6 +254,9 @@ verProductos.addEventListener('click', async() => {
           const numberToString = String(listadoProductos[valorNumericoImagen].stock);
           obtenerIdDisplay.value = numberToString;
           
+          console.log(obtenerIdDisplay.value)
+
+
           /*AGREGAR LA LOGICA DE COMO SERIA PARA QUE CUANDO SE ACTUALIZEN LOS STOCKS TRAS AGREGAR AL CARRITO */
 
 
