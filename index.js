@@ -138,6 +138,7 @@ verProductos.addEventListener('click', async() => {
   const todosLosDisplays = document.querySelectorAll('.display');
   const todasLasImagenes = document.querySelectorAll('.imag-prod');
 
+
   let i = 0;
   for(const display of todosLosDisplays){
     const botonMenos = document.getElementById(`boton-menos-${i}`);
@@ -160,45 +161,48 @@ verProductos.addEventListener('click', async() => {
     }
 
     botonMenos.addEventListener('click', () => {
-   
+      
       if(stockActual >= 1 && stockActual <= strNum){
-        stockActual--; 
+       console.log(stockActual)
+        stockActual--;
+      
         const numStr = String(stockActual);
         display.value = numStr;
+        
+        botonMenos.style.pointerEvents = "auto";
+        botonMas.style.pointerEvents = "auto";
+        botonMenos.style.opacity = "1";
+        botonMas.style.opacity = "1";
+      
         if(stockActual === 1){
           botonMenos.style.opacity = "0.5";
-          botonMenos.style.pointerEvents = "none";    
-          botonMas.style.pointerEvents = "auto";
-          botonMas.style.opacity = "1";  
-        } else {
-          botonMas.style.pointerEvents = "auto";
-          botonMas.style.opacity = "1";
-        }      
-      } 
+          botonMenos.style.pointerEvents = "none";
+        }
+      }
+      
     })
 
    botonMas.addEventListener('click', () => {
 
-      if(stockActual  >= 1 && stockActual <= strNum){
-        stockActual++;
+      if(stockActual  >= 1 && stockActual <strNum){
+       stockActual++;
         const numStr = String(stockActual);
-        display.value = numStr;   
+        display.value = numStr; 
+
+        botonMenos.style.opacity = "1";
+        botonMenos.style.pointerEvents = "auto";
+
         if(stockActual === strNum){
           botonMas.style.opacity = "0.5";
-          botonMas.style.pointerEvents = "none";
-          botonMenos.style.opacity = "1";
-          botonMenos.style.pointerEvents = "auto";   
-
-        } else {
-          botonMenos.style.pointerEvents = "auto";
-          botonMenos.style.opacity = "1"
-        }
-      } 
+          botonMas.style.pointerEvents = "0.5"
+        }   
+      }
     
     })
 
     i++;
   }
+
 
   const descontarStock = (indice,cantidad) => {
     for(let i = 0; i < listadoProductos.length; i++){
@@ -215,6 +219,7 @@ verProductos.addEventListener('click', async() => {
     const obtenerId = imagen.id;
     const separarString = obtenerId.split('-');
     const valorNumericoImagen = parseInt(separarString[1]);
+  
     imagen.addEventListener('click', () => {
      
       const botonAgregarAlCarrito = document.getElementById('boton-agregar-carrito');
@@ -229,7 +234,6 @@ verProductos.addEventListener('click', async() => {
           const botonIncrementar = document.getElementById(`boton-mas-${valorNumericoImagen}`);
           const botonDecrementar = document.getElementById(`boton-mas-${valorNumericoImagen}`);
           const stockActual = valorDisplayNumerico;
-
 
           if(stockActual === valorDisplayNumerico){
             botonIncrementar.style.opacity = "0.5";
@@ -249,7 +253,7 @@ verProductos.addEventListener('click', async() => {
           const numberToString = String(listadoProductos[valorNumericoImagen].stock);
           obtenerIdDisplay.value = numberToString;
           
-    
+          /**/
 
 
 
@@ -257,6 +261,8 @@ verProductos.addEventListener('click', async() => {
       })
     
     });
+  
+  
   }
 
 
