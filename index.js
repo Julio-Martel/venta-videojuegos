@@ -19,9 +19,7 @@ let sesionIniciada = false;
 
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
-let totalAcumulado = 0;
-let totalFinal = 0;
-let totalAcumuladoBotones = 0;
+let cantidadSeleccionada = 0;
 
 const usuariosRegistrados = [
   { nombreUsuario: 'julio4561',password: '1234', saldo: 45611, acumladorPrecio: 0},
@@ -151,7 +149,7 @@ verProductos.addEventListener('click', async() => {
     const strNum = parseInt(valorDisplay);
     let stockActual = strNum;
 
-    if(stockActual === strNum && stockActual !== 0){
+    if(stockActual === strNum){
       botonMas.style.opacity = "0.5";
       botonMas.style.pointerEvents = "none";
     } else if(stockActual === 1) {
@@ -167,36 +165,27 @@ verProductos.addEventListener('click', async() => {
     botonMenos.addEventListener('click', () => {
    
       if(stockActual >= 1 && stockActual <= strNum){
-        totalAcumuladoBotones = stockActual;
         stockActual--; 
         const numStr = String(stockActual);
         display.value = numStr;
-          totalAcumuladoBotones = stockActual;   
-          console.log(typeof totalAcumuladoBotones) 
         if(stockActual === 1){
           botonMenos.style.opacity = "0.5";
           botonMenos.style.pointerEvents = "none";    
           botonMas.style.pointerEvents = "auto";
           botonMas.style.opacity = "1";  
-          totalAcumuladoBotones = stockActual;
         } else {
           botonMas.style.pointerEvents = "auto";
           botonMas.style.opacity = "1";
         }      
-        
-        primerValorStockAgregadoAlCarrito = false;
       } 
     })
 
    botonMas.addEventListener('click', () => {
 
       if(stockActual  >= 1 && stockActual <= strNum){
-       totalAcumuladoBotones = stockActual;
         stockActual++;
         const numStr = String(stockActual);
-        display.value = numStr;
-          totalAcumuladoBotones = stockActual;   
-          console.log(typeof totalAcumuladoBotones)       
+        display.value = numStr;   
         if(stockActual === strNum){
           botonMas.style.opacity = "0.5";
           botonMas.style.pointerEvents = "none";
@@ -207,7 +196,6 @@ verProductos.addEventListener('click', async() => {
           botonMenos.style.pointerEvents = "auto";
           botonMenos.style.opacity = "1"
         }
-       primerValorStockAgregadoAlCarrito = false;
       } 
     
     })
@@ -215,33 +203,31 @@ verProductos.addEventListener('click', async() => {
     i++;
   }
 
-  let j = 0;
+
+  const descontarStock = (indice,cantidad) => {
+    for(let i = 0; i < listadoProductos.length; i++){
+      if(indice === i){
+        if(listadoProductos[i].stock <= cantidad){
+          listadoProductos[i].stock = listadoProductos[i].stock - cantidad;
+        }
+      }
+    }
+  }
+  
+
+console.log(todasLasImagenes)
+
   for(const imagen of todasLasImagenes){
     const obtenerId = imagen.id;
-    const imagenId = document.getElementById(obtenerId);(j)
-    const obtenerIdDisplay = document.getElementById(`display-${j}`);
-    const valorDelDisplay = obtenerIdDisplay.value;
-    const strToNumber = parseInt(valorDelDisplay);
+    const separarString = obtenerId.split('-');
+    const valorNumericoImagen = parseInt(separarString[1]);
+    imagen.addEventListener('click', () => {
+      const obtenerIdDisplay = document.getElementById(`display-${valorNumericoImagen}`);
+    });
 
-    imagenId.addEventListener('click', () => {
-      const botonAgregarAlCarrito = document.getElementById('boton-agregar-carrito');
-      
-      botonAgregarAlCarrito.addEventListener('click', () => {
-        if(!sesionIniciada){  
-          console.log('Deberas iniciar Sesion para comprar')}
-        else {
 
-            if(primerValorStockAgregadoAlCarrito){
-              totalAcumulado = strToNumber;
-              totalFinal = totalFinal + totalAcumulado;
-            } else {
-              totalFinal = totalFinal + totalAcumuladoBotones;
-            }
-        }
-      })
 
-    })
-    j++;
+
   }
 
 
