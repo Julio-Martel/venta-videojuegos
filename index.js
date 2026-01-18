@@ -225,11 +225,24 @@ verProductos.addEventListener('click', async() => {
         } else {
           const obtenerIdDisplay = document.getElementById(`display-${valorNumericoImagen}`);
           const valorDisplayNumerico = parseInt(obtenerIdDisplay.value);
-
-          console.log(valorDisplayNumerico)
+          const botonIncrementar = document.getElementById(`boton-mas-${valorNumericoImagen}`);
+          const botonDecrementar = document.getElementById(`boton-mas-${valorNumericoImagen}`);
 
           descontarStock(valorNumericoImagen,valorDisplayNumerico);
-        
+
+          const numberToString = String(listadoProductos[valorNumericoImagen].stock);
+          obtenerIdDisplay.value = numberToString;
+          
+          /*
+            AGREGAR LOGICA DE CAMBIO DE OPACIDAD Y EVENTO DE BOTONES
+          */
+
+
+
+
+
+
+
           console.log(`El videojuego ${listadoProductos[valorNumericoImagen].nombreVideojuego}, se le ha actualizado el stock de ${listadoProductos[valorNumericoImagen].stock}`)
         }
       })
