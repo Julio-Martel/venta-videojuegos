@@ -1,4 +1,5 @@
 import { generarContenidoProductos } from "./productos.js";
+import { actualizarBotones } from "./bloquearBotones.js";
 
 const mainContent = document.getElementById('main-content')
 const imagen = document.getElementById("nro-imagen-1");
@@ -143,62 +144,29 @@ verProductos.addEventListener('click', async() => {
   for(const display of todosLosDisplays){
     const botonMenos = document.getElementById(`boton-menos-${i}`);
     const botonMas = document.getElementById(`boton-mas-${i}`);
-    const valorDisplay = display.value;
-    const strNum = parseInt(valorDisplay);
-    let stockActual = strNum;
-  
-    /*EL PROBLEMA RADICA EN ESTA VARIABLE, QUE AL ASUMIR EL VALOR PREDETERMINADO DEL DISPLAY, HACE QUE SE VUELVA A HACER CLICK EN LOS BOTONES*/
+    console.log(typeof display.value)
+    const strNum = parseInt(display.value);
+    let stockActual = parseInt(display.value);
 
-    if(stockActual === strNum){
-      botonMas.style.opacity = "0.5";
-      botonMas.style.pointerEvents = "none";
-    } else if(stockActual === 1) {
-      botonMenos.style.opacity = "0.5";
-      botonMenos.style.pointerEvents = "none";
-    } else {
-      botonMenos.style.opacity = "0.5";
-      botonMenos.style.pointerEvents = "none";
-      botonMas.style.opacity = "0.5";
-      botonMas.style.pointerEvents = "none";    
-    }
+    actualizarBotones(stockActual, strNum, botonMenos, botonMas);
+
 
     botonMenos.addEventListener('click', () => {
-      if(stockActual >= 1 && stockActual <= strNum){
+      if (stockActual > 1) {
         stockActual--;
-      
-        const numStr = String(stockActual);
-        display.value = numStr;
-        
-        botonMenos.style.pointerEvents = "auto";
-        botonMas.style.pointerEvents = "auto";
-        botonMenos.style.opacity = "1";
-        botonMas.style.opacity = "1";
-      
-        if(stockActual === 1){
-          botonMenos.style.opacity = "0.5";
-          botonMenos.style.pointerEvents = "none";
-        }
+        display.value = String(stockActual);
+        actualizarBotones(stockActual, strNum, botonMenos, botonMas);
       }
-      
-    })
+    });
 
-   botonMas.addEventListener('click', () => {
-
-      if(stockActual  >= 1 && stockActual <strNum){
-       stockActual++;
-        const numStr = String(stockActual);
-        display.value = numStr; 
-
-        botonMenos.style.opacity = "1";
-        botonMenos.style.pointerEvents = "auto";
-
-        if(stockActual === strNum){
-          botonMas.style.opacity = "0.5";
-          botonMas.style.pointerEvents = "0.5"
-        }   
+    botonMas.addEventListener('click', () => {
+      if (stockActual < strNum) {
+        stockActual++;
+        display.value = String(stockActual);
+        actualizarBotones(stockActual, strNum, botonMenos, botonMas);
       }
-    
-    })
+    });
+
 
     i++;
   }
@@ -235,20 +203,10 @@ verProductos.addEventListener('click', async() => {
           const botonDecrementar = document.getElementById(`boton-mas-${valorNumericoImagen}`);
           const stockActual = valorDisplayNumerico;
 
-          if(stockActual === valorDisplayNumerico){
-            botonIncrementar.style.opacity = "0.5";
-            botonIncrementar.style.pointerEvents = "none";
-          } else if(stockActual === 1) {
-            botonDecrementar.style.opacity = "0.5";
-            botonDecrementar.style.pointerEvents = "none";
-          } else {
-            botonDecrementar.style.opacity = "0.5";
-            botonDecrementar.style.pointerEvents = "none";
-            botonIncrementar.style.opacity = "0.5";
-            botonIncrementar.style.pointerEvents = "none";    
-          }    
-          
           descontarStock(valorNumericoImagen,valorDisplayNumerico);
+
+          actualizarBotones(stockActual, valorDisplayNumerico, botonDecrementar, botonIncrementar);
+
 
           const numberToString = String(listadoProductos[valorNumericoImagen].stock);
           obtenerIdDisplay.value = numberToString;
