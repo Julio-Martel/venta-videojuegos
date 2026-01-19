@@ -164,7 +164,6 @@ verProductos.addEventListener('click', async() => {
 
     botonMenos.addEventListener('click', () => {
       if(stockActual >= 1 && stockActual <= strNum){
-       console.log(stockActual)
         stockActual--;
       
         const numStr = String(stockActual);
