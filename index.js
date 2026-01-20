@@ -137,40 +137,49 @@ verProductos.addEventListener('click', async() => {
    
   const todosLosDisplays = document.querySelectorAll('.display');
   const todasLasImagenes = document.querySelectorAll('.imag-prod');
+  let botonesMenos = [];
+  let botonesMas = [];
+  let maximosValores = [];
 
 
   let i = 0;
   for(const display of todosLosDisplays){
     const botonMenos = document.getElementById(`boton-menos-${i}`);
     const botonMas = document.getElementById(`boton-mas-${i}`); 
-    let maximoValor = parseInt(display.value);
-    let stockActual = maximoValor
-      
 
-    actualizarBotones(stockActual, maximoValor, botonMenos, botonMas);
+    botonesMenos.push(botonMenos);
+    botonesMas.push(botonMas);
 
-    botonMenos.addEventListener('click', () => {
-      let stockActualAUsar = parseInt(display.value);
+    maximosValores.push(parseInt(display.value))
+
+    const botonMenosClick = botonesMenos[i];
+    const botonMasClick = botonesMas[i];
+
+    let maximoValor = maximosValores[i];
+    let stockActual = maximoValor;
       
+    actualizarBotones(stockActual, maximoValor, botonMenosClick, botonMasClick);
+
+    botonMenosClick.addEventListener('click', () => {
+      let stockActualAUsar = parseInt(display.value);    
       if (stockActualAUsar > 1) {
         stockActualAUsar--;
         display.value = String(stockActualAUsar);
-        actualizarBotones(stockActualAUsar, maximoValor, botonMenos, botonMas);
+        actualizarBotones(stockActualAUsar, maximoValor, botonMenosClick, botonMasClick);
       }
     });
 
-    botonMas.addEventListener('click', () => {
+   botonMasClick.addEventListener('click', () => {
       let stockActualAUsar = parseInt(display.value);
       if (stockActualAUsar < maximoValor) {
         stockActualAUsar++;
         display.value = String(stockActualAUsar);
-        actualizarBotones(stockActualAUsar, maximoValor, botonMenos, botonMas);
+        actualizarBotones(stockActualAUsar, maximoValor, botonMenosClick, botonMasClick);
       }
     });
 
     i++;
   }
-
 
   const descontarStock = (indice,cantidad) => {
     for(let i = 0; i < listadoProductos.length; i++){
@@ -203,21 +212,14 @@ verProductos.addEventListener('click', async() => {
           descontarStock(valorNumericoImagen,stockActual);
 
           obtenerIdDisplay.value =  String(listadoProductos[valorNumericoImagen].stock);
+          
+          maximosValores[valorNumericoImagen] = listadoProductos[valorNumericoImagen].stock;
 
-          const maximoValor = listadoProductos[valorNumericoImagen].stock;
-        
+          const stockActualizado = listadoProductos[valorNumericoImagen].stock
       
-          actualizarBotones(stockActual, maximoValor, botonDecrementar, botonIncrementar);
+         actualizarBotones(stockActualizado, maximosValores[valorNumericoImagen], botonesMenos[valorNumericoImagen], botonesMas[valorNumericoImagen]);
 
-
-
-          
-          
-
-
-          /*AGREGAR LA LOGICA DE COMO SERIA PARA QUE CUANDO SE ACTUALIZEN LOS STOCKS TRAS AGREGAR AL CARRITO */
-
-
+         
 
         }
       })
