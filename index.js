@@ -8,7 +8,6 @@ const contenedorImagenes = document.getElementById('contenedor-imagenes');
 const botonLogeo = document.getElementById('boton-log');
 const formularioLogeo = document.getElementById('formulario-logeo');
 let sesionIniciada = false;
-let primerProductoAgregado = false
 
 const listadoProductos = [
   {idVideojuego: 0, nombreVideojuego: 'Resident Evil Requiem', descripcion: '', precio: 53000, stock: 5},
@@ -149,7 +148,6 @@ verProductos.addEventListener('click', async() => {
       
 
     actualizarBotones(stockActual, maximoValor, botonMenos, botonMas);
-/*  agregar la logica aqui de los botones*/
 
     botonMenos.addEventListener('click', () => {
       let stockActualAUsar = parseInt(display.value);
@@ -202,17 +200,20 @@ verProductos.addEventListener('click', async() => {
         } else {
           const obtenerIdDisplay = document.getElementById(`display-${valorNumericoImagen}`);
           const stockActual = parseInt(obtenerIdDisplay.value);
-
+          
           descontarStock(valorNumericoImagen,stockActual);
 
           obtenerIdDisplay.value =  String(listadoProductos[valorNumericoImagen].stock);
 
-         // actualizarBotones(stockActual, stockActual, botonDecrementar, botonIncrementar);
+          const maximoValor = listadoProductos[valorNumericoImagen].stock;
+        
+      
+          actualizarBotones(stockActual, maximoValor, botonDecrementar, botonIncrementar);
 
 
 
           
-          console.log(obtenerIdDisplay.value)
+          
 
 
           /*AGREGAR LA LOGICA DE COMO SERIA PARA QUE CUANDO SE ACTUALIZEN LOS STOCKS TRAS AGREGAR AL CARRITO */
