@@ -168,7 +168,6 @@ verProductos.addEventListener('click', async() => {
       }
     });
 
-
     i++;
   }
 
