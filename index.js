@@ -144,26 +144,30 @@ verProductos.addEventListener('click', async() => {
   for(const display of todosLosDisplays){
     const botonMenos = document.getElementById(`boton-menos-${i}`);
     const botonMas = document.getElementById(`boton-mas-${i}`);
-    console.log(typeof display.value)
-    const strNum = parseInt(display.value);
-    let stockActual = parseInt(display.value);
+      let maximoValor = parseInt(display.value);
+      let stockActual = parseInt(display.value);
 
-    actualizarBotones(stockActual, strNum, botonMenos, botonMas);
-
+    actualizarBotones(stockActual, maximoValor, botonMenos, botonMas);
+/*  agregar la logica aqui de los botones*/
 
     botonMenos.addEventListener('click', () => {
-      if (stockActual > 1) {
+      let maximoValor = parseInt(display.value);
+      let stockActual = parseInt(display.value);
+      console.log('sss', maximoValor)
+      if (stockActual >= 1) {
         stockActual--;
         display.value = String(stockActual);
-        actualizarBotones(stockActual, strNum, botonMenos, botonMas);
+        actualizarBotones(stockActual, maximoValor, botonMenos, botonMas);
       }
     });
 
     botonMas.addEventListener('click', () => {
-      if (stockActual < strNum) {
+      let maximoValor = parseInt(display.value);
+      let stockActual = parseInt(display.value);
+      if (stockActual < maximoValor) {
         stockActual++;
         display.value = String(stockActual);
-        actualizarBotones(stockActual, strNum, botonMenos, botonMas);
+        actualizarBotones(stockActual, maximoValor, botonMenos, botonMas);
       }
     });
 
@@ -198,18 +202,16 @@ verProductos.addEventListener('click', async() => {
           console.log('Se debe iniciar sesion para poder agregar productos al carrito y comprar')
         } else {
           const obtenerIdDisplay = document.getElementById(`display-${valorNumericoImagen}`);
-          const valorDisplayNumerico = parseInt(obtenerIdDisplay.value);
-          const botonIncrementar = document.getElementById(`boton-mas-${valorNumericoImagen}`);
-          const botonDecrementar = document.getElementById(`boton-mas-${valorNumericoImagen}`);
-          const stockActual = valorDisplayNumerico;
+          const stockActual = parseInt(obtenerIdDisplay.value);
 
-          descontarStock(valorNumericoImagen,valorDisplayNumerico);
+          descontarStock(valorNumericoImagen,stockActual);
 
-          actualizarBotones(stockActual, valorDisplayNumerico, botonDecrementar, botonIncrementar);
+          obtenerIdDisplay.value =  String(listadoProductos[valorNumericoImagen].stock);
+
+         // actualizarBotones(stockActual, stockActual, botonDecrementar, botonIncrementar);
 
 
-          const numberToString = String(listadoProductos[valorNumericoImagen].stock);
-          obtenerIdDisplay.value = numberToString;
+
           
           console.log(obtenerIdDisplay.value)
 
