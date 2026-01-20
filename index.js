@@ -143,31 +143,30 @@ verProductos.addEventListener('click', async() => {
   let i = 0;
   for(const display of todosLosDisplays){
     const botonMenos = document.getElementById(`boton-menos-${i}`);
-    const botonMas = document.getElementById(`boton-mas-${i}`);
-      let maximoValor = parseInt(display.value);
-      let stockActual = parseInt(display.value);
+    const botonMas = document.getElementById(`boton-mas-${i}`); 
+    let maximoValor = parseInt(display.value);
+    let stockActual = maximoValor
+      
 
     actualizarBotones(stockActual, maximoValor, botonMenos, botonMas);
 /*  agregar la logica aqui de los botones*/
 
     botonMenos.addEventListener('click', () => {
-      let maximoValor = parseInt(display.value);
-      let stockActual = parseInt(display.value);
-      console.log('sss', maximoValor)
-      if (stockActual >= 1) {
-        stockActual--;
-        display.value = String(stockActual);
-        actualizarBotones(stockActual, maximoValor, botonMenos, botonMas);
+      let stockActualAUsar = parseInt(display.value);
+      
+      if (stockActualAUsar > 1) {
+        stockActualAUsar--;
+        display.value = String(stockActualAUsar);
+        actualizarBotones(stockActualAUsar, maximoValor, botonMenos, botonMas);
       }
     });
 
     botonMas.addEventListener('click', () => {
-      let maximoValor = parseInt(display.value);
-      let stockActual = parseInt(display.value);
-      if (stockActual < maximoValor) {
-        stockActual++;
-        display.value = String(stockActual);
-        actualizarBotones(stockActual, maximoValor, botonMenos, botonMas);
+      let stockActualAUsar = parseInt(display.value);
+      if (stockActualAUsar < maximoValor) {
+        stockActualAUsar++;
+        display.value = String(stockActualAUsar);
+        actualizarBotones(stockActualAUsar, maximoValor, botonMenos, botonMas);
       }
     });
 
