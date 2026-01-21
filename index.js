@@ -170,7 +170,14 @@ verProductos.addEventListener('click', async() => {
     });
 
    botonMasClick.addEventListener('click', () => {
+
+      /*ARREGLAR PROBLEMA DE QUE AQUI EL VALOR DE LA VARIABLE SE MANTIENE POR LO QUE SE DEBE LOGRAR QUE EL VALOR SEA DINAMICO, PARA QUE DETECTE EL CAMBIO Y SE BLOQUE EL BOTON SEGUN LO QUE HAYAMOS SELECCIONADO*/
+
+
       let stockActualAUsar = parseInt(display.value);
+      console.log(maximoValor)
+      console.log(maximosValores)
+      console.log(maximosValores[i])
       if (stockActualAUsar < maximoValor) {
         stockActualAUsar++;
         display.value = String(stockActualAUsar);
@@ -214,6 +221,8 @@ verProductos.addEventListener('click', async() => {
           obtenerIdDisplay.value =  String(listadoProductos[valorNumericoImagen].stock);
           
           maximosValores[valorNumericoImagen] = listadoProductos[valorNumericoImagen].stock;
+
+          console.log(maximosValores)
 
           const stockActualizado = listadoProductos[valorNumericoImagen].stock
       
