@@ -140,7 +140,8 @@ verProductos.addEventListener('click', async() => {
   let botonesMenos = [];
   let botonesMas = [];
   let maximosValores = [];
-
+  let valorUsado = false;
+  let maxVar;
 
   let i = 0;
   for(const display of todosLosDisplays){
@@ -161,6 +162,12 @@ verProductos.addEventListener('click', async() => {
     actualizarBotones(stockActual, maximoValor, botonMenosClick, botonMasClick);
 
     botonMenosClick.addEventListener('click', () => {
+
+      if(valorUsado){
+        maximoValor = maxVar;
+      }
+
+
       let stockActualAUsar = parseInt(display.value);    
       if (stockActualAUsar > 1) {
         stockActualAUsar--;
@@ -175,9 +182,11 @@ verProductos.addEventListener('click', async() => {
 
 
       let stockActualAUsar = parseInt(display.value);
-      console.log(maximoValor)
-      console.log(maximosValores)
-      console.log(maximosValores[i])
+
+      if(valorUsado){
+        maximoValor = maxVar;
+      }
+
       if (stockActualAUsar < maximoValor) {
         stockActualAUsar++;
         display.value = String(stockActualAUsar);
@@ -223,8 +232,11 @@ verProductos.addEventListener('click', async() => {
           maximosValores[valorNumericoImagen] = listadoProductos[valorNumericoImagen].stock;
 
           console.log(maximosValores)
+          valorUsado = true;
 
           const stockActualizado = listadoProductos[valorNumericoImagen].stock
+
+          maxVar = maximosValores[valorNumericoImagen];
       
          actualizarBotones(stockActualizado, maximosValores[valorNumericoImagen], botonesMenos[valorNumericoImagen], botonesMas[valorNumericoImagen]);
 
