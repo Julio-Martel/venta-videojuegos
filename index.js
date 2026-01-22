@@ -147,7 +147,6 @@ verProductos.addEventListener('click', async() => {
   for(const display of todosLosDisplays){
     const botonMenos = document.getElementById(`boton-menos-${i}`);
     const botonMas = document.getElementById(`boton-mas-${i}`); 
-    let sinStock;
 
     botonesMenos.push(botonMenos);
     botonesMas.push(botonMas);
@@ -160,15 +159,10 @@ verProductos.addEventListener('click', async() => {
     let maximoValor = maximosValores[i];
     let stockActual = maximoValor;
 
-    if(stockActual === 0){
-      sinStock = 0;
-      stockActual = sinStock;
-      maximoValor =1; // un valor que solo se utilizara para que en la funcion de bloquearBotones no pase por la igualdad del max
-    }
-
     actualizarBotones(stockActual, maximoValor, botonMenosClick, botonMasClick);
 
     botonMenosClick.addEventListener('click', () => {
+      
 
       if(valorUsado){
         maximoValor = maxVar;
@@ -223,7 +217,9 @@ verProductos.addEventListener('click', async() => {
       botonAgregarAlCarrito.addEventListener('click', () => {
      
         if(!sesionIniciada){
+        
           console.log('Se debe iniciar sesion para poder agregar productos al carrito y comprar')
+        
         } else {
           const obtenerIdDisplay = document.getElementById(`display-${valorNumericoImagen}`);
           const stockActual = parseInt(obtenerIdDisplay.value);
@@ -236,18 +232,23 @@ verProductos.addEventListener('click', async() => {
 
           valorUsado = true;
 
-          const stockActualizado = listadoProductos[valorNumericoImagen].stock
 
+          let stockActualizado = listadoProductos[valorNumericoImagen].stock
+
+          console.log(stockActualizado, maximosValores[valorNumericoImagen])
 
           maxVar = maximosValores[valorNumericoImagen];
 
           if(stockActualizado === 0){
             maxVar = 1;
             
+          } else if(stockActualizado === 1){
+            const valorCualquiera = 1.5;
+            stockActualizado = valorCualquiera;
           }
 
           actualizarBotones(stockActualizado, maximosValores[valorNumericoImagen], botonesMenos[valorNumericoImagen], botonesMas[valorNumericoImagen]);
-
+                    
         }
       })
     
