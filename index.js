@@ -166,8 +166,6 @@ verProductos.addEventListener('click', async() => {
       maximoValor =1; // un valor que solo se utilizara para que en la funcion de bloquearBotones no pase por la igualdad del max
     }
 
-    console.log(stockActual)
-      
     actualizarBotones(stockActual, maximoValor, botonMenosClick, botonMasClick);
 
     botonMenosClick.addEventListener('click', () => {
@@ -176,9 +174,8 @@ verProductos.addEventListener('click', async() => {
         maximoValor = maxVar;
       }
 
-
       let stockActualAUsar = parseInt(display.value);    
-      if (stockActualAUsar > 0) {
+      if (stockActualAUsar > 1) {
         stockActualAUsar--;
         display.value = String(stockActualAUsar);
         actualizarBotones(stockActualAUsar, maximoValor, botonMenosClick, botonMasClick);
@@ -234,19 +231,22 @@ verProductos.addEventListener('click', async() => {
           descontarStock(valorNumericoImagen,stockActual);
 
           obtenerIdDisplay.value =  String(listadoProductos[valorNumericoImagen].stock);
-          
+
           maximosValores[valorNumericoImagen] = listadoProductos[valorNumericoImagen].stock;
 
-          console.log(maximosValores)
           valorUsado = true;
 
           const stockActualizado = listadoProductos[valorNumericoImagen].stock
 
-          maxVar = maximosValores[valorNumericoImagen];
-      
-          actualizarBotones(stockActualizado, maximosValores[valorNumericoImagen], botonesMenos[valorNumericoImagen], botonesMas[valorNumericoImagen]);
 
-         
+          maxVar = maximosValores[valorNumericoImagen];
+
+          if(stockActualizado === 0){
+            maxVar = 1;
+            
+          }
+
+          actualizarBotones(stockActualizado, maximosValores[valorNumericoImagen], botonesMenos[valorNumericoImagen], botonesMas[valorNumericoImagen]);
 
         }
       })
