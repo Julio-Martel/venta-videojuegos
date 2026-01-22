@@ -147,6 +147,7 @@ verProductos.addEventListener('click', async() => {
   for(const display of todosLosDisplays){
     const botonMenos = document.getElementById(`boton-menos-${i}`);
     const botonMas = document.getElementById(`boton-mas-${i}`); 
+    let sinStock;
 
     botonesMenos.push(botonMenos);
     botonesMas.push(botonMas);
@@ -158,6 +159,14 @@ verProductos.addEventListener('click', async() => {
 
     let maximoValor = maximosValores[i];
     let stockActual = maximoValor;
+
+    if(stockActual === 0){
+      sinStock = 0;
+      stockActual = sinStock;
+      maximoValor =1; // un valor que solo se utilizara para que en la funcion de bloquearBotones no pase por la igualdad del max
+    }
+
+    console.log(stockActual)
       
     actualizarBotones(stockActual, maximoValor, botonMenosClick, botonMasClick);
 
@@ -169,7 +178,7 @@ verProductos.addEventListener('click', async() => {
 
 
       let stockActualAUsar = parseInt(display.value);    
-      if (stockActualAUsar > 1) {
+      if (stockActualAUsar > 0) {
         stockActualAUsar--;
         display.value = String(stockActualAUsar);
         actualizarBotones(stockActualAUsar, maximoValor, botonMenosClick, botonMasClick);
