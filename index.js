@@ -178,9 +178,6 @@ verProductos.addEventListener('click', async() => {
 
    botonMasClick.addEventListener('click', () => {
 
-      /*ARREGLAR PROBLEMA DE QUE AQUI EL VALOR DE LA VARIABLE SE MANTIENE POR LO QUE SE DEBE LOGRAR QUE EL VALOR SEA DINAMICO, PARA QUE DETECTE EL CAMBIO Y SE BLOQUE EL BOTON SEGUN LO QUE HAYAMOS SELECCIONADO*/
-
-
       let stockActualAUsar = parseInt(display.value);
 
       if(valorUsado){
@@ -238,7 +235,7 @@ verProductos.addEventListener('click', async() => {
 
           maxVar = maximosValores[valorNumericoImagen];
       
-         actualizarBotones(stockActualizado, maximosValores[valorNumericoImagen], botonesMenos[valorNumericoImagen], botonesMas[valorNumericoImagen]);
+          actualizarBotones(stockActualizado, maximosValores[valorNumericoImagen], botonesMenos[valorNumericoImagen], botonesMas[valorNumericoImagen]);
 
          
 
