@@ -39,7 +39,7 @@ export const generarContenidoProductos = () => {
     carrito.classList.add("contenedor-carrito");
     
     contenidoVideojuego.botonAgregarAlCarrito.textContent = "AGREGAR AL CARRITO";
-    contenidoVideojuego.botonAgregarAlCarrito.id = "boton-agregar-carrito";
+    contenidoVideojuego.botonAgregarAlCarrito.className = "boton-agregar-carrito";
     contenidoVideojuego.botonFinalizareCompra.id = "boton-finalizar-compra";
     contenidoVideojuego.botonFinalizareCompra.textContent = "FINALIZAR COMPRA";
     contenidoVideojuego.botonFinalizareCompra.className = "boton-finalizar"
@@ -150,6 +150,7 @@ export const generarContenidoProductos = () => {
                     contenidoVideojuego.tituloVideojuego.className = 'nombre-producto';
                     contenidoVideojuego.descripcionVideojuego.className = "descripcion";
                     contenidoVideojuego.descripcionVideojuego.textContent = "La ciudad natal de Hinako está sumida en la niebla, lo que la obliga a luchar contra monstruos grotescos y a resolver rompecabezas espeluznantes. Descubre la belleza del terror en este thriller psicológico."
+
                 break;
 
                 case 2:
@@ -159,7 +160,8 @@ export const generarContenidoProductos = () => {
                     contenidoVideojuego.tituloVideojuego.className = 'nombre-producto';
                     contenidoVideojuego.descripcionVideojuego.className = "descripcion";
                     contenidoVideojuego.descripcionVideojuego.textContent = "La experiencia bélica definitiva. En una guerra de tanques, cazas y gigantescos arsenales de combate, el arma más mortífera es tu patrulla."                
-                break;
+
+                    break;
 
                 case 3:
                     contenidoVideojuego.tituloVideojuego.textContent = "Resident Evil 4";
@@ -168,13 +170,16 @@ export const generarContenidoProductos = () => {
                     contenidoVideojuego.tituloVideojuego.className = 'nombre-producto';
                     contenidoVideojuego.descripcionVideojuego.className = "descripcion";
                     contenidoVideojuego.descripcionVideojuego.textContent = "La historia de Resident Evil 4 sigue a Leon S. Kennedy, seis años después de Raccoon City, mientras es enviado a una remota zona rural de España para rescatar a Ashley Graham, la hija secuestrada del presidente de EE.UU. Allí, descubre una secta misteriosa, los Ganados, aldeanos controlados por parásitos llamados Las Plagas, que atacan violentamente a extraños, llevando a Leon a una lucha por la supervivencia y el rescate de Ashley en un entorno de terror y acción."
-                break;
+
+                    break;
 
            }
 
-           carrito.append(contenidoVideojuego.tituloVideojuego,contenidoVideojuego.imagenVideojuego,contenidoVideojuego.descripcionVideojuego, contenidoVideojuego.botonAgregarAlCarrito, contenidoVideojuego.botonFinalizareCompra)
+           carrito.append(contenidoVideojuego.tituloVideojuego,contenidoVideojuego.imagenVideojuego,contenidoVideojuego.descripcionVideojuego)
 
         })    
+
+        carrito.append(contenidoVideojuego.botonAgregarAlCarrito, contenidoVideojuego.botonFinalizareCompra)
 
     }
 
