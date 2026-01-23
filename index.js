@@ -206,11 +206,16 @@ verProductos.addEventListener('click', async() => {
   }
   
   for(const imagen of todasLasImagenes){
+
     const obtenerId = imagen.id;
+    const obtenerElementoImagen = document.getElementById(obtenerId);
+
     const separarString = obtenerId.split('-');
     const valorNumericoImagen = parseInt(separarString[1]);
   
-    imagen.addEventListener('click', () => {
+    obtenerElementoImagen.addEventListener('click', () => {
+
+      /*arreglar esto*/
      
       const botonAgregarAlCarrito = document.getElementById('boton-agregar-carrito');
       
@@ -248,7 +253,7 @@ verProductos.addEventListener('click', async() => {
           }
 
           actualizarBotones(stockActualizado, maximosValores[valorNumericoImagen], botonesMenos[valorNumericoImagen], botonesMas[valorNumericoImagen]);
-                    
+
         }
       })
     
