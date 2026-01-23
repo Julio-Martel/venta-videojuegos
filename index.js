@@ -223,7 +223,6 @@ let numImag = null;
           console.log('Se debe iniciar sesion para poder agregar productos al carrito y comprar')
         
         } else {
-          console.log(imagen)
           const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
           const stockActual = parseInt(obtenerIdDisplay.value);
           
@@ -237,8 +236,6 @@ let numImag = null;
 
 
           let stockActualizado = listadoProductos[numImag].stock
-
-          console.log(stockActualizado, maximosValores[numImag])
 
           maxVar = maximosValores[numImag];
 
