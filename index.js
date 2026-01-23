@@ -205,44 +205,42 @@ verProductos.addEventListener('click', async() => {
     }
   }
   
+const botonAgregarAlCarrito = document.querySelector('.boton-agregar-carrito');
+let numImag = null;
+
   for(const imagen of todasLasImagenes){
+    imagen.addEventListener('click', () => {
+      const obtenerId = imagen.id;
+      const separarString = obtenerId.split('-');
+      numImag = parseInt(separarString[1]);
+    });   
+  }
 
-    const obtenerId = imagen.id;
-    const obtenerElementoImagen = document.getElementById(obtenerId);
-
-    const separarString = obtenerId.split('-');
-    const valorNumericoImagen = parseInt(separarString[1]);
-  
-    obtenerElementoImagen.addEventListener('click', () => {
-
-      /*arreglar esto*/
-     
-      const botonAgregarAlCarrito = document.getElementById('boton-agregar-carrito');
-      
-      botonAgregarAlCarrito.addEventListener('click', () => {
+  botonAgregarAlCarrito.addEventListener('click', () => {
      
         if(!sesionIniciada){
         
           console.log('Se debe iniciar sesion para poder agregar productos al carrito y comprar')
         
         } else {
-          const obtenerIdDisplay = document.getElementById(`display-${valorNumericoImagen}`);
+          console.log(imagen)
+          const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
           const stockActual = parseInt(obtenerIdDisplay.value);
           
-          descontarStock(valorNumericoImagen,stockActual);
+          descontarStock(numImag,stockActual);
 
-          obtenerIdDisplay.value =  String(listadoProductos[valorNumericoImagen].stock);
+          obtenerIdDisplay.value =  String(listadoProductos[numImag].stock);
 
-          maximosValores[valorNumericoImagen] = listadoProductos[valorNumericoImagen].stock;
+          maximosValores[numImag] = listadoProductos[numImag].stock;
 
           valorUsado = true;
 
 
-          let stockActualizado = listadoProductos[valorNumericoImagen].stock
+          let stockActualizado = listadoProductos[numImag].stock
 
-          console.log(stockActualizado, maximosValores[valorNumericoImagen])
+          console.log(stockActualizado, maximosValores[numImag])
 
-          maxVar = maximosValores[valorNumericoImagen];
+          maxVar = maximosValores[numImag];
 
           if(stockActualizado === 0){
             maxVar = 1;
@@ -252,15 +250,10 @@ verProductos.addEventListener('click', async() => {
             stockActualizado = valorCualquiera;
           }
 
-          actualizarBotones(stockActualizado, maximosValores[valorNumericoImagen], botonesMenos[valorNumericoImagen], botonesMas[valorNumericoImagen]);
+          actualizarBotones(stockActualizado, maximosValores[numImag], botonesMenos[numImag], botonesMas[numImag]);
 
         }
       })
-    
-    });
-  
-  
-  }
 
 
 
