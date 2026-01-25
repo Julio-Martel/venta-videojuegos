@@ -198,7 +198,7 @@ body {
     display: flex;
     border-radius: 5px;
     flex-direction: column;
-    gap: 3px;
+    gap: 10px;
     align-items: center;
     justify-content: center;
 }
@@ -343,4 +343,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 90%;
+    height: 100%;
+    border: solid 1px darkgrey;
+    border-radius: 5px;
+    overflow-y: scroll;
+    
+}
+
+#contenido-del-producto{
+    max-height: 550px;
 }
