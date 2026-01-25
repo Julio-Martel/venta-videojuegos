@@ -10,6 +10,8 @@ const formularioLogeo = document.getElementById('formulario-logeo');
 let sesionIniciada = false;
 let totalAgregadoAlCarrito = null;
 let carrito = [];
+let saldoDelUsuario = null;
+
 
 const listadoProductos = [
   {idVideojuego: 0, nombreVideojuego: 'Resident Evil Requiem', descripcion: '', precio: 53000, stock: 5},
@@ -21,7 +23,7 @@ const listadoProductos = [
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
 const usuariosRegistrados = [
-  { nombreUsuario: 'julio4561',password: '1234', saldo: 456101, acumladorPrecio: 0},
+  { nombreUsuario: 'julio4561',password: '1234', saldo: 45, acumladorPrecio: 0},
   { nombreUsuario: 'marco123', password: '2312', saldo: 123714, acumladorPrecio: 0}
 ];
 
@@ -240,31 +242,36 @@ let numImag = null;
           const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
           const stockActual = parseInt(obtenerIdDisplay.value);
     
-          if(totalAgregadoAlCarrito <= listadoProductos[numImag.])
+          if(totalAgregadoAlCarrito <= saldoDelUsuario){
+            descontarStock(numImag,stockActual);
 
+            obtenerIdDisplay.value =  String(listadoProductos[numImag].stock);
 
+            maximosValores[numImag] = listadoProductos[numImag].stock;
 
+            valorUsado = true;
 
-          descontarStock(numImag,stockActual);
+            let stockActualizado = listadoProductos[numImag].stock
 
-          obtenerIdDisplay.value =  String(listadoProductos[numImag].stock);
+            maxVar = maximosValores[numImag];
 
-          maximosValores[numImag] = listadoProductos[numImag].stock;
+            if(stockActualizado === 0){
+                maxVar = 1;
+            } else if(stockActualizado === 1){
+                const valorCualquiera = 1.5;
+                stockActualizado = valorCualquiera;
+            }
 
-          valorUsado = true;
-
-          let stockActualizado = listadoProductos[numImag].stock
-
-          maxVar = maximosValores[numImag];
-
-          if(stockActualizado === 0){
-              maxVar = 1;
-          } else if(stockActualizado === 1){
-              const valorCualquiera = 1.5;
-              stockActualizado = valorCualquiera;
+            actualizarBotones(stockActualizado, maximosValores[numImag], botonesMenos[numImag], botonesMas[numImag]);             
+          } else {
+            //AGREGAR CONTENIDO HTML CON CSS PARA QUE SE MUESTRE EL CARTEL DE LOS SIN FONDOS PARA PODER COMPRAR
+            console.log('Actualmente sin fondos o con menos')
           }
 
-          actualizarBotones(stockActualizado, maximosValores[numImag], botonesMenos[numImag], botonesMas[numImag]);  
+
+
+
+ 
   });
 
 
@@ -309,6 +316,7 @@ botonLogeo.addEventListener('click', (e) => {
             } 
 
             saldoUsuario.value  = String(obtenerSaldoUsuario());
+            saldoDelUsuario = parseInt(saldoUsuario.value)
             formularioLogeo.appendChild(saldoUsuario);
 
             textoLabel.forEach(lab => lab.classList.add('oculto'))
