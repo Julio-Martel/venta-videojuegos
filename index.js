@@ -12,7 +12,6 @@ let totalAgregadoAlCarrito = null;
 let carrito = [];
 let saldoDelUsuario = null;
 
-
 const listadoProductos = [
   {idVideojuego: 0, nombreVideojuego: 'Resident Evil Requiem', descripcion: '', precio: 53000, stock: 5},
   {idVideojuego: 1, nombreVideojuego: 'Silent Hill F', descripcion: '', precio: 45000, stock: 8},
@@ -209,10 +208,10 @@ verProductos.addEventListener('click', async() => {
     }
   }
   
-const botonAgregarAlCarrito = document.querySelector('.boton-agregar-carrito');
-const botonFinalizarCompra = document.querySelector('.boton-final');
+  const botonAgregarAlCarrito = document.querySelector('.boton-agregar-carrito');
+  const botonFinalizarCompra = document.querySelector('.boton-final');
 
-let numImag = null;
+  let numImag = null;
 
   for(const imagen of todasLasImagenes){
     imagen.addEventListener('click', () => {
@@ -225,7 +224,7 @@ let numImag = null;
   botonAgregarAlCarrito.addEventListener('click', () => {
      
         if(!sesionIniciada){
-        
+          //AGREGAR CONTENIDO HTML CON CSS PARA QUE SE MUESTRE EN LA PAGINA A LA HORA DE COMPRAR Y QUE NO SE HAYA INICIADO SESION
           console.log('Se debe iniciar sesion para poder agregar productos al carrito y comprar')
         
         } else {
@@ -235,7 +234,7 @@ let numImag = null;
           totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
 
         }
-      })
+  })
 
 
   botonFinalizarCompra.addEventListener('click', () => {
