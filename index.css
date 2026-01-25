@@ -339,3 +339,8 @@ body {
 }
 
 
+#contenido-del-producto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
