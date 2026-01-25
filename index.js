@@ -9,6 +9,7 @@ const botonLogeo = document.getElementById('boton-log');
 const formularioLogeo = document.getElementById('formulario-logeo');
 let sesionIniciada = false;
 let totalAgregadoAlCarrito = null;
+let carrito = [];
 
 const listadoProductos = [
   {idVideojuego: 0, nombreVideojuego: 'Resident Evil Requiem', descripcion: '', precio: 53000, stock: 5},
@@ -20,8 +21,8 @@ const listadoProductos = [
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
 const usuariosRegistrados = [
-  { nombreUsuario: 'julio4561',password: '1234', saldo: 45611, acumladorPrecio: 0},
-  { nombreUsuario: 'marco123', password: '2312', saldo: 12374, acumladorPrecio: 0}
+  { nombreUsuario: 'julio4561',password: '1234', saldo: 456101, acumladorPrecio: 0},
+  { nombreUsuario: 'marco123', password: '2312', saldo: 123714, acumladorPrecio: 0}
 ];
 
 const logeo = {
@@ -230,7 +231,7 @@ let numImag = null;
           const stockActual = parseInt(obtenerIdDisplay.value);
           
           totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
-          
+
         }
       })
 
@@ -239,6 +240,11 @@ let numImag = null;
           const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
           const stockActual = parseInt(obtenerIdDisplay.value);
     
+          if(totalAgregadoAlCarrito <= listadoProductos[numImag.])
+
+
+
+
           descontarStock(numImag,stockActual);
 
           obtenerIdDisplay.value =  String(listadoProductos[numImag].stock);
