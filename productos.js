@@ -37,6 +37,8 @@ export const generarContenidoProductos = () => {
     productos.contedorProductos.classList.add('contedor-productos');
 
     const contenidoDelProducto = document.createElement('div');
+    contenidoDelProducto.id = "contenido-del-producto"
+
 
     carrito.classList.add("contenedor-carrito");
     
