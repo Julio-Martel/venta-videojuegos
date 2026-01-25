@@ -14,7 +14,12 @@ export const actualizarBotones =(stockActual, max, botonMenos, botonMas) => {
     botonMenos.style.pointerEvents = "none";
     botonMas.style.opacity = "0.5";
     botonMas.style.pointerEvents = "none";
-  }else {
+  } else if(stockActual === 1.5){
+    botonMenos.style.opacity = "0.5";
+    botonMenos.style.pointerEvents = "none";
+    botonMas.style.opacity = "0.5";
+    botonMas.style.pointerEvents = "none";    
+  } else {
     botonMenos.style.opacity = "1";
     botonMenos.style.pointerEvents = "auto";
     botonMas.style.opacity = "1";
