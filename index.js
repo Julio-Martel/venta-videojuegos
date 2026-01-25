@@ -226,6 +226,9 @@ let numImag = null;
           const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
           const stockActual = parseInt(obtenerIdDisplay.value);
           
+          /*SI YO AGREGO AL CARRITO AUN NO DEBO DESCONTAR EL STOCK HASTA QUE YO FINALICE LA COMPRA*/
+          
+          
           descontarStock(numImag,stockActual);
 
           obtenerIdDisplay.value =  String(listadoProductos[numImag].stock);
@@ -251,8 +254,6 @@ let numImag = null;
 
         }
       })
-
-
 
 });
 
