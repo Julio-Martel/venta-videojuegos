@@ -297,6 +297,12 @@ botonLogeo.addEventListener('click', (e) => {
               user.password === logeo.pasUsuario.value
             );
           
+          const botonVerCarrito = document.createElement('button');  
+          botonVerCarrito.className = "boton";
+          botonVerCarrito.textContent = "Ver carrito"
+
+
+
             if (usuarioValido) {
             
             const obtenerSaldoUsuario = () => {
@@ -310,6 +316,7 @@ botonLogeo.addEventListener('click', (e) => {
             saldoUsuario.value  = String(obtenerSaldoUsuario());
             saldoDelUsuario = parseInt(saldoUsuario.value)
             formularioLogeo.appendChild(saldoUsuario);
+            formularioLogeo.appendChild(botonVerCarrito)
 
             textoLabel.forEach(lab => lab.classList.add('oculto'))
             inputs.forEach(inp => inp.classList.add('ocult'))
