@@ -8,6 +8,7 @@ const contenedorImagenes = document.getElementById('contenedor-imagenes');
 const botonLogeo = document.getElementById('boton-log');
 const formularioLogeo = document.getElementById('formulario-logeo');
 let sesionIniciada = false;
+let totalAgregadoAlCarrito = null;
 
 const listadoProductos = [
   {idVideojuego: 0, nombreVideojuego: 'Resident Evil Requiem', descripcion: '', precio: 53000, stock: 5},
@@ -226,7 +227,13 @@ let numImag = null;
           const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
           const stockActual = parseInt(obtenerIdDisplay.value);
           
-          /*SI YO AGREGO AL CARRITO AUN NO DEBO DESCONTAR EL STOCK HASTA QUE YO FINALICE LA COMPRA*/
+          totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
+
+          console.log('Has agregado un total: ',totalAgregadoAlCarrito);
+
+
+
+          /*SI YO AGREGO AL CARRITO AUN NO DEBO DESCONTAR EL STOCK HASTA QUE YO FINALICE LA COMPRA
           
           
           descontarStock(numImag,stockActual);
@@ -242,6 +249,7 @@ let numImag = null;
 
           maxVar = maximosValores[numImag];
 
+
           if(stockActualizado === 0){
             maxVar = 1;
             
@@ -250,7 +258,7 @@ let numImag = null;
             stockActualizado = valorCualquiera;
           }
 
-          actualizarBotones(stockActualizado, maximosValores[numImag], botonesMenos[numImag], botonesMas[numImag]);
+          actualizarBotones(stockActualizado, maximosValores[numImag], botonesMenos[numImag], botonesMas[numImag]);*/
 
         }
       })
