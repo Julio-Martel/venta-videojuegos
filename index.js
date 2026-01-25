@@ -273,14 +273,7 @@ verProductos.addEventListener('click', async() => {
  
   });
 
-
-
 });
-
-
-
-
-//BOTON PARA EL LOGEO
 
 botonLogeo.addEventListener('click', (e) => {
     e.preventDefault();
