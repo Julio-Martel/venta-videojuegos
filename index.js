@@ -207,6 +207,8 @@ verProductos.addEventListener('click', async() => {
   }
   
 const botonAgregarAlCarrito = document.querySelector('.boton-agregar-carrito');
+const botonFinalizarCompra = document.querySelector('.boton-final');
+
 let numImag = null;
 
   for(const imagen of todasLasImagenes){
@@ -228,14 +230,15 @@ let numImag = null;
           const stockActual = parseInt(obtenerIdDisplay.value);
           
           totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
-
-          console.log('Has agregado un total: ',totalAgregadoAlCarrito);
-
-
-
-          /*SI YO AGREGO AL CARRITO AUN NO DEBO DESCONTAR EL STOCK HASTA QUE YO FINALICE LA COMPRA
           
-          
+        }
+      })
+
+
+  botonFinalizarCompra.addEventListener('click', () => {
+          const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
+          const stockActual = parseInt(obtenerIdDisplay.value);
+    
           descontarStock(numImag,stockActual);
 
           obtenerIdDisplay.value =  String(listadoProductos[numImag].stock);
@@ -244,26 +247,25 @@ let numImag = null;
 
           valorUsado = true;
 
-
           let stockActualizado = listadoProductos[numImag].stock
 
           maxVar = maximosValores[numImag];
 
-
           if(stockActualizado === 0){
-            maxVar = 1;
-            
+              maxVar = 1;
           } else if(stockActualizado === 1){
-            const valorCualquiera = 1.5;
-            stockActualizado = valorCualquiera;
+              const valorCualquiera = 1.5;
+              stockActualizado = valorCualquiera;
           }
 
-          actualizarBotones(stockActualizado, maximosValores[numImag], botonesMenos[numImag], botonesMas[numImag]);*/
+          actualizarBotones(stockActualizado, maximosValores[numImag], botonesMenos[numImag], botonesMas[numImag]);  
+  });
 
-        }
-      })
+
 
 });
+
+
 
 
 //BOTON PARA EL LOGEO
