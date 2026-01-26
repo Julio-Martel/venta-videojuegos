@@ -14,6 +14,8 @@ let saldoDelUsuario = null;
 
 const botonVerCarrito = document.getElementById('ver-carrito');
 
+botonVerCarrito.style.opacity = "0.5";
+botonVerCarrito.style.pointerEvents = "none";
 
 const listadoProductos = [
   {idVideojuego: 0, nombreVideojuego: 'Resident Evil Requiem', descripcion: '', precio: 53000, stock: 5},
@@ -239,6 +241,11 @@ verProductos.addEventListener('click', async() => {
             precioTotal: null
           };
 
+          if(botonVerCarrito.length !== 0){
+            botonVerCarrito.style.pointerEvents = "auto";
+            botonVerCarrito.style.opacity = "1";
+          }
+       
           totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
 
           productoDelCarrito.productoSeleccionado = listadoProductos[numImag];
@@ -329,7 +336,8 @@ botonLogeo.addEventListener('click', (e) => {
             formularioLogeo.appendChild(saldoUsuario);
             formularioLogeo.appendChild(botonVerCarrito)
 
-            botonVerCarrito.style.display = "flex"
+            botonVerCarrito.style.display = "flex";
+
 
             textoLabel.forEach(lab => lab.classList.add('oculto'))
             inputs.forEach(inp => inp.classList.add('ocult'))
@@ -357,6 +365,9 @@ botonLogeo.addEventListener('click', (e) => {
           saldoUsuairo.remove();
           botonVerCarrito.remove();
           formularioLogeo.style.flexDirection = "row";
+
+          botonVerCarrito.style.opacity = "0.5";
+          botonVerCarrito.style.pointerEvents = "none"
     }
 
 } )
