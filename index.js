@@ -350,7 +350,6 @@ botonLogeo.addEventListener('click', (e) => {
 
 } )
 
-
 botonVerCarrito.addEventListener('click',(e)=>{
   e.preventDefault();
   if(carrito.length === 0){
