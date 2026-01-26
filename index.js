@@ -12,6 +12,9 @@ let totalAgregadoAlCarrito = null;
 let carrito = [];
 let saldoDelUsuario = null;
 
+const botonVerCarrito = document.getElementById('ver-carrito');
+
+
 const listadoProductos = [
   {idVideojuego: 0, nombreVideojuego: 'Resident Evil Requiem', descripcion: '', precio: 53000, stock: 5},
   {idVideojuego: 1, nombreVideojuego: 'Silent Hill F', descripcion: '', precio: 45000, stock: 8},
@@ -296,11 +299,7 @@ botonLogeo.addEventListener('click', (e) => {
               user.nombreUsuario === logeo.nomUsuario.value &&
               user.password === logeo.pasUsuario.value
             );
-          
-          const botonVerCarrito = document.createElement('button');  
-          botonVerCarrito.className = "boton";
-          botonVerCarrito.textContent = "Ver carrito"
-
+        
           /*AGREGAR LA LOGICA FALTANTE PARA EL BOTON DE VER EL CARRITO, POR CADA PRODUCTO Y SU CANTIDAD CORRESPONDIENTE, SE DEBERA IR AGREGANDO A UN ARRAY PARA QUE LUEGO CUANDO FINALICEMOS LA COMPRA
           PODAMOS VER EL LISTADO DE CADA PRODUCTO, JUNTO CON SUS ESPECIFICACIONES Y SU CANTIDAD Y EL TOTAL, SUMANDO TODOS LOS TOTALES CON EL CUAL DEBEMOS VERIFICAR EL TOTAL DE TODO LO AGREGADO AL CARRITO CON EL SALDO QUE EL USUARIO TENGA DISPONIBLE*/     
 
@@ -318,6 +317,8 @@ botonLogeo.addEventListener('click', (e) => {
             saldoDelUsuario = parseInt(saldoUsuario.value)
             formularioLogeo.appendChild(saldoUsuario);
             formularioLogeo.appendChild(botonVerCarrito)
+
+            botonVerCarrito.style.display = "flex"
 
             textoLabel.forEach(lab => lab.classList.add('oculto'))
             inputs.forEach(inp => inp.classList.add('ocult'))
@@ -343,8 +344,16 @@ botonLogeo.addEventListener('click', (e) => {
           botonLogeo.textContent = "Iniciar Sesion"
           tituloDeBienvenida.remove()
           saldoUsuairo.remove();
+          botonVerCarrito.remove();
           formularioLogeo.style.flexDirection = "row";
     }
 
 } )
 
+
+botonVerCarrito.addEventListener('click',(e)=>{
+  e.preventDefault();
+  if(carrito.length === 0){
+      console.log('Para ver el carrito debe agregar al menos un producto al mismo')
+  }
+});
