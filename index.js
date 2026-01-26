@@ -233,8 +233,19 @@ verProductos.addEventListener('click', async() => {
         } else {
           const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
           const stockActual = parseInt(obtenerIdDisplay.value);
-          
+          const productoDelCarrito = {
+            productoSeleccionado: null,
+            cantidadSeleccionada: null,
+            precioTotal: null
+          };
+
           totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
+
+          productoDelCarrito.productoSeleccionado = listadoProductos[numImag];
+          productoDelCarrito.cantidadSeleccionada = stockActual;
+          productoDelCarrito.precioTotal = totalAgregadoAlCarrito;
+
+          carrito.push(productoDelCarrito);
 
         }
   })
@@ -354,5 +365,7 @@ botonVerCarrito.addEventListener('click',(e)=>{
   e.preventDefault();
   if(carrito.length === 0){
       console.log('Para ver el carrito debe agregar al menos un producto al mismo')
+  } else {
+    console.log(carrito)
   }
 });
