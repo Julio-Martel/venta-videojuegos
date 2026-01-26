@@ -238,6 +238,10 @@ verProductos.addEventListener('click', async() => {
 
 
   botonFinalizarCompra.addEventListener('click', () => {
+         
+      if(!sesionIniciada){
+         console.log('Se debe iniciar sesion para poder agregar productos al carrito y comprar')
+      } else {
           const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
           const stockActual = parseInt(obtenerIdDisplay.value);
     
@@ -266,11 +270,7 @@ verProductos.addEventListener('click', async() => {
             //AGREGAR CONTENIDO HTML CON CSS PARA QUE SE MUESTRE EL CARTEL DE LOS SIN FONDOS PARA PODER COMPRAR
             console.log('Actualmente sin fondos o con menos')
           }
-
-
-
-
- 
+      }
   });
 
 });
