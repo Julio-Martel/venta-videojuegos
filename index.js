@@ -241,18 +241,25 @@ verProductos.addEventListener('click', async() => {
             precioTotal: null
           };
 
+          totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
+          
           if(botonVerCarrito.length !== 0){
+          
             botonVerCarrito.style.pointerEvents = "auto";
             botonVerCarrito.style.opacity = "1";
+            productoDelCarrito.productoSeleccionado = listadoProductos[numImag];
+            productoDelCarrito.cantidadSeleccionada = stockActual;
+            productoDelCarrito.precioTotal = totalAgregadoAlCarrito;
+
+            carrito.push(productoDelCarrito);
+          
+          } else {
+            
           }
        
-          totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
+          
 
-          productoDelCarrito.productoSeleccionado = listadoProductos[numImag];
-          productoDelCarrito.cantidadSeleccionada = stockActual;
-          productoDelCarrito.precioTotal = totalAgregadoAlCarrito;
 
-          carrito.push(productoDelCarrito);
 
         }
   })
@@ -317,9 +324,6 @@ botonLogeo.addEventListener('click', (e) => {
               user.nombreUsuario === logeo.nomUsuario.value &&
               user.password === logeo.pasUsuario.value
             );
-        
-          /*AGREGAR LA LOGICA FALTANTE PARA EL BOTON DE VER EL CARRITO, POR CADA PRODUCTO Y SU CANTIDAD CORRESPONDIENTE, SE DEBERA IR AGREGANDO A UN ARRAY PARA QUE LUEGO CUANDO FINALICEMOS LA COMPRA
-          PODAMOS VER EL LISTADO DE CADA PRODUCTO, JUNTO CON SUS ESPECIFICACIONES Y SU CANTIDAD Y EL TOTAL, SUMANDO TODOS LOS TOTALES CON EL CUAL DEBEMOS VERIFICAR EL TOTAL DE TODO LO AGREGADO AL CARRITO CON EL SALDO QUE EL USUARIO TENGA DISPONIBLE*/     
 
             if (usuarioValido) {
             
