@@ -358,3 +358,14 @@ body {
 .boton-ver-carrito{
     display: none;
 }
+
+.listado-productos{
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    width: 60%;
+    height: 80%;
+    border-radius: 5px;
+    border: solid 1px darkgray;
+    gap: 25px;
+    padding: 1rem;   
+}
