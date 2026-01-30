@@ -14,6 +14,8 @@ export const listaDeProductosAgregadosAlCarrito = () => {
 
     contenedorMostrarListado.append(contenedoresListadoPagar.lista, contenedoresListadoPagar.mostrarPrecioBotonPagar);
 
+    contenedoresListadoPagar.mostrarPrecio.className = "contenedor-precio";
+    contenedoresListadoPagar.botonPagar.className = "boton-de-pagar";
 
     return contenedorMostrarListado;
 
