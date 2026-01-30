@@ -235,7 +235,7 @@ verProductos.addEventListener('click', async() => {
         
         } else {
           const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
-          const stockActual = parseInt(obtenerIdDisplay.value);
+          let stockActual = parseInt(obtenerIdDisplay.value);
           const productoDelCarrito = {
             productoSeleccionado: null,
             cantidadSeleccionada: null,
@@ -381,6 +381,7 @@ botonVerCarrito.addEventListener('click',(e)=>{
   if(carrito.length === 0){
       console.log('Para ver el carrito debe agregar al menos un producto al mismo')
   } else {
-    
+
+     mainContent.replaceChildren(listaDeProductosAgregadosAlCarrito());
   }
 });
