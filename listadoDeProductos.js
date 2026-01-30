@@ -17,6 +17,11 @@ export const listaDeProductosAgregadosAlCarrito = () => {
     contenedoresListadoPagar.mostrarPrecio.className = "contenedor-precio";
     contenedoresListadoPagar.botonPagar.className = "boton-de-pagar";
 
+    contenedoresListadoPagar.botonPagar.textContent = "Realizar pago!"
+
+    contenedoresListadoPagar.mostrarPrecioBotonPagar.append(contenedoresListadoPagar.mostrarPrecio,contenedoresListadoPagar.botonPagar);
+
+
     return contenedorMostrarListado;
 
 }
