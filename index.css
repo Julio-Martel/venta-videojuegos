@@ -391,5 +391,28 @@ body {
     height: 95%;
     border: solid 1px darkgray;
     padding: 1rem;
+    align-items: center;
+    gap: 1rem;
 }
+
+.contenedor-precio {
+    width: 90%;
+    height: 70%;
+    border: solid 1px darkgray;
+    border-radius: 5px;
+}
+
+.contenedor-precio {
+    min-height: 500px;
+}
+
+.boton-de-pagar{
+    width: 90%;
+    height: 100%;
+}
+
+.boton-de-pagar {
+    min-height: 50px;
+}
+
 
