@@ -325,8 +325,7 @@ botonLogeo.addEventListener('click', (e) => {
               user.password === logeo.pasUsuario.value
             );
 
-            if (usuarioValido) {
-            
+            if (usuarioValido) {  
             const obtenerSaldoUsuario = () => {
               for(let i = 0; i < usuariosRegistrados.length; i++){
                 if(logeo.nomUsuario.value === usuariosRegistrados[i].nombreUsuario){
@@ -381,6 +380,6 @@ botonVerCarrito.addEventListener('click',(e)=>{
   if(carrito.length === 0){
       console.log('Para ver el carrito debe agregar al menos un producto al mismo')
   } else {
-    console.log(carrito)
+    
   }
 });
