@@ -369,3 +369,27 @@ body {
     gap: 25px;
     padding: 1rem;   
 }
+
+.lista{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 95%;
+    border: solid 1px darkgrey;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.lista{
+    min-height: 10px;
+}
+
+.contenedor-precio-boton {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 95%;
+    border: solid 1px darkgray;
+    padding: 1rem;
+}
+
