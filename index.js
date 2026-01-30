@@ -1,5 +1,6 @@
 import { generarContenidoProductos } from "./productos.js";
 import { actualizarBotones } from "./bloquearBotones.js";
+import { listaDeProductosAgregadosAlCarrito } from "./listadoDeProductos.js";
 
 const mainContent = document.getElementById('main-content')
 const imagen = document.getElementById("nro-imagen-1");
