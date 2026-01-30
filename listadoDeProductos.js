@@ -2,7 +2,9 @@ export const listaDeProductosAgregadosAlCarrito = () => {
     const contenedorMostrarListado = document.createElement('div');
     const contenedoresListadoPagar = {
         lista: document.createElement('div'),
-        mostrarPrecioBotonPagar: document.createElement('div')
+        mostrarPrecioBotonPagar: document.createElement('div'),
+        mostrarPrecio: document.createElement('div'),
+        botonPagar: document.createElement('button')
     }
 
     contenedorMostrarListado.className = 'listado-productos';
