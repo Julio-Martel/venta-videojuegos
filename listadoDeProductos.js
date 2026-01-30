@@ -10,10 +10,9 @@ export const listaDeProductosAgregadosAlCarrito = () => {
     contenedoresListadoPagar.lista.className = "lista";
     contenedoresListadoPagar.mostrarPrecioBotonPagar.className = "contenedor-precio-boton";
 
-
+    contenedorMostrarListado.append(contenedoresListadoPagar.lista, contenedoresListadoPagar.mostrarPrecioBotonPagar);
 
 
     return contenedorMostrarListado;
-
 
 }
