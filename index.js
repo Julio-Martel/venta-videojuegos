@@ -383,5 +383,20 @@ botonVerCarrito.addEventListener('click',(e)=>{
   } else {
 
      mainContent.replaceChildren(listaDeProductosAgregadosAlCarrito());
+    
+    const lista = document.querySelector('.lista');
+  
+    carrito.forEach(producto => {
+      const elementoDelListado = document.createElement('div');
+
+      elementoDelListado.className = "elemento-lista";
+  
+  
+
+      lista.appendChild(elementoDelListado);
+
+    });    
+
+
   }
 });
