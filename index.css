@@ -417,10 +417,12 @@ body {
 }
 
 .elemento-lista{
+    display: flex;
     width: 100%;
     height: 20%;
     border:  solid 1px darkgray;
     border-radius: 5px;
+    gap: 1rem;
 }
 
 .elemento-lista{
