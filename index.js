@@ -387,6 +387,7 @@ botonVerCarrito.addEventListener('click',(e)=>{
     const lista = document.querySelector('.lista');
     const contenedorPrecio = document.querySelector('.contenedor-precio');
     const elementoPrecio = document.createElement('h1')
+    const botonDePagar = document.getElementById('pagar-btn');
 
     console.log(contenedorPrecio)
 
@@ -398,7 +399,7 @@ botonVerCarrito.addEventListener('click',(e)=>{
       const imagenDelProducto = document.createElement('img');
 
       elementoDelListado.className = "elemento-lista";
-      elementoPrecio.classList = "estilo-precio"
+      elementoPrecio.classList = "estilo-precio";
 
       textoInfo.className = "texto-info";
       contenidoInfo.className = "contenido-info";
@@ -455,8 +456,6 @@ botonVerCarrito.addEventListener('click',(e)=>{
       $${totalParaPagar}`;
 
       contenedorPrecio.appendChild(elementoPrecio)
-
-
     });    
 
 
