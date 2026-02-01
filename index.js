@@ -295,7 +295,6 @@ verProductos.addEventListener('click', async() => {
 
             actualizarBotones(stockActualizado, maximosValores[numImag], botonesMenos[numImag], botonesMas[numImag]);             
           } else {
-            //AGREGAR CONTENIDO HTML CON CSS PARA QUE SE MUESTRE EL CARTEL DE LOS SIN FONDOS PARA PODER COMPRAR
             console.log('Actualmente sin fondos o con menos')
           }
       }
@@ -303,169 +302,169 @@ verProductos.addEventListener('click', async() => {
 
 });
 
-botonLogeo.addEventListener('click', (e) => {
-    e.preventDefault();
-    const textoLabel = document.querySelectorAll('.texto-label')
-    const inputs = document.querySelectorAll('.input-dato')
-  
-    if(!sesionIniciada){
-        
-          const bienvenidaUsuario = document.createElement('div');
-          bienvenidaUsuario.className = 'bienvenida-usuario';
-            
-          const tituloBienvenido = document.createElement('h5');
-          tituloBienvenido.className = 'titulo-usuario';
-          tituloBienvenido.textContent = `Bienvenido ${String(logeo.nomUsuario.value)}`;  
+  botonLogeo.addEventListener('click', (e) => {
+      e.preventDefault();
+      const textoLabel = document.querySelectorAll('.texto-label')
+      const inputs = document.querySelectorAll('.input-dato')
+    
+      if(!sesionIniciada){
+          
+            const bienvenidaUsuario = document.createElement('div');
+            bienvenidaUsuario.className = 'bienvenida-usuario';
+              
+            const tituloBienvenido = document.createElement('h5');
+            tituloBienvenido.className = 'titulo-usuario';
+            tituloBienvenido.textContent = `Bienvenido ${String(logeo.nomUsuario.value)}`;  
 
-          const saldoUsuario = document.createElement('input');
-          saldoUsuario.className = "saldo";
+            const saldoUsuario = document.createElement('input');
+            saldoUsuario.className = "saldo";
 
-          const usuarioValido = usuariosRegistrados.some(user =>
-              user.nombreUsuario === logeo.nomUsuario.value &&
-              user.password === logeo.pasUsuario.value
-            );
+            const usuarioValido = usuariosRegistrados.some(user =>
+                user.nombreUsuario === logeo.nomUsuario.value &&
+                user.password === logeo.pasUsuario.value
+              );
 
-            if (usuarioValido) {  
-            const obtenerSaldoUsuario = () => {
-              for(let i = 0; i < usuariosRegistrados.length; i++){
-                if(logeo.nomUsuario.value === usuariosRegistrados[i].nombreUsuario){
-                  return usuariosRegistrados[i].saldo;
+              if (usuarioValido) {  
+              const obtenerSaldoUsuario = () => {
+                for(let i = 0; i < usuariosRegistrados.length; i++){
+                  if(logeo.nomUsuario.value === usuariosRegistrados[i].nombreUsuario){
+                    return usuariosRegistrados[i].saldo;
+                  }
                 }
-              }
-            } 
+              } 
 
-            saldoUsuario.value  = String(obtenerSaldoUsuario());
-            saldoDelUsuario = parseInt(saldoUsuario.value)
-            formularioLogeo.appendChild(saldoUsuario);
-            formularioLogeo.appendChild(botonVerCarrito)
+              saldoUsuario.value  = String(obtenerSaldoUsuario());
+              saldoDelUsuario = parseInt(saldoUsuario.value)
+              formularioLogeo.appendChild(saldoUsuario);
+              formularioLogeo.appendChild(botonVerCarrito)
 
-            botonVerCarrito.style.display = "flex";
+              botonVerCarrito.style.display = "flex";
 
 
-            textoLabel.forEach(lab => lab.classList.add('oculto'))
-            inputs.forEach(inp => inp.classList.add('ocult'))
+              textoLabel.forEach(lab => lab.classList.add('oculto'))
+              inputs.forEach(inp => inp.classList.add('ocult'))
+          
+              botonLogeo.textContent = 'Cerrar Sesion';
+              formularioLogeo.append(tituloBienvenido); 
+
+              formularioLogeo.style.flexDirection = 'row-reverse';
+
+              sesionIniciada = true;
+            } else { 
+                alert("El usuario o contraseña son incorrectos");
+            }
         
-            botonLogeo.textContent = 'Cerrar Sesion';
-            formularioLogeo.append(tituloBienvenido); 
+      } else {
 
-            formularioLogeo.style.flexDirection = 'row-reverse';
+            const tituloDeBienvenida = document.querySelector('.titulo-usuario')
+            const saldoUsuairo = document.querySelector('.saldo');
 
-            sesionIniciada = true;
-          } else { 
-              alert("El usuario o contraseña son incorrectos");
-          }
-      
+            textoLabel.forEach(lab => lab.classList.remove('oculto'))
+            inputs.forEach(inp => inp.classList.remove('ocult')) 
+            sesionIniciada = false;
+            botonLogeo.textContent = "Iniciar Sesion"
+            tituloDeBienvenida.remove()
+            saldoUsuairo.remove();
+            botonVerCarrito.remove();
+            formularioLogeo.style.flexDirection = "row";
+
+            botonVerCarrito.style.opacity = "0.5";
+            botonVerCarrito.style.pointerEvents = "none"
+      }
+
+  } )
+
+  botonVerCarrito.addEventListener('click',(e)=>{
+    e.preventDefault();
+    if(carrito.length === 0){
+        console.log('Para ver el carrito debe agregar al menos un producto al mismo')
     } else {
 
-          const tituloDeBienvenida = document.querySelector('.titulo-usuario')
-          const saldoUsuairo = document.querySelector('.saldo');
+      mainContent.replaceChildren(listaDeProductosAgregadosAlCarrito());
+      
+      const lista = document.querySelector('.lista');
+      const contenedorPrecio = document.querySelector('.contenedor-precio');
+      const elementoPrecio = document.createElement('h1')
+      const botonDePagar = document.getElementById('pagar-btn');
 
-          textoLabel.forEach(lab => lab.classList.remove('oculto'))
-          inputs.forEach(inp => inp.classList.remove('ocult')) 
-          sesionIniciada = false;
-          botonLogeo.textContent = "Iniciar Sesion"
-          tituloDeBienvenida.remove()
-          saldoUsuairo.remove();
-          botonVerCarrito.remove();
-          formularioLogeo.style.flexDirection = "row";
+      let totalParaPagar = 0
+      carrito.forEach(producto => {
+        const elementoDelListado = document.createElement('div');
+        const contenidoInfo = document.createElement('div');
+        const textoInfo = document.createElement('p');
+        const imagenDelProducto = document.createElement('img');
 
-          botonVerCarrito.style.opacity = "0.5";
-          botonVerCarrito.style.pointerEvents = "none"
+        elementoDelListado.className = "elemento-lista";
+        elementoPrecio.classList = "estilo-precio";
+
+        textoInfo.className = "texto-info";
+        contenidoInfo.className = "contenido-info";
+        imagenDelProducto.className = "imagen-prod"
+
+        switch(producto.productoSeleccionado.idVideojuego){
+          case 0:
+            imagenDelProducto.src = './images/portada1.jpg';
+            textoInfo.textContent = `
+              Videojuego: ${producto.productoSeleccionado.nombreVideojuego}.
+              Cantidad seleccionada: ${producto.cantidadSeleccionada}.
+              Importe total: ${producto.precioTotal}.
+            `;
+          break;
+
+          case 1:
+            imagenDelProducto.src = './images/portada2.jpg';
+            textoInfo.textContent = `
+              Videojuego: ${producto.productoSeleccionado.nombreVideojuego}.
+              Cantidad seleccionada: ${producto.cantidadSeleccionada}.
+              Importe total: ${producto.precioTotal}.
+            `;
+            break;
+
+          case 2:
+            imagenDelProducto.src = './images/portada3.jpg';
+            textoInfo.textContent = `
+              Videojuego: ${producto.productoSeleccionado.nombreVideojuego}.
+              Cantidad seleccionada: ${producto.cantidadSeleccionada}.
+              Importe total: ${producto.precioTotal}.
+            `;         
+            break;
+
+          case 3:
+            imagenDelProducto.src = './images/portada4.jpg';
+            textoInfo.textContent = `
+              Videojuego: ${producto.productoSeleccionado.nombreVideojuego}.
+              Cantidad seleccionada: ${producto.cantidadSeleccionada}.
+              Importe total: ${producto.precioTotal}.
+            `;          
+          break;
+
+        }
+
+        totalParaPagar = totalParaPagar + producto.precioTotal
+
+        contenidoInfo.appendChild(textoInfo);
+        
+        elementoDelListado.append(imagenDelProducto,contenidoInfo);
+        
+        lista.appendChild(elementoDelListado);
+        
+        elementoPrecio.textContent = `Total a pagar: 
+        $${totalParaPagar}`;
+
+        contenedorPrecio.appendChild(elementoPrecio)
+      });    
+
+
+      botonDePagar.addEventListener('click', () => {
+        if(totalParaPagar > saldoDelUsuario){
+          botonDePagar.textContent = "Saldo insuficiente"
+          botonDePagar.style.pointerEvents = "none";
+        } else {
+          botonDePagar.style.backgroundColor = "green";
+          botonDePagar.textContent = "Pago realizado con exito!"          
+          botonDePagar.style.pointerEvents = "none";
+        }
+      })
+
     }
-
-} )
-
-botonVerCarrito.addEventListener('click',(e)=>{
-  e.preventDefault();
-  if(carrito.length === 0){
-      console.log('Para ver el carrito debe agregar al menos un producto al mismo')
-  } else {
-
-     mainContent.replaceChildren(listaDeProductosAgregadosAlCarrito());
-    
-    const lista = document.querySelector('.lista');
-    const contenedorPrecio = document.querySelector('.contenedor-precio');
-    const elementoPrecio = document.createElement('h1')
-    const botonDePagar = document.getElementById('pagar-btn');
-
-    let totalParaPagar = 0
-    carrito.forEach(producto => {
-      const elementoDelListado = document.createElement('div');
-      const contenidoInfo = document.createElement('div');
-      const textoInfo = document.createElement('p');
-      const imagenDelProducto = document.createElement('img');
-
-      elementoDelListado.className = "elemento-lista";
-      elementoPrecio.classList = "estilo-precio";
-
-      textoInfo.className = "texto-info";
-      contenidoInfo.className = "contenido-info";
-      imagenDelProducto.className = "imagen-prod"
-
-      switch(producto.productoSeleccionado.idVideojuego){
-        case 0:
-          imagenDelProducto.src = './images/portada1.jpg';
-          textoInfo.textContent = `
-            Videojuego: ${producto.productoSeleccionado.nombreVideojuego}.
-            Cantidad seleccionada: ${producto.cantidadSeleccionada}.
-            Importe total: ${producto.precioTotal}.
-          `;
-        break;
-
-        case 1:
-          imagenDelProducto.src = './images/portada2.jpg';
-          textoInfo.textContent = `
-            Videojuego: ${producto.productoSeleccionado.nombreVideojuego}.
-            Cantidad seleccionada: ${producto.cantidadSeleccionada}.
-            Importe total: ${producto.precioTotal}.
-          `;
-          break;
-
-        case 2:
-          imagenDelProducto.src = './images/portada3.jpg';
-          textoInfo.textContent = `
-            Videojuego: ${producto.productoSeleccionado.nombreVideojuego}.
-            Cantidad seleccionada: ${producto.cantidadSeleccionada}.
-            Importe total: ${producto.precioTotal}.
-          `;         
-          break;
-
-        case 3:
-          imagenDelProducto.src = './images/portada4.jpg';
-          textoInfo.textContent = `
-            Videojuego: ${producto.productoSeleccionado.nombreVideojuego}.
-            Cantidad seleccionada: ${producto.cantidadSeleccionada}.
-            Importe total: ${producto.precioTotal}.
-          `;          
-        break;
-
-      }
-
-      totalParaPagar = totalParaPagar + producto.precioTotal
-
-      contenidoInfo.appendChild(textoInfo);
-      
-      elementoDelListado.append(imagenDelProducto,contenidoInfo);
-      
-      lista.appendChild(elementoDelListado);
-      
-      elementoPrecio.textContent = `Total a pagar: 
-      $${totalParaPagar}`;
-
-      contenedorPrecio.appendChild(elementoPrecio)
-    });    
-
-
-    botonDePagar.addEventListener('click', () => {
-      if(totalParaPagar > saldoDelUsuario){
-        botonDePagar.textContent = "Saldo insuficiente"
-        botonDePagar.style.pointerEvents = "none";
-      } else {
-        botonDePagar.style.backgroundColor = "green";
-        botonDePagar.textContent = "Pago realizado con exito!"          
-        botonDePagar.style.pointerEvents = "none";
-      }
-    })
-
-  }
-});
+  });
