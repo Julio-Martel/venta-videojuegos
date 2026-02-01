@@ -256,11 +256,6 @@ verProductos.addEventListener('click', async() => {
           } else {
             
           }
-       
-          
-
-
-
         }
   })
 
