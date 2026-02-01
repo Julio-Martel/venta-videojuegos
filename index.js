@@ -388,8 +388,6 @@ botonVerCarrito.addEventListener('click',(e)=>{
     const elementoPrecio = document.createElement('h1')
     const botonDePagar = document.getElementById('pagar-btn');
 
-    console.log(contenedorPrecio)
-
     let totalParaPagar = 0
     carrito.forEach(producto => {
       const elementoDelListado = document.createElement('div');
