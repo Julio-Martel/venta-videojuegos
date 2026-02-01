@@ -388,11 +388,61 @@ botonVerCarrito.addEventListener('click',(e)=>{
   
     carrito.forEach(producto => {
       const elementoDelListado = document.createElement('div');
+      const contenidoInfo = document.createElement('div');
+      const textoInfo = document.createElement('p');
+      const imagenDelProducto = document.createElement('img');
 
       elementoDelListado.className = "elemento-lista";
-  
-  
+      
+      textoInfo.className = "texto-info";
+      contenidoInfo.className = "contenido-info";
+      imagenDelProducto.className = "imagen-prod"
 
+      console.log(producto.productoSeleccionado.nombreVideojuego)
+
+      switch(producto.productoSeleccionado.idVideojuego){
+        case 0:
+          imagenDelProducto.src = './images/portada1.jpg';
+          textoInfo.textContent = `
+            Videojuego: ${producto.productoSeleccionado.nombreVideojuego}.
+            Cantidad seleccionada: ${producto.cantidadSeleccionada}.
+            Importe total: ${producto.precioTotal}.
+          `;
+        break;
+
+        case 1:
+          imagenDelProducto.src = './images/portada2.jpg';
+          textoInfo.textContent = `
+            Videojuego: ${producto.productoSeleccionado.nombreVideojuego}.
+            Cantidad seleccionada: ${producto.cantidadSeleccionada}.
+            Importe total: ${producto.precioTotal}.
+          `;
+          break;
+
+        case 2:
+          imagenDelProducto.src = './images/portada3.jpg';
+          textoInfo.textContent = `
+            Videojuego: ${producto.productoSeleccionado.nombreVideojuego}.
+            Cantidad seleccionada: ${producto.cantidadSeleccionada}.
+            Importe total: ${producto.precioTotal}.
+          `;         
+          break;
+
+        case 3:
+          imagenDelProducto.src = './images/portada4.jpg';
+          textoInfo.textContent = `
+            Videojuego: ${producto.productoSeleccionado.nombreVideojuego}.
+            Cantidad seleccionada: ${producto.cantidadSeleccionada}.
+            Importe total: ${producto.precioTotal}.
+          `;          
+        break;
+
+      }
+
+      contenidoInfo.appendChild(textoInfo);
+      
+      elementoDelListado.append(imagenDelProducto,contenidoInfo);
+      
       lista.appendChild(elementoDelListado);
 
     });    
