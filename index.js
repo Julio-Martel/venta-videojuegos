@@ -243,7 +243,7 @@ verProductos.addEventListener('click', async() => {
 
           totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
           
-          if(botonVerCarrito.length !== 0){
+          if(carrito.length === 0){
           
             botonVerCarrito.style.pointerEvents = "auto";
             botonVerCarrito.style.opacity = "1";
@@ -264,13 +264,12 @@ verProductos.addEventListener('click', async() => {
                 
                productoDelCarrito.cantidadSeleccionada = stockActual;
                productoDelCarrito.precioTotal = totalAgregadoAlCarrito;
-
-               // VER AQUI PARA QUE NO SE VUELVA A AGREGAR EL PRODUCTO EN EL CARRITO
-
              }
             })
           }
         }
+
+        console.log(carrito)
   })
 
 
