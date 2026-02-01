@@ -22,7 +22,6 @@ export const listaDeProductosAgregadosAlCarrito = () => {
 
     contenedoresListadoPagar.mostrarPrecioBotonPagar.append(contenedoresListadoPagar.mostrarPrecio,contenedoresListadoPagar.botonPagar);
 
-
     return contenedorMostrarListado;
 
 }
