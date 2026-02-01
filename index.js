@@ -397,9 +397,7 @@ botonVerCarrito.addEventListener('click',(e)=>{
       textoInfo.className = "texto-info";
       contenidoInfo.className = "contenido-info";
       imagenDelProducto.className = "imagen-prod"
-
-      console.log(producto.productoSeleccionado.nombreVideojuego)
-
+      
       switch(producto.productoSeleccionado.idVideojuego){
         case 0:
           imagenDelProducto.src = './images/portada1.jpg';
