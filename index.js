@@ -254,7 +254,21 @@ verProductos.addEventListener('click', async() => {
             carrito.push(productoDelCarrito);
           
           } else {
+            const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
+            let stockActual = parseInt(obtenerIdDisplay.value);
             
+            totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
+
+            carrito.forEach(productoDelCarrito => {
+              if(productoDelCarrito.productoSeleccionado === listadoProductos[numImag]){
+                
+               productoDelCarrito.cantidadSeleccionada = stockActual;
+               productoDelCarrito.precioTotal = totalAgregadoAlCarrito;
+
+               // VER AQUI PARA QUE NO SE VUELVA A AGREGAR EL PRODUCTO EN EL CARRITO
+
+             }
+            })
           }
         }
   })
