@@ -28,7 +28,7 @@ const listadoProductos = [
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
 const usuariosRegistrados = [
-  { nombreUsuario: 'julio4561',password: '1234', saldo: 45, acumladorPrecio: 0},
+  { nombreUsuario: 'julio4561',password: '1234', saldo: 454454545, acumladorPrecio: 0},
   { nombreUsuario: 'marco123', password: '2312', saldo: 123714, acumladorPrecio: 0}
 ];
 
@@ -230,7 +230,6 @@ verProductos.addEventListener('click', async() => {
   botonAgregarAlCarrito.addEventListener('click', () => {
      
         if(!sesionIniciada){
-          //AGREGAR CONTENIDO HTML CON CSS PARA QUE SE MUESTRE EN LA PAGINA A LA HORA DE COMPRAR Y QUE NO SE HAYA INICIADO SESION
           console.log('Se debe iniciar sesion para poder agregar productos al carrito y comprar')
         
         } else {
@@ -458,6 +457,17 @@ botonVerCarrito.addEventListener('click',(e)=>{
       contenedorPrecio.appendChild(elementoPrecio)
     });    
 
+
+    botonDePagar.addEventListener('click', () => {
+      if(totalParaPagar > saldoDelUsuario){
+        botonDePagar.textContent = "Saldo insuficiente"
+        botonDePagar.style.pointerEvents = "none";
+      } else {
+        botonDePagar.style.backgroundColor = "green";
+        botonDePagar.textContent = "Pago realizado con exito!"          
+        botonDePagar.style.pointerEvents = "none";
+      }
+    })
 
   }
 });
