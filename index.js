@@ -385,7 +385,12 @@ botonVerCarrito.addEventListener('click',(e)=>{
      mainContent.replaceChildren(listaDeProductosAgregadosAlCarrito());
     
     const lista = document.querySelector('.lista');
-  
+    const contenedorPrecio = document.querySelector('.contenedor-precio');
+    const elementoPrecio = document.createElement('h1')
+
+    console.log(contenedorPrecio)
+
+    let totalParaPagar = 0
     carrito.forEach(producto => {
       const elementoDelListado = document.createElement('div');
       const contenidoInfo = document.createElement('div');
@@ -393,11 +398,12 @@ botonVerCarrito.addEventListener('click',(e)=>{
       const imagenDelProducto = document.createElement('img');
 
       elementoDelListado.className = "elemento-lista";
-      
+      elementoPrecio.classList = "estilo-precio"
+
       textoInfo.className = "texto-info";
       contenidoInfo.className = "contenido-info";
       imagenDelProducto.className = "imagen-prod"
-      
+
       switch(producto.productoSeleccionado.idVideojuego){
         case 0:
           imagenDelProducto.src = './images/portada1.jpg';
@@ -437,11 +443,19 @@ botonVerCarrito.addEventListener('click',(e)=>{
 
       }
 
+      totalParaPagar = totalParaPagar + producto.precioTotal
+
       contenidoInfo.appendChild(textoInfo);
       
       elementoDelListado.append(imagenDelProducto,contenidoInfo);
       
       lista.appendChild(elementoDelListado);
+      
+      elementoPrecio.textContent = `Total a pagar: 
+      $${totalParaPagar}`;
+
+      contenedorPrecio.appendChild(elementoPrecio)
+
 
     });    
 
