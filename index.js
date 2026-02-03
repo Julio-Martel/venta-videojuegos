@@ -256,6 +256,9 @@ verProductos.addEventListener('click', async() => {
             carrito.push(productoDelCarrito);
           
           } else {
+            
+// CORREGIR ESTO
+
             const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
             let stockActual = parseInt(obtenerIdDisplay.value);
             
