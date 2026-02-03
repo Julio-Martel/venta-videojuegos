@@ -270,8 +270,6 @@ verProductos.addEventListener('click', async() => {
             })
           }
         }
-
-        console.log(carrito)
   })
 
 
