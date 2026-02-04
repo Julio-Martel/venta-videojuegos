@@ -213,6 +213,18 @@ verProductos.addEventListener('click', async() => {
       }
     }
   }
+
+  const comprobarProductoEnCarrito = (nroIdVideojuego) => {
+    for(let i = 0; i < carrito.length; i++){
+      if(carrito[i].productoSeleccionado.idVideojuego === nroIdVideojuego){
+        return i;
+      } else {
+        return 0;
+      }
+    }
+  }
+
+
   
   const botonAgregarAlCarrito = document.querySelector('.boton-agregar-carrito');
   const botonFinalizarCompra = document.querySelector('.boton-final');
@@ -253,22 +265,19 @@ verProductos.addEventListener('click', async() => {
 
             carrito.push(productoDelCarrito);
           
-          } else {
-            
-// CORREGIR ESTO
+          } else {     
+            const enElCarrito = comprobarProductoEnCarrito(numImag);
 
-            const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
-            let stockActual = parseInt(obtenerIdDisplay.value);
+            if(enElCarrito !== 0){
+              carrito[enElCarrito].cantidadSeleccionada = stockActual;
+              carrito[enElCarrito].precioTotal = totalAgregadoAlCarrito;
+            } else {
+              productoDelCarrito.productoSeleccionado = listadoProductos[numImag];  
+              productoDelCarrito.cantidadSeleccionada = stockActual;
+              productoDelCarrito.precioTotal = totalAgregadoAlCarrito;              
+              carrito.push(productoDelCarrito)
+            }
             
-            totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
-
-            carrito.forEach(productoDelCarrito => {
-              if(productoDelCarrito.productoSeleccionado === listadoProductos[numImag]){
-                
-               productoDelCarrito.cantidadSeleccionada = stockActual;
-               productoDelCarrito.precioTotal = totalAgregadoAlCarrito;
-             }
-            })
           }
         }
   })
