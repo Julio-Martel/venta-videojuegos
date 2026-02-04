@@ -276,12 +276,10 @@ verProductos.addEventListener('click', async() => {
               productoDelCarrito.cantidadSeleccionada = stockActual;
               productoDelCarrito.precioTotal = totalAgregadoAlCarrito;              
               carrito.push(productoDelCarrito)
-            }
-            
+            }            
           }
         }
   })
-
 
   botonFinalizarCompra.addEventListener('click', () => {
          
