@@ -244,9 +244,7 @@ verProductos.addEventListener('click', async() => {
           totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
           
           if(carrito.length === 0){
-
-            // AGREGAR LA LOGICA PARA QUE UN PRODUCTO DISTINTO SE AGREGUE PERO SI ES EL MISMO SOLO SE ACTUALICE
-          
+        
             botonVerCarrito.style.pointerEvents = "auto";
             botonVerCarrito.style.opacity = "1";
             productoDelCarrito.productoSeleccionado = listadoProductos[numImag];
