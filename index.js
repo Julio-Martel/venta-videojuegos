@@ -214,18 +214,17 @@ verProductos.addEventListener('click', async() => {
     }
   }
 
-  let posicionDelProductoDelCarrito = null;
-
-  const comprobarProductoEnCarrito = (videojuego) => {
+  const comprobarProductoEnCarrito = (nroIdVideojuego) => {
     for(let i = 0; i < carrito.length; i++){
-      if(carrito[i].productoSeleccionado === videojuego){
-        posicionDelProductoDelCarrito = i;
-        return true;
+      if(carrito[i].productoSeleccionado.idVideojuego === nroIdVideojuego){
+        return i;
       } else {
-        return false;
+        return 0;
       }
     }
   }
+
+
   
   const botonAgregarAlCarrito = document.querySelector('.boton-agregar-carrito');
   const botonFinalizarCompra = document.querySelector('.boton-final');
@@ -240,51 +239,53 @@ verProductos.addEventListener('click', async() => {
     });   
   }
 
-  const productoDelCarrito = {
-    productoSeleccionado: null,
-    cantidadSeleccionada: null,
-    precioTotal: null
-  };
-
   botonAgregarAlCarrito.addEventListener('click', () => {
      
         if(!sesionIniciada){
           console.log('Se debe iniciar sesion para poder agregar productos al carrito y comprar')
         
         } else {
-          const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
-          let stockActual = parseInt(obtenerIdDisplay.value);
 
-          totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
-          
-          if(carrito.length === 0){
-          
-            productoDelCarrito.productoSeleccionado = listadoProductos[numImag];
-            productoDelCarrito.cantidadSeleccionada = stockActual;
-            productoDelCarrito.precioTotal = totalAgregadoAlCarrito;
-            carrito.push(productoDelCarrito);
-          
-          } else {     
+          if(numImag === null){
+            console.log('Debes hacer click en alguna imagen para empezar a agregar al carrito')
+          } else {
+            const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
+            console.log(obtenerIdDisplay)
+            let stockActual = parseInt(obtenerIdDisplay.value);
+            const productoDelCarrito = {
+              productoSeleccionado: null,
+              cantidadSeleccionada: null,
+              precioTotal: null
+            };
 
-            //SE HA ENCONTRADO UN SOLUCION PARCIAL
-            const enElCarrito = comprobarProductoEnCarrito(listadoProductos[numImag]);
-
-            if(enElCarrito){          
-              carrito[posicionDelProductoDelCarrito].cantidadSeleccionada = stockActual;
-              carrito[posicionDelProductoDelCarrito].precioTotal = totalAgregadoAlCarrito;
-            } else {
-              productoDelCarrito.productoSeleccionado = listadoProductos[numImag];  
+            totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
+            
+            if(carrito.length === 0){
+          
+              botonVerCarrito.style.pointerEvents = "auto";
+              botonVerCarrito.style.opacity = "1";
+              productoDelCarrito.productoSeleccionado = listadoProductos[numImag];
               productoDelCarrito.cantidadSeleccionada = stockActual;
-              productoDelCarrito.precioTotal = totalAgregadoAlCarrito;              
-              carrito.push(productoDelCarrito)
-            }            
+              productoDelCarrito.precioTotal = totalAgregadoAlCarrito;
+
+              carrito.push(productoDelCarrito);
+            
+            } else {     
+              const enElCarrito = comprobarProductoEnCarrito(numImag);
+
+              if(enElCarrito !== 0){
+                carrito[enElCarrito].cantidadSeleccionada = stockActual;
+                carrito[enElCarrito].precioTotal = totalAgregadoAlCarrito;
+              } else {
+                productoDelCarrito.productoSeleccionado = listadoProductos[numImag];  
+                productoDelCarrito.cantidadSeleccionada = stockActual;
+                productoDelCarrito.precioTotal = totalAgregadoAlCarrito;              
+                carrito.push(productoDelCarrito)
+              }            
+            }
           }
         }
-  
-  
-        console.log(carrito)
-  
-      })
+  })
 
   botonFinalizarCompra.addEventListener('click', () => {
          
