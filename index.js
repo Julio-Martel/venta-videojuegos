@@ -214,17 +214,18 @@ verProductos.addEventListener('click', async() => {
     }
   }
 
-  const comprobarProductoEnCarrito = (nroIdVideojuego) => {
+  let posicionDelProductoDelCarrito = null;
+
+  const comprobarProductoEnCarrito = (videojuego) => {
     for(let i = 0; i < carrito.length; i++){
-      if(carrito[i].productoSeleccionado.idVideojuego === nroIdVideojuego){
-        return i;
+      if(carrito[i].productoSeleccionado === videojuego){
+        posicionDelProductoDelCarrito = i;
+        return true;
       } else {
-        return 0;
+        return false;
       }
     }
   }
-
-
   
   const botonAgregarAlCarrito = document.querySelector('.boton-agregar-carrito');
   const botonFinalizarCompra = document.querySelector('.boton-final');
@@ -239,6 +240,12 @@ verProductos.addEventListener('click', async() => {
     });   
   }
 
+  const productoDelCarrito = {
+    productoSeleccionado: null,
+    cantidadSeleccionada: null,
+    precioTotal: null
+  };
+
   botonAgregarAlCarrito.addEventListener('click', () => {
      
         if(!sesionIniciada){
@@ -247,30 +254,24 @@ verProductos.addEventListener('click', async() => {
         } else {
           const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
           let stockActual = parseInt(obtenerIdDisplay.value);
-          const productoDelCarrito = {
-            productoSeleccionado: null,
-            cantidadSeleccionada: null,
-            precioTotal: null
-          };
 
           totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
           
           if(carrito.length === 0){
-        
-            botonVerCarrito.style.pointerEvents = "auto";
-            botonVerCarrito.style.opacity = "1";
+          
             productoDelCarrito.productoSeleccionado = listadoProductos[numImag];
             productoDelCarrito.cantidadSeleccionada = stockActual;
             productoDelCarrito.precioTotal = totalAgregadoAlCarrito;
-
             carrito.push(productoDelCarrito);
           
           } else {     
-            const enElCarrito = comprobarProductoEnCarrito(numImag);
 
-            if(enElCarrito !== 0){
-              carrito[enElCarrito].cantidadSeleccionada = stockActual;
-              carrito[enElCarrito].precioTotal = totalAgregadoAlCarrito;
+            //SE HA ENCONTRADO UN SOLUCION PARCIAL
+            const enElCarrito = comprobarProductoEnCarrito(listadoProductos[numImag]);
+
+            if(enElCarrito){          
+              carrito[posicionDelProductoDelCarrito].cantidadSeleccionada = stockActual;
+              carrito[posicionDelProductoDelCarrito].precioTotal = totalAgregadoAlCarrito;
             } else {
               productoDelCarrito.productoSeleccionado = listadoProductos[numImag];  
               productoDelCarrito.cantidadSeleccionada = stockActual;
@@ -279,7 +280,11 @@ verProductos.addEventListener('click', async() => {
             }            
           }
         }
-  })
+  
+  
+        console.log(carrito)
+  
+      })
 
   botonFinalizarCompra.addEventListener('click', () => {
          
