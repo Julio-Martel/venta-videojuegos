@@ -9,7 +9,6 @@ const contenedorImagenes = document.getElementById('contenedor-imagenes');
 const botonLogeo = document.getElementById('boton-log');
 const formularioLogeo = document.getElementById('formulario-logeo');
 let sesionIniciada = false;
-let totalAgregadoAlCarrito = null;
 let carrito = [];
 let saldoDelUsuario = null;
 
@@ -214,12 +213,16 @@ verProductos.addEventListener('click', async() => {
     }
   }
 
-  const comprobarProductoEnCarrito = (nroIdVideojuego) => {
+
+  let posicionEnCarrito = null;
+
+  const comprobarProductoEnCarrito = (videojuego) => {
     for(let i = 0; i < carrito.length; i++){
-      if(carrito[i].productoSeleccionado.idVideojuego === nroIdVideojuego){
-        return i;
+      if(carrito[i].productoSeleccionado === videojuego){
+        posicionEnCarrito = i;
+        return true;
       } else {
-        return 0;
+        return false;
       }
     }
   }
@@ -239,6 +242,12 @@ verProductos.addEventListener('click', async() => {
     });   
   }
 
+  const productoDelCarrito = {
+    productoSeleccionado: null,
+    cantidadSeleccionada: null,
+    precioTotal: null
+  };
+
   botonAgregarAlCarrito.addEventListener('click', () => {
      
         if(!sesionIniciada){
@@ -250,32 +259,28 @@ verProductos.addEventListener('click', async() => {
             console.log('Debes hacer click en alguna imagen para empezar a agregar al carrito')
           } else {
             const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
-            console.log(obtenerIdDisplay)
             let stockActual = parseInt(obtenerIdDisplay.value);
-            const productoDelCarrito = {
-              productoSeleccionado: null,
-              cantidadSeleccionada: null,
-              precioTotal: null
-            };
 
-            totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
+            let totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
             
             if(carrito.length === 0){
-          
-              botonVerCarrito.style.pointerEvents = "auto";
               botonVerCarrito.style.opacity = "1";
+              botonVerCarrito.style.pointerEvents = "auto";
               productoDelCarrito.productoSeleccionado = listadoProductos[numImag];
               productoDelCarrito.cantidadSeleccionada = stockActual;
               productoDelCarrito.precioTotal = totalAgregadoAlCarrito;
 
               carrito.push(productoDelCarrito);
-            
-            } else {     
-              const enElCarrito = comprobarProductoEnCarrito(numImag);
 
-              if(enElCarrito !== 0){
-                carrito[enElCarrito].cantidadSeleccionada = stockActual;
-                carrito[enElCarrito].precioTotal = totalAgregadoAlCarrito;
+              // CORREGIR ESTO PARA QUE NO DUPLIQUE PRODUCTOS
+
+
+            } else {     
+              const enElCarrito = comprobarProductoEnCarrito(listadoProductos[numImag]);
+
+              if(enElCarrito){
+                carrito[posicionEnCarrito].cantidadSeleccionada = stockActual;
+                carrito[posicionEnCarrito].precioTotal = totalAgregadoAlCarrito;
               } else {
                 productoDelCarrito.productoSeleccionado = listadoProductos[numImag];  
                 productoDelCarrito.cantidadSeleccionada = stockActual;
@@ -283,6 +288,7 @@ verProductos.addEventListener('click', async() => {
                 carrito.push(productoDelCarrito)
               }            
             }
+            console.log(carrito);
           }
         }
   })
