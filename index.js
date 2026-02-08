@@ -239,6 +239,7 @@ verProductos.addEventListener('click', async() => {
       const obtenerId = imagen.id;
       const separarString = obtenerId.split('-');
       numImag = parseInt(separarString[1]);
+      console.log(numImag);
     });   
   }
 
@@ -272,7 +273,7 @@ verProductos.addEventListener('click', async() => {
 
               carrito.push(productoDelCarrito);
 
-              // CORREGIR ESTO PARA QUE NO DUPLIQUE PRODUCTOS
+              // CORREGIR ESTO PARA QUE NO DUPLIQUE PRODUCTOS 
 
 
             } else {     
