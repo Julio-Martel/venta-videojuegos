@@ -214,21 +214,22 @@ verProductos.addEventListener('click', async() => {
   }
 
 
-  let posicionEnCarrito = null;
+let posicionEnCarrito = null;
 
-  const comprobarProductoEnCarrito = (videojuego) => {
-    for(let i = 0; i < carrito.length; i++){
-      if(carrito[i].productoSeleccionado === videojuego){
-        posicionEnCarrito = i;
-        return true;
-      } else {
-        return false;
-      }
+const comprobarProductoEnCarrito = (videojuego) => {
+  posicionEnCarrito = null;
+
+  for (let i = 0; i < carrito.length; i++) {
+    if (carrito[i].productoSeleccionado === videojuego) {
+      posicionEnCarrito = i;
+      console.log('posicion',posicionEnCarrito)
+      return true;
     }
   }
 
+  return false;
+};
 
-  
   const botonAgregarAlCarrito = document.querySelector('.boton-agregar-carrito');
   const botonFinalizarCompra = document.querySelector('.boton-final');
 
@@ -263,7 +264,9 @@ verProductos.addEventListener('click', async() => {
             let stockActual = parseInt(obtenerIdDisplay.value);
 
             let totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
-            
+            console.log(totalAgregadoAlCarrito)
+
+
             if(carrito.length === 0){
               botonVerCarrito.style.opacity = "1";
               botonVerCarrito.style.pointerEvents = "auto";
@@ -272,14 +275,13 @@ verProductos.addEventListener('click', async() => {
               productoDelCarrito.precioTotal = totalAgregadoAlCarrito;
 
               carrito.push(productoDelCarrito);
-
-              // CORREGIR ESTO PARA QUE NO DUPLIQUE PRODUCTOS 
-
-
+              posicionEnCarrito = null;
+              
             } else {     
               const enElCarrito = comprobarProductoEnCarrito(listadoProductos[numImag]);
-
+              console.log(enElCarrito)
               if(enElCarrito){
+                
                 carrito[posicionEnCarrito].cantidadSeleccionada = stockActual;
                 carrito[posicionEnCarrito].precioTotal = totalAgregadoAlCarrito;
               } else {
