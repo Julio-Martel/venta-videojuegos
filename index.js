@@ -244,14 +244,15 @@ const comprobarProductoEnCarrito = (videojuego) => {
     });   
   }
 
-  const productoDelCarrito = {
-    productoSeleccionado: null,
-    cantidadSeleccionada: null,
-    precioTotal: null
-  };
-
   botonAgregarAlCarrito.addEventListener('click', () => {
      
+        const productoDelCarrito = {
+          productoSeleccionado: null,
+          cantidadSeleccionada: null,
+          precioTotal: null
+        };
+
+
         if(!sesionIniciada){
           console.log('Se debe iniciar sesion para poder agregar productos al carrito y comprar')
         
@@ -264,10 +265,9 @@ const comprobarProductoEnCarrito = (videojuego) => {
             let stockActual = parseInt(obtenerIdDisplay.value);
 
             let totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
-            console.log(totalAgregadoAlCarrito)
-
 
             if(carrito.length === 0){
+
               botonVerCarrito.style.opacity = "1";
               botonVerCarrito.style.pointerEvents = "auto";
               productoDelCarrito.productoSeleccionado = listadoProductos[numImag];
@@ -276,22 +276,26 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
               carrito.push(productoDelCarrito);
               posicionEnCarrito = null;
-              
+
             } else {     
+
               const enElCarrito = comprobarProductoEnCarrito(listadoProductos[numImag]);
-              console.log(enElCarrito)
+
               if(enElCarrito){
-                
                 carrito[posicionEnCarrito].cantidadSeleccionada = stockActual;
                 carrito[posicionEnCarrito].precioTotal = totalAgregadoAlCarrito;
               } else {
+         
                 productoDelCarrito.productoSeleccionado = listadoProductos[numImag];  
                 productoDelCarrito.cantidadSeleccionada = stockActual;
-                productoDelCarrito.precioTotal = totalAgregadoAlCarrito;              
+                productoDelCarrito.precioTotal = totalAgregadoAlCarrito;           
+              
+                
                 carrito.push(productoDelCarrito)
-              }            
+
+              }         
             }
-            console.log(carrito);
+           
           }
         }
   })
