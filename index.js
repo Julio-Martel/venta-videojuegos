@@ -28,7 +28,7 @@ const listadoProductos = [
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
 const usuariosRegistrados = [
-  { nombreUsuario: 'julio4561',password: '1234', saldo: 454454545, acumladorPrecio: 0},
+  { nombreUsuario: 'julio4561',password: '1234', saldo: 45445, acumladorPrecio: 0},
   { nombreUsuario: 'marco123', password: '2312', saldo: 123714, acumladorPrecio: 0}
 ];
 
