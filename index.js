@@ -11,6 +11,7 @@ const formularioLogeo = document.getElementById('formulario-logeo');
 let sesionIniciada = false;
 let carrito = [];
 let saldoDelUsuario = null;
+let usuarioRegistrado = null;
 
 const botonVerCarrito = document.getElementById('ver-carrito');
 
@@ -353,6 +354,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
             const saldoUsuario = document.createElement('input');
             saldoUsuario.className = "saldo";
+            saldoUsuario.id = "saldo-del-usuario";
 
             const usuarioValido = usuariosRegistrados.some(user =>
                 user.nombreUsuario === logeo.nomUsuario.value &&
@@ -363,6 +365,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
               const obtenerSaldoUsuario = () => {
                 for(let i = 0; i < usuariosRegistrados.length; i++){
                   if(logeo.nomUsuario.value === usuariosRegistrados[i].nombreUsuario){
+                    usuarioRegistrado = usuariosRegistrados[i];
                     return usuariosRegistrados[i].saldo;
                   }
                 }
@@ -491,6 +494,8 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
 
       botonDePagar.addEventListener('click', () => {
+        const inputSaldoUsuario = document.getElementById('saldo-del-usuario');
+
         if(totalParaPagar > saldoDelUsuario){
           botonDePagar.textContent = "Saldo insuficiente"
           botonDePagar.style.pointerEvents = "none";
@@ -498,6 +503,9 @@ const comprobarProductoEnCarrito = (videojuego) => {
           botonDePagar.style.backgroundColor = "green";
           botonDePagar.textContent = "Pago realizado con exito!"          
           botonDePagar.style.pointerEvents = "none";
+
+          usuarioRegistrado.saldo = usuarioRegistrado.saldo - totalParaPagar;
+          inputSaldoUsuario.value = String(usuarioRegistrado.saldo);
         }
       })
 
