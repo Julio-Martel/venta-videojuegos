@@ -29,7 +29,7 @@ const listadoProductos = [
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
 const usuariosRegistrados = [
-  { nombreUsuario: 'julio4561',password: '1234', saldo: 45445, acumladorPrecio: 0},
+  { nombreUsuario: 'julio4561',password: '1234', saldo: 45445215, acumladorPrecio: 0},
   { nombreUsuario: 'marco123', password: '2312', saldo: 123714, acumladorPrecio: 0}
 ];
 
@@ -139,6 +139,14 @@ verProductos.addEventListener('click', async() => {
   
   const nuevoContenido = generarContenidoProductos()
 
+  const todosLosDisplaysFijos = nuevoContenido.querySelectorAll('.display');
+
+  let j = 0;
+  for(const display of todosLosDisplaysFijos){
+    display.value = String(listadoProductos[j].stock);
+    j++;
+  }
+  
   contenedorImagenes.classList.add('ocultar-contenido-imagenes');
   await delay(200);
   mainContent.replaceChildren(nuevoContenido); 
@@ -511,10 +519,11 @@ const comprobarProductoEnCarrito = (videojuego) => {
           for(let i = 0; i < carrito.length; i++){
             const idDelVidejuego = carrito[i].productoSeleccionado.idVideojuego;
             const cantidadComprada = carrito[i].cantidadSeleccionada;
-            listadoProductos[idDelVidejuego].stock = cantidadComprada;
+            console.log(typeof cantidadComprada)
+            listadoProductos[idDelVidejuego].stock =  listadoProductos[idDelVidejuego].stock - cantidadComprada;
           }
 
-
+          console.log(listadoProductos)
         }
       })
 
