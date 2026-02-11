@@ -5,10 +5,10 @@ export const generarContenidoProductos = () => {
         contedorProductos: document.createElement('div'),
         totalCasillasProductos: 4,
         listadoProductos: [
-            {nombreVideojuego: 'Resident Evil Requiem', descripcion: '', precio: 53000, stock: 5},
-            {nombreVideojuego: 'Silent Hill F', descripcion: '', precio: 45000, stock: 8},
-            {nombreVideojuego: 'Battelfield 6', descripcion: '', precio: 50000, stock: 0},
-            {nombreVideojuego: 'Resident Evil 4', descripcion:'', precio: 25000, stock: 2}
+            {nombreVideojuego: 'Resident Evil Requiem', descripcion: '', precio: 53000},
+            {nombreVideojuego: 'Silent Hill F', descripcion: '', precio: 45000},
+            {nombreVideojuego: 'Battelfield 6', descripcion: '', precio: 50000},
+            {nombreVideojuego: 'Resident Evil 4', descripcion:'', precio: 25000}
         ]
     };
     
@@ -82,7 +82,7 @@ export const generarContenidoProductos = () => {
         agregarStock.displayStock.id = `display-${i}`;
         agregarStock.displayStock.readOnly  = true;
 
-        agregarStock.displayStock.value = productos.listadoProductos[i].stock;
+       // agregarStock.displayStock.value = productos.listadoProductos[i].stock;
 
         stock.append(agregarStock.simboloMenos,agregarStock.displayStock,agregarStock.simboloMas);
 
