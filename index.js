@@ -12,6 +12,7 @@ let sesionIniciada = false;
 let carrito = [];
 let saldoDelUsuario = null;
 let usuarioRegistrado = null;
+const tituloPagina = document.getElementById('titulo-pagina');
 
 const botonVerCarrito = document.getElementById('ver-carrito');
 
@@ -506,8 +507,22 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
           usuarioRegistrado.saldo = usuarioRegistrado.saldo - totalParaPagar;
           inputSaldoUsuario.value = String(usuarioRegistrado.saldo);
+
+          for(let i = 0; i < carrito.length; i++){
+            const idDelVidejuego = carrito[i].productoSeleccionado.idVideojuego;
+            const cantidadComprada = carrito[i].cantidadSeleccionada;
+            listadoProductos[idDelVidejuego].stock = cantidadComprada;
+          }
+
+
         }
       })
 
     }
   });
+
+  tituloPagina.addEventListener('click',async() => {
+    mainContent.replaceChildren(contenedorImagenes);
+    await delay(200);
+    contenedorImagenes.classList.remove('ocultar-contenido-imagenes');
+  })
