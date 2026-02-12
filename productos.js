@@ -82,8 +82,6 @@ export const generarContenidoProductos = () => {
         agregarStock.displayStock.id = `display-${i}`;
         agregarStock.displayStock.readOnly  = true;
 
-       // agregarStock.displayStock.value = productos.listadoProductos[i].stock;
-
         stock.append(agregarStock.simboloMenos,agregarStock.displayStock,agregarStock.simboloMas);
 
         casilla.append(nombre, imagen, stock);
