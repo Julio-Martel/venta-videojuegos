@@ -162,6 +162,7 @@ verProductos.addEventListener('click', async() => {
   let maxVar;
 
   let i = 0;
+
   for(const display of todosLosDisplays){
     const botonMenos = document.getElementById(`boton-menos-${i}`);
     const botonMas = document.getElementById(`boton-mas-${i}`); 
@@ -250,7 +251,6 @@ const comprobarProductoEnCarrito = (videojuego) => {
       const obtenerId = imagen.id;
       const separarString = obtenerId.split('-');
       numImag = parseInt(separarString[1]);
-      console.log(numImag);
     });   
   }
 
@@ -506,6 +506,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
         const inputSaldoUsuario = document.getElementById('saldo-del-usuario');
 
         if(totalParaPagar > saldoDelUsuario){
+          botonDePagar.style.backgroundColor = "darkred";
           botonDePagar.textContent = "Saldo insuficiente"
           botonDePagar.style.pointerEvents = "none";
         } else {
@@ -522,8 +523,6 @@ const comprobarProductoEnCarrito = (videojuego) => {
             console.log(typeof cantidadComprada)
             listadoProductos[idDelVidejuego].stock =  listadoProductos[idDelVidejuego].stock - cantidadComprada;
           }
-
-          console.log(listadoProductos)
         }
       })
 
