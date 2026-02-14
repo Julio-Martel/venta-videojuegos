@@ -178,7 +178,16 @@ verProductos.addEventListener('click', async() => {
     let maximoValor = maximosValores[i];
     let stockActual = maximoValor;
 
-    actualizarBotones(stockActual, maximoValor, botonMenosClick, botonMasClick);
+    if(maximoValor === 1) {
+      botonMenosClick.style.opacity = "0.5";
+      botonMenosClick.style.pointerEvents = "none";
+      botonMasClick.style.opacity = "0.5";
+      botonMasClick.style.pointerEvents = "none";
+    } else {
+          actualizarBotones(stockActual, maximoValor, botonMenosClick, botonMasClick);
+    }
+
+
 
     botonMenosClick.addEventListener('click', () => {
       
@@ -531,6 +540,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
             listadoProductos[idDelVidejuego].stock =  listadoProductos[idDelVidejuego].stock - cantidadComprada;
           }
+        carrito = [];
         }
       })
 
