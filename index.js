@@ -540,7 +540,8 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
             listadoProductos[idDelVidejuego].stock =  listadoProductos[idDelVidejuego].stock - cantidadComprada;
           }
-        carrito = [];
+          
+          carrito = [];
         }
       })
 
