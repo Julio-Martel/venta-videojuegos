@@ -272,6 +272,11 @@ const comprobarProductoEnCarrito = (videojuego) => {
             const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
             let stockActual = parseInt(obtenerIdDisplay.value);
 
+            if(stockActual === 0){
+              console.log('No hay stock disponible para agregar al carrito')
+            }
+
+
             let totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
 
             if(carrito.length === 0){
@@ -464,6 +469,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
               Importe total: ${producto.precioTotal}.
             `;
             break;
+
 
           case 2:
             imagenDelProducto.src = './images/portada3.jpg';
