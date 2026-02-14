@@ -232,7 +232,6 @@ const comprobarProductoEnCarrito = (videojuego) => {
   for (let i = 0; i < carrito.length; i++) {
     if (carrito[i].productoSeleccionado === videojuego) {
       posicionEnCarrito = i;
-      console.log('posicion',posicionEnCarrito)
       return true;
     }
   }
@@ -519,7 +518,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
           for(let i = 0; i < carrito.length; i++){
             const idDelVidejuego = carrito[i].productoSeleccionado.idVideojuego;
             const cantidadComprada = carrito[i].cantidadSeleccionada;
-            console.log(typeof cantidadComprada)
+
             listadoProductos[idDelVidejuego].stock =  listadoProductos[idDelVidejuego].stock - cantidadComprada;
           }
         }
