@@ -274,7 +274,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
             if(stockActual === 0){
               console.log('No hay stock disponible para agregar al carrito')
-            }
+            } 
 
              totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
 
