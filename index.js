@@ -12,8 +12,8 @@ let sesionIniciada = false;
 let carrito = [];
 let saldoDelUsuario = null;
 let usuarioRegistrado = null;
+let totalAgregadoAlCarrito = null;
 const tituloPagina = document.getElementById('titulo-pagina');
-
 const botonVerCarrito = document.getElementById('ver-carrito');
 
 botonVerCarrito.style.opacity = "0.5";
@@ -276,8 +276,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
               console.log('No hay stock disponible para agregar al carrito')
             }
 
-
-            let totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
+             totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
 
             if(carrito.length === 0){
 
@@ -321,6 +320,11 @@ const comprobarProductoEnCarrito = (videojuego) => {
           const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
           const stockActual = parseInt(obtenerIdDisplay.value);
     
+          if(stockActual === 0){
+            console.log('No hay stock disponible para agregar al carrito');
+          }
+
+
           if(totalAgregadoAlCarrito <= saldoDelUsuario){
             descontarStock(numImag,stockActual);
 
