@@ -461,3 +461,8 @@ body {
     font-size: 5rem;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.boton-quitar-producto {
+   width: 90%;
+   height: 100px;
+}
