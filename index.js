@@ -213,17 +213,16 @@ verProductos.addEventListener('click', async() => {
     i++;
   }
 
-  const descontarStock = (indice,cantidad) => {
-    for(let i = 0; i < listadoProductos.length; i++){
-      if(indice === listadoProductos[i].idVideojuego){
-        if(cantidad <= listadoProductos[i].stock ){
-          listadoProductos[i].stock = listadoProductos[i].stock - cantidad;
-          break;
-        }
+const descontarStock = (indice,cantidad) => {
+  for(let i = 0; i < listadoProductos.length; i++){
+    if(indice === listadoProductos[i].idVideojuego){
+      if(cantidad <= listadoProductos[i].stock ){
+        listadoProductos[i].stock = listadoProductos[i].stock - cantidad;
+        break;
       }
     }
   }
-
+}
 
 let posicionEnCarrito = null;
 
