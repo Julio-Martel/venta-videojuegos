@@ -522,6 +522,8 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
       
       // se ha configurado la variable para todos los elementos lista
+      const botonQuitarProducto = document.querySelector('.boton-quitar-producto');
+      const listado = document.querySelector('.lista');
       const todosLosElementosLista = document.querySelectorAll('.elemento-lista');
       console.log(todosLosElementosLista)
 
@@ -536,6 +538,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
           if(!aEliminar) {
             elemLista.style.opacity = "0.8";
             aEliminar = true;
+            productosAQuitar.push(elemLista);
           } else {
             elemLista.style.opacity = "1";
             aEliminar = false;
@@ -544,6 +547,18 @@ const comprobarProductoEnCarrito = (videojuego) => {
           
         })
       }
+
+      botonQuitarProducto.addEventListener('click', () => {
+        if(productosAQuitar.length === 0){
+          console.log('No se han agregado productos a la lista de eliminar productos');
+        } else {
+          productosAQuitar.forEach(producto => {
+            producto.remove();
+            productosAQuitar = [];
+          });
+        }
+      })
+
 
       botonDePagar.addEventListener('mouseover', () => {
         botonDePagar.style.cursor = "pointer";
