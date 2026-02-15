@@ -514,7 +514,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
         contenidoInfo.appendChild(textoInfo);
         
         elementoDelListado.append(imagenDelProducto,contenidoInfo);
-        //PENSAR EN COMI HACER SI ELIMINO UN PRODUCTO DEL CARRITO, ESTE ACTUALICE EL TOTAL DE LA COMPRA
+        //PENSAR EN COMO HACER SI ELIMINO UN PRODUCTO DEL CARRITO, ESTE ACTUALICE EL TOTAL DE LA COMPRA
        // elementoDelListado.id = `elem-${productosAQuitar}`; 
         lista.appendChild(elementoDelListado);
         
