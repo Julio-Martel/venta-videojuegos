@@ -297,7 +297,10 @@ const comprobarProductoEnCarrito = (videojuego) => {
               productoDelCarrito.cantidadSeleccionada = stockActual;
               productoDelCarrito.precioTotal = totalAgregadoAlCarrito;
 
+
+              productosAQuitar.push(numImag);
               carrito.push(productoDelCarrito);
+              
               posicionEnCarrito = null;
 
             } else {     
@@ -315,7 +318,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
               
                 
                 carrito.push(productoDelCarrito)
-
+                productosAQuitar.push(numImag);
               }         
             }
            
@@ -511,9 +514,11 @@ const comprobarProductoEnCarrito = (videojuego) => {
         contenidoInfo.appendChild(textoInfo);
         
         elementoDelListado.append(imagenDelProducto,contenidoInfo);
-        
+        //PENSAR EN COMI HACER SI ELIMINO UN PRODUCTO DEL CARRITO, ESTE ACTUALICE EL TOTAL DE LA COMPRA
+       // elementoDelListado.id = `elem-${productosAQuitar}`; 
         lista.appendChild(elementoDelListado);
         
+
         elementoPrecio.textContent = `Total a pagar: 
         $${totalParaPagar}`;
 
@@ -525,8 +530,15 @@ const comprobarProductoEnCarrito = (videojuego) => {
       console.log(todosLosElementosLista)
 
       let aEliminar = false;
+      let elimProd = null;
 
+      let k = 0;
       for(const elemLista of todosLosElementosLista){
+       elemLista.id = `elem-${productosAQuitar[k]}`;
+       const textElem = elemLista.id.split('-');
+        const nroElem = parseInt(textElem[1]); 
+        elimProd = nroElem;
+
         elemLista.addEventListener('mouseover', () => {
           elemLista.style.cursor = "pointer";
         })
@@ -535,7 +547,6 @@ const comprobarProductoEnCarrito = (videojuego) => {
           if(!aEliminar) {
             elemLista.style.opacity = "0.8";
             aEliminar = true;
-            productosAQuitar.push(elemLista);
           } else {
             elemLista.style.opacity = "1";
             aEliminar = false;
@@ -543,17 +554,17 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
           
         })
+      
+        k++;
       }
 
       botonQuitarProducto.addEventListener('click', () => {
         if(productosAQuitar.length === 0){
           console.log('No se han agregado productos a la lista de eliminar productos');
         } else {
-          carrito = [];
-          productosAQuitar.forEach(producto => {
-            producto.remove();
-            productosAQuitar = [];
-          });
+         //ARREGLAR ESTO PARA LA ACTUALIZACION DE TOTAL DE COMPRA Y EL BORRADO DEL PRODUCTO
+          carrito.splice(elimProd,1);
+          console.log(carrito);
         }
       })
 
