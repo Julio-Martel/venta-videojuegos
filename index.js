@@ -520,10 +520,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
         contenedorPrecio.appendChild(elementoPrecio)
       });    
 
-      
-      // se ha configurado la variable para todos los elementos lista
       const botonQuitarProducto = document.querySelector('.boton-quitar-producto');
-      const listado = document.querySelector('.lista');
       const todosLosElementosLista = document.querySelectorAll('.elemento-lista');
       console.log(todosLosElementosLista)
 
