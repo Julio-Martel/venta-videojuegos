@@ -413,6 +413,7 @@ body {
 }
 
 .boton-de-pagar{
+    background: linear-gradient(black,darkgreen,green);
     width: 90%;
     height: 100%;
     color: #000;
