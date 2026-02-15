@@ -10,11 +10,13 @@ const botonLogeo = document.getElementById('boton-log');
 const formularioLogeo = document.getElementById('formulario-logeo');
 let sesionIniciada = false;
 let carrito = [];
+let productosAQuitar = [];
 let saldoDelUsuario = null;
 let usuarioRegistrado = null;
 let totalAgregadoAlCarrito = null;
 const tituloPagina = document.getElementById('titulo-pagina');
 const botonVerCarrito = document.getElementById('ver-carrito');
+
 
 botonVerCarrito.style.opacity = "0.5";
 botonVerCarrito.style.pointerEvents = "none";
@@ -518,6 +520,24 @@ const comprobarProductoEnCarrito = (videojuego) => {
         contenedorPrecio.appendChild(elementoPrecio)
       });    
 
+      
+      // se ha configurado la variable para todos los elementos lista
+      const todosLosElementosLista = document.querySelectorAll('.elemento-lista');
+      console.log(todosLosElementosLista)
+
+      for(const elemLista of todosLosElementosLista){
+        elemLista.addEventListener('mouseover', () => {
+          elemLista.style.cursor = "pointer";
+        })
+
+        elemLista.addEventListener('click', () => {
+          elemLista.style.opacity = "0.8";
+        })
+      }
+
+      botonDePagar.addEventListener('mouseover', () => {
+        botonDePagar.style.cursor = "pointer";
+      })
 
       botonDePagar.addEventListener('click', () => {
         const inputSaldoUsuario = document.getElementById('saldo-del-usuario');
@@ -544,6 +564,10 @@ const comprobarProductoEnCarrito = (videojuego) => {
           carrito = [];
         }
       })
+
+      
+
+
 
     }
   });
