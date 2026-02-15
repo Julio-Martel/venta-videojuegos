@@ -549,6 +549,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
         if(productosAQuitar.length === 0){
           console.log('No se han agregado productos a la lista de eliminar productos');
         } else {
+          carrito = [];
           productosAQuitar.forEach(producto => {
             producto.remove();
             productosAQuitar = [];
@@ -564,7 +565,9 @@ const comprobarProductoEnCarrito = (videojuego) => {
       botonDePagar.addEventListener('click', () => {
         const inputSaldoUsuario = document.getElementById('saldo-del-usuario');
 
-        if(totalParaPagar > saldoDelUsuario){
+        if(carrito.length === 0){
+          console.log('Para poder comprar necesitar ir a la pagina principal y comprar agregar productos al carrito');
+        }else if(totalParaPagar > saldoDelUsuario){
           botonDePagar.style.backgroundColor = "darkred";
           botonDePagar.textContent = "Saldo insuficiente"
           botonDePagar.style.pointerEvents = "none";
