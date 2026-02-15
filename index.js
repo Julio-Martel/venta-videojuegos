@@ -525,13 +525,23 @@ const comprobarProductoEnCarrito = (videojuego) => {
       const todosLosElementosLista = document.querySelectorAll('.elemento-lista');
       console.log(todosLosElementosLista)
 
+      let aEliminar = false;
+
       for(const elemLista of todosLosElementosLista){
         elemLista.addEventListener('mouseover', () => {
           elemLista.style.cursor = "pointer";
         })
 
         elemLista.addEventListener('click', () => {
-          elemLista.style.opacity = "0.8";
+          if(!aEliminar) {
+            elemLista.style.opacity = "0.8";
+            aEliminar = true;
+          } else {
+            elemLista.style.opacity = "1";
+            aEliminar = false;
+          }
+
+          
         })
       }
 
