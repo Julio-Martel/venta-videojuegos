@@ -565,22 +565,40 @@ const comprobarProductoEnCarrito = (videojuego) => {
           console.log('No se han agregado productos a la lista de eliminar productos');
        
         } else {
-        
-         productosQuitarClick.forEach(producto => {
-          const nroElemento = parseInt(producto.id);
-           carrito.splice(nroElemento,1);
-           producto.remove()
-         })
-         
-         
-         
-         
-         
-         
-
-
+                 
+          productosQuitarClick.forEach(producto => {
+          const nroElemento = producto.id;
+          const parteNroId = nroElemento.split('-');
+          const numberString = parseInt(parteNroId[1]);
           
+          for(let i =  0; i < carrito.length; i++){
+            if(carrito[i].productoSeleccionado.idVideojuego === numberString){
+              carrito.splice(i,1);
+            }
+          }
+
+          producto.remove()
+    
+        })
+        
+          const textoCartelPrecio = document.querySelector('.estilo-precio');
+
+          let total = 0;
+          carrito.forEach(producto => {
+            total = total + producto.precioTotal;
+          })
+            
+          let totalPrecioTexto = String(total);
+
+          if(carrito.length === 0){
+            textoCartelPrecio.textContent = `El carrito esta vacio`;
+          } else {
+            textoCartelPrecio.textContent = `Total a pagar: 
+            $${totalPrecioTexto}`;
+          }
+
         }
+
       })
 
 
