@@ -551,9 +551,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
           } else {
             elemLista.style.opacity = "1";
             aEliminar = false;
-          }
-
-          
+          }        
         })
       
         k++;
@@ -565,7 +563,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
           console.log('No se han agregado productos a la lista de eliminar productos');
        
         } else {
-                 
+
           productosQuitarClick.forEach(producto => {
           const nroElemento = producto.id;
           const parteNroId = nroElemento.split('-');
