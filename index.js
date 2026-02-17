@@ -11,6 +11,7 @@ const formularioLogeo = document.getElementById('formulario-logeo');
 let sesionIniciada = false;
 let carrito = [];
 let productosAQuitar = [];
+let productosQuitarClick = [];
 let saldoDelUsuario = null;
 let usuarioRegistrado = null;
 let totalAgregadoAlCarrito = null;
@@ -514,8 +515,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
         contenidoInfo.appendChild(textoInfo);
         
         elementoDelListado.append(imagenDelProducto,contenidoInfo);
-        //PENSAR EN COMO HACER SI ELIMINO UN PRODUCTO DEL CARRITO, ESTE ACTUALICE EL TOTAL DE LA COMPRA
-       // elementoDelListado.id = `elem-${productosAQuitar}`; 
+
         lista.appendChild(elementoDelListado);
         
 
@@ -547,6 +547,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
           if(!aEliminar) {
             elemLista.style.opacity = "0.8";
             aEliminar = true;
+            productosQuitarClick.push(elemLista);
           } else {
             elemLista.style.opacity = "1";
             aEliminar = false;
@@ -560,12 +561,23 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
       botonQuitarProducto.addEventListener('click', () => {
         if(productosAQuitar.length === 0){
+       
           console.log('No se han agregado productos a la lista de eliminar productos');
+       
         } else {
-         //ARREGLAR ESTO PARA LA ACTUALIZACION DE TOTAL DE COMPRA Y EL BORRADO DEL PRODUCTO
-          carrito.splice(elimProd,1);
+        
+         productosQuitarClick.forEach(producto => {
+          const nroElemento = parseInt(producto.id);
+           carrito.splice(nroElemento,1);
+           producto.remove()
+         })
          
-          
+         
+         
+         
+         
+         
+
 
           
         }
