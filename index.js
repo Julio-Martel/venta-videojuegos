@@ -297,8 +297,6 @@ const comprobarProductoEnCarrito = (videojuego) => {
               productoDelCarrito.cantidadSeleccionada = stockActual;
               productoDelCarrito.precioTotal = totalAgregadoAlCarrito;
 
-
-              productosAQuitar.push(numImag);
               carrito.push(productoDelCarrito);
               
               posicionEnCarrito = null;
@@ -318,7 +316,6 @@ const comprobarProductoEnCarrito = (videojuego) => {
               
                 
                 carrito.push(productoDelCarrito)
-                productosAQuitar.push(numImag);
               }         
             }
            
@@ -547,9 +544,11 @@ const comprobarProductoEnCarrito = (videojuego) => {
           if(!aEliminar) {
             elemLista.style.opacity = "0.8";
             aEliminar = true;
+           console.log(elemLista)
           } else {
             elemLista.style.opacity = "1";
             aEliminar = false;
+            
           }
 
           
@@ -562,9 +561,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
         if(productosAQuitar.length === 0){
           console.log('No se han agregado productos a la lista de eliminar productos');
         } else {
-         //ARREGLAR ESTO PARA LA ACTUALIZACION DE TOTAL DE COMPRA Y EL BORRADO DEL PRODUCTO
           carrito.splice(elimProd,1);
-          console.log(carrito);
         }
       })
 
