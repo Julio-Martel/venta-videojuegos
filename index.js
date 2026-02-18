@@ -529,7 +529,6 @@ const comprobarProductoEnCarrito = (videojuego) => {
       const todosLosElementosLista = document.querySelectorAll('.elemento-lista');
 
       let aEliminar = false;
-      let elimProd = null;
 
       let k = 0;
       for(const elemLista of todosLosElementosLista){
@@ -603,7 +602,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
         botonDePagar.style.cursor = "pointer";
       })
 
-      botonDePagar.addEventListener('click', () => {
+      botonDePagar.addEventListener('click', async() => {
         const inputSaldoUsuario = document.getElementById('saldo-del-usuario');
 
         if(carrito.length === 0){
@@ -628,6 +627,15 @@ const comprobarProductoEnCarrito = (videojuego) => {
           }
           
           carrito = [];
+          
+          for(const elemLista of todosLosElementosLista){
+            elemLista.style.pointerEvents = "none";
+          }
+
+          await delay(300);
+          mainContent.replaceChildren(contenedorImagenes);
+          await delay(100);
+          contenedorImagenes.classList.remove('ocultar-contenido-imagenes');
         }
       })
 
