@@ -529,6 +529,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
       const todosLosElementosLista = document.querySelectorAll('.elemento-lista');
 
       let aEliminar = false;
+      let elimProd = null;
 
       let k = 0;
       for(const elemLista of todosLosElementosLista){
@@ -626,12 +627,12 @@ const comprobarProductoEnCarrito = (videojuego) => {
             listadoProductos[idDelVidejuego].stock =  listadoProductos[idDelVidejuego].stock - cantidadComprada;
           }
           
-          carrito = [];
-          
           for(const elemLista of todosLosElementosLista){
             elemLista.style.pointerEvents = "none";
           }
 
+          carrito = [];
+          
           await delay(300);
           mainContent.replaceChildren(contenedorImagenes);
           await delay(100);
