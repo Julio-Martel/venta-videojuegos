@@ -527,7 +527,6 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
       const botonQuitarProducto = document.querySelector('.boton-quitar-producto');
       const todosLosElementosLista = document.querySelectorAll('.elemento-lista');
-      console.log(todosLosElementosLista)
 
       let aEliminar = false;
       let elimProd = null;
