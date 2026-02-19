@@ -32,7 +32,7 @@ const listadoProductos = [
 const delay = (ms) => new Promise(r => setTimeout(r, ms));
 
 const usuariosRegistrados = [
-  { nombreUsuario: 'julio4561',password: '1234', saldo: 45445215, acumladorPrecio: 0},
+  { nombreUsuario: 'julio4561',password: '1234', saldo: 454451, acumladorPrecio: 0},
   { nombreUsuario: 'marco123', password: '2312', saldo: 123714, acumladorPrecio: 0}
 ];
 
@@ -376,16 +376,33 @@ const comprobarProductoEnCarrito = (videojuego) => {
     
       if(!sesionIniciada){
           
+            
             const bienvenidaUsuario = document.createElement('div');
+            const textoSaldoUsuario = document.createElement('h5')
+            
             bienvenidaUsuario.className = 'bienvenida-usuario';
               
             const tituloBienvenido = document.createElement('h5');
+            const nomUsuarioMostrar = document.createElement('span');
+
+            tituloBienvenido.innerHTML = `<h5> Bienvenido </h5>`;
             tituloBienvenido.className = 'titulo-usuario';
-            tituloBienvenido.textContent = `Bienvenido ${String(logeo.nomUsuario.value)}`;  
+
+            nomUsuarioMostrar.className = "titulo-nombre-usuario";
+            nomUsuarioMostrar.textContent = `| ${logeo.nomUsuario.value} |`;
+
+            tituloBienvenido.appendChild(nomUsuarioMostrar);
+
+
+            
+           // tituloBienvenido.textContent = `Bienvenido ${String(logeo.nomUsuario.value)} | `;  
 
             const saldoUsuario = document.createElement('input');
             saldoUsuario.className = "saldo";
             saldoUsuario.id = "saldo-del-usuario";
+
+            textoSaldoUsuario.className = "titulo-saldo"
+            textoSaldoUsuario.textContent = "Su saldo es de: $"
 
             const usuarioValido = usuariosRegistrados.some(user =>
                 user.nombreUsuario === logeo.nomUsuario.value &&
@@ -403,9 +420,15 @@ const comprobarProductoEnCarrito = (videojuego) => {
               } 
 
               saldoUsuario.value  = String(obtenerSaldoUsuario());
+              
+              
               saldoDelUsuario = parseInt(saldoUsuario.value)
+              
+              formularioLogeo.appendChild(botonVerCarrito);
               formularioLogeo.appendChild(saldoUsuario);
-              formularioLogeo.appendChild(botonVerCarrito)
+             
+              formularioLogeo.appendChild(textoSaldoUsuario);
+              
 
               botonVerCarrito.style.display = "flex";
 
@@ -598,7 +621,6 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
       })
 
-
       botonDePagar.addEventListener('mouseover', () => {
         botonDePagar.style.cursor = "pointer";
       })
@@ -639,10 +661,6 @@ const comprobarProductoEnCarrito = (videojuego) => {
           contenedorImagenes.classList.remove('ocultar-contenido-imagenes');
         }
       })
-
-      
-
-
 
     }
   });
