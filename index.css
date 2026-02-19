@@ -297,8 +297,11 @@ body {
 }
 
 .titulo-usuario{
+    display: flex;
+    gap: 5px;
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
 
 }
 
@@ -420,6 +423,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: #fff;
     font-size: 2rem;
+    border-radius: 10px;
 }   
 
 .boton-de-pagar {
@@ -432,7 +436,7 @@ body {
     width: 100%;
     height: 20%;
     border:  solid 1px darkgray;
-    border-radius: 5px;
+    border-radius: 10px;
     gap: 1rem;
     align-items: center;
     justify-content: center;
@@ -468,4 +472,16 @@ body {
 .boton-quitar-producto {
    width: 90%;
    height: 100px;
+   border-radius: 10px;
+}
+
+.titulo-saldo{
+    color: yellow;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.titulo-nombre-usuario {
+    color: yellowgreen;
+    font-family: Arial, Helvetica, sans-serif;
 }
