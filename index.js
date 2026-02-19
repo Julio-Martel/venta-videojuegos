@@ -254,10 +254,13 @@ const comprobarProductoEnCarrito = (videojuego) => {
   const botonAgregarAlCarrito = document.querySelector('.boton-agregar-carrito');
   const botonFinalizarCompra = document.querySelector('.boton-final');
 
+  const textoContenido = document.querySelector('.texto-contenido');
+        
   let numImag = null;
 
   for(const imagen of todasLasImagenes){
     imagen.addEventListener('click', () => {
+       textoContenido.remove()
       const obtenerId = imagen.id;
       const separarString = obtenerId.split('-');
       numImag = parseInt(separarString[1]);
@@ -271,7 +274,6 @@ const comprobarProductoEnCarrito = (videojuego) => {
           cantidadSeleccionada: null,
           precioTotal: null
         };
-
 
         if(!sesionIniciada){
           console.log('Se debe iniciar sesion para poder agregar productos al carrito y comprar')
@@ -381,7 +383,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
             const textoSaldoUsuario = document.createElement('h5')
             
             bienvenidaUsuario.className = 'bienvenida-usuario';
-              
+            
             const tituloBienvenido = document.createElement('h5');
             const nomUsuarioMostrar = document.createElement('span');
 
@@ -447,7 +449,6 @@ const comprobarProductoEnCarrito = (videojuego) => {
             const saldoUsuairo = document.querySelector('.saldo');
             const tituloSaldo = document.querySelector('.titulo-saldo');
 
-
             textoLabel.forEach(lab => lab.classList.remove('oculto'))
             inputs.forEach(inp => inp.classList.remove('ocult')) 
             sesionIniciada = false;
@@ -456,11 +457,15 @@ const comprobarProductoEnCarrito = (videojuego) => {
             saldoUsuairo.remove();
             botonVerCarrito.remove();
             tituloSaldo.remove();
+
             formularioLogeo.style.flexDirection = "row";
 
             botonVerCarrito.style.opacity = "0.5";
             botonVerCarrito.style.pointerEvents = "none"
-      }
+      
+
+      
+          }
 
   } )
 
