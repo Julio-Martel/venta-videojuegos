@@ -633,7 +633,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
           carrito = [];
           
-          await delay(300);
+          await delay(500);
           mainContent.replaceChildren(contenedorImagenes);
           await delay(100);
           contenedorImagenes.classList.remove('ocultar-contenido-imagenes');
