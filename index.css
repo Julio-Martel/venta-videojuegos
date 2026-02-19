@@ -485,3 +485,10 @@ body {
     color: yellowgreen;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.texto-contenido{
+    color: #fff;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 3rem;
+    text-align: center;
+}
