@@ -393,10 +393,6 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
             tituloBienvenido.appendChild(nomUsuarioMostrar);
 
-
-            
-           // tituloBienvenido.textContent = `Bienvenido ${String(logeo.nomUsuario.value)} | `;  
-
             const saldoUsuario = document.createElement('input');
             saldoUsuario.className = "saldo";
             saldoUsuario.id = "saldo-del-usuario";
