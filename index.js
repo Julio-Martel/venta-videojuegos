@@ -416,8 +416,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
               } 
 
               saldoUsuario.value  = String(obtenerSaldoUsuario());
-              
-              
+                          
               saldoDelUsuario = parseInt(saldoUsuario.value)
               
               formularioLogeo.appendChild(botonVerCarrito);
@@ -446,6 +445,8 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
             const tituloDeBienvenida = document.querySelector('.titulo-usuario')
             const saldoUsuairo = document.querySelector('.saldo');
+            const tituloSaldo = document.querySelector('.titulo-saldo');
+
 
             textoLabel.forEach(lab => lab.classList.remove('oculto'))
             inputs.forEach(inp => inp.classList.remove('ocult')) 
@@ -454,6 +455,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
             tituloDeBienvenida.remove()
             saldoUsuairo.remove();
             botonVerCarrito.remove();
+            tituloSaldo.remove();
             formularioLogeo.style.flexDirection = "row";
 
             botonVerCarrito.style.opacity = "0.5";
