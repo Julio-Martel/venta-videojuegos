@@ -279,50 +279,52 @@ const comprobarProductoEnCarrito = (videojuego) => {
         
         } else {
 
-          if(numImag === null){
-            console.log('Debes hacer click en alguna imagen para empezar a agregar al carrito')
-          } else {
-            const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
-            let stockActual = parseInt(obtenerIdDisplay.value);
+            if(numImag === null){
+              console.log('Debes hacer click en alguna imagen para empezar a agregar al carrito')
+            } else {
+              const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
+              let stockActual = parseInt(obtenerIdDisplay.value);
 
-            if(stockActual === 0){
-              console.log('No hay stock disponible para agregar al carrito')
-            } 
-
-             totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
-
-            if(carrito.length === 0){
-
-              botonVerCarrito.style.opacity = "1";
-              botonVerCarrito.style.pointerEvents = "auto";
-              productoDelCarrito.productoSeleccionado = listadoProductos[numImag];
-              productoDelCarrito.cantidadSeleccionada = stockActual;
-              productoDelCarrito.precioTotal = totalAgregadoAlCarrito;
-
-
-              productosAQuitar.push(numImag);
-              carrito.push(productoDelCarrito);
-              
-              posicionEnCarrito = null;
-
-            } else {     
-
-              const enElCarrito = comprobarProductoEnCarrito(listadoProductos[numImag]);
-
-              if(enElCarrito){
-                carrito[posicionEnCarrito].cantidadSeleccionada = stockActual;
-                carrito[posicionEnCarrito].precioTotal = totalAgregadoAlCarrito;
+              if(stockActual === 0){
+                console.log('No hay stock disponible para agregar al carrito')
               } else {
-         
-                productoDelCarrito.productoSeleccionado = listadoProductos[numImag];  
+              totalAgregadoAlCarrito = stockActual * listadoProductos[numImag].precio;
+
+              if(carrito.length === 0){
+
+                botonVerCarrito.style.opacity = "1";
+                botonVerCarrito.style.pointerEvents = "auto";
+                productoDelCarrito.productoSeleccionado = listadoProductos[numImag];
                 productoDelCarrito.cantidadSeleccionada = stockActual;
-                productoDelCarrito.precioTotal = totalAgregadoAlCarrito;           
-              
-                
-                carrito.push(productoDelCarrito)
+                productoDelCarrito.precioTotal = totalAgregadoAlCarrito;
+
+
                 productosAQuitar.push(numImag);
-              }         
+                carrito.push(productoDelCarrito);
+                
+                posicionEnCarrito = null;
+
+              } else {     
+
+                const enElCarrito = comprobarProductoEnCarrito(listadoProductos[numImag]);
+
+                if(enElCarrito){
+                  carrito[posicionEnCarrito].cantidadSeleccionada = stockActual;
+                  carrito[posicionEnCarrito].precioTotal = totalAgregadoAlCarrito;
+                } else {
+          
+                  productoDelCarrito.productoSeleccionado = listadoProductos[numImag];  
+                  productoDelCarrito.cantidadSeleccionada = stockActual;
+                  productoDelCarrito.precioTotal = totalAgregadoAlCarrito;           
+                
+                  
+                  carrito.push(productoDelCarrito)
+                  productosAQuitar.push(numImag);
+                }         
+              }              
             }
+
+
            
           }
         }
