@@ -252,7 +252,6 @@ const comprobarProductoEnCarrito = (videojuego) => {
 };
 
   const botonAgregarAlCarrito = document.querySelector('.boton-agregar-carrito');
-  const botonFinalizarCompra = document.querySelector('.boton-final');
 
   const textoContenido = document.querySelector('.texto-contenido');
         
@@ -328,47 +327,6 @@ const comprobarProductoEnCarrito = (videojuego) => {
           }
         }
   })
-
-  botonFinalizarCompra.addEventListener('click', () => {
-         
-      if(!sesionIniciada){
-         console.log('Se debe iniciar sesion para poder agregar productos al carrito y comprar')
-      } else {
-          const obtenerIdDisplay = document.getElementById(`display-${numImag}`);
-          const stockActual = parseInt(obtenerIdDisplay.value);
-    
-          if(stockActual === 0){
-            console.log('No hay stock disponible para agregar al carrito');
-          }
-
-
-          if(totalAgregadoAlCarrito <= saldoDelUsuario){
-            descontarStock(numImag,stockActual);
-
-            obtenerIdDisplay.value =  String(listadoProductos[numImag].stock);
-
-            maximosValores[numImag] = listadoProductos[numImag].stock;
-
-            valorUsado = true;
-
-            let stockActualizado = listadoProductos[numImag].stock
-
-            maxVar = maximosValores[numImag];
-
-            if(stockActualizado === 0){
-                maxVar = 1;
-            } else if(stockActualizado === 1){
-                const valorCualquiera = 1.5;
-                stockActualizado = valorCualquiera;
-            }
-
-            actualizarBotones(stockActualizado, maximosValores[numImag], botonesMenos[numImag], botonesMas[numImag]);             
-          } else {
-            console.log('Actualmente sin fondos o con menos')
-          }
-      }
-  });
-
 });
 
   botonLogeo.addEventListener('click', (e) => {
