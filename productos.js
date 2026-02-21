@@ -31,7 +31,6 @@ export const generarContenidoProductos = () => {
         precioVideojuego: document.createElement('input'),
         sotckVideojuego: document.createElement('input'),
         botonAgregarAlCarrito: document.createElement('button'),
-        botonFinalizareCompra: document.createElement('button')
     }
 
     productos.contedorProductos.classList.add('contedor-productos');
@@ -53,8 +52,6 @@ export const generarContenidoProductos = () => {
 
     contenidoVideojuego.botonAgregarAlCarrito.textContent = "AGREGAR AL CARRITO";
     contenidoVideojuego.botonAgregarAlCarrito.className = "boton-agregar-carrito";
-    contenidoVideojuego.botonFinalizareCompra.textContent = "FINALIZAR COMPRA";
-    contenidoVideojuego.botonFinalizareCompra.className = "boton-final"
 
     for (let i = 0; i < productos.totalCasillasProductos; i++) {
         const casilla = document.createElement('div');
@@ -189,7 +186,7 @@ export const generarContenidoProductos = () => {
 
         })    
 
-        carrito.append(contenidoVideojuego.botonAgregarAlCarrito, contenidoVideojuego.botonFinalizareCompra)
+        carrito.append(contenidoVideojuego.botonAgregarAlCarrito)
        
 
     }
