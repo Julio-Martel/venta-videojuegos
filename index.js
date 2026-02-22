@@ -557,6 +557,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
           if(carrito.length === 0){
             textoCartelPrecio.textContent = `El carrito esta vacio`;
+            productosAQuitar = [];
           } else {
             textoCartelPrecio.textContent = `Total a pagar: 
             $${totalPrecioTexto}`;
