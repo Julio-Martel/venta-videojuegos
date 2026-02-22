@@ -54,6 +54,12 @@ export const generarContenidoProductos = () => {
     contenidoVideojuego.botonAgregarAlCarrito.className = "boton-agregar-carrito";
 
 
+    const imagenCarrito = document.createElement('img');
+
+    imagenCarrito.className = "logo-icon";
+    imagenCarrito.src = "./images/carrito.png";
+
+
 
     for (let i = 0; i < productos.totalCasillasProductos; i++) {
         const casilla = document.createElement('div');
@@ -191,6 +197,9 @@ export const generarContenidoProductos = () => {
            contenidoDelProducto.append(contenidoVideojuego.tituloVideojuego,contenidoVideojuego.imagenVideojuego,contenidoVideojuego.descripcionVideojuego)
 
         })    
+
+
+        contenidoVideojuego.botonAgregarAlCarrito.append(imagenCarrito)
 
         carrito.append(contenidoVideojuego.botonAgregarAlCarrito)
        
