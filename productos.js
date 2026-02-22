@@ -53,10 +53,16 @@ export const generarContenidoProductos = () => {
     contenidoVideojuego.botonAgregarAlCarrito.textContent = "AGREGAR AL CARRITO";
     contenidoVideojuego.botonAgregarAlCarrito.className = "boton-agregar-carrito";
 
+
+
     for (let i = 0; i < productos.totalCasillasProductos; i++) {
         const casilla = document.createElement('div');
         casilla.className = 'casilla-producto';
         casilla.id = `casilla-${i}`;
+
+            const cantidadTexto = document.createElement('h5');
+            cantidadTexto.className = `titulo-nombre-cantidad`;
+            cantidadTexto.textContent = `Stock`;
 
         const nombre = document.createElement('h3');
         nombre.className = 'nombre-producto';
@@ -88,7 +94,7 @@ export const generarContenidoProductos = () => {
 
         stock.append(agregarStock.simboloMenos,agregarStock.displayStock,agregarStock.simboloMas);
 
-        casilla.append(nombre, imagen, stock);
+        casilla.append(nombre, imagen,cantidadTexto, stock);
         productos.contedorProductos.appendChild(casilla);
     }
 
