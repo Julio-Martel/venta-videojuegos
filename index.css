@@ -239,11 +239,17 @@ body {
     border: solid 1px darkgray;
     border-radius: 5px;
     cursor: pointer;
+        transition: 0.3s ease-in-out;
 }
 
 .imag-prod{
     max-width: 150px;
 }
+
+.imag-prod:hover{
+    filter: brightness(1.5);
+}
+
 
 .img-prod{
     width: 90%;
