@@ -194,7 +194,6 @@ body {
 }
 
 .contenedor-carrito{
-    background: #000;
     width: 50%;
     height: 100%;
     display: flex;
@@ -518,4 +517,8 @@ body {
     border-radius: 20px;
     padding: 1rem;
     cursor: pointer;
+}
+
+#contenido-del-producto{
+    background: #000;
 }
