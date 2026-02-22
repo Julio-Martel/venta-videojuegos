@@ -190,8 +190,6 @@ verProductos.addEventListener('click', async() => {
           actualizarBotones(stockActual, maximoValor, botonMenosClick, botonMasClick);
     }
 
-
-
     botonMenosClick.addEventListener('click', () => {
       
 
@@ -224,7 +222,7 @@ verProductos.addEventListener('click', async() => {
 
     i++;
   }
-  
+
 let posicionEnCarrito = null;
 
 const comprobarProductoEnCarrito = (videojuego) => {
@@ -372,9 +370,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
              
               formularioLogeo.appendChild(textoSaldoUsuario);
               
-
               botonVerCarrito.style.display = "flex";
-
 
               textoLabel.forEach(lab => lab.classList.add('oculto'))
               inputs.forEach(inp => inp.classList.add('ocult'))
