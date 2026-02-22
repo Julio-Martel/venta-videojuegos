@@ -268,7 +268,7 @@ body {
 }
 
 .stock-producto{
-    max-height: 50px;
+    max-height: 30px;
 }
 
 .boton-stock{
@@ -491,4 +491,11 @@ body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 3rem;
     text-align: center;
+}
+
+
+.titulo-nombre-cantidad {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
 }
