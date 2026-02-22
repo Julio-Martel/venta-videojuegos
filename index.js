@@ -496,14 +496,16 @@ const comprobarProductoEnCarrito = (videojuego) => {
       const botonQuitarProducto = document.querySelector('.boton-quitar-producto');
       const todosLosElementosLista = document.querySelectorAll('.elemento-lista');
 
-      let aEliminar = false;
-      let elimProd = null;
+  
 
       let k = 0;
       for(const elemLista of todosLosElementosLista){
-       elemLista.id = `elem-${productosAQuitar[k]}`;
-       const textElem = elemLista.id.split('-');
+        let aEliminar = false;
+        elemLista.id = `elem-${productosAQuitar[k]}`;
+        const textElem = elemLista.id.split('-');
         const nroElem = parseInt(textElem[1]); 
+        let elimProd = null;
+       
         elimProd = nroElem;
 
         elemLista.addEventListener('mouseover', () => {
@@ -515,7 +517,19 @@ const comprobarProductoEnCarrito = (videojuego) => {
             elemLista.style.opacity = "0.8";
             aEliminar = true;
             productosQuitarClick.push(elemLista);
-          } else {
+          } else {         
+             
+            if(productosQuitarClick.length !== 0 ){
+              let j = 0;
+              productosQuitarClick.some(producto => {
+                if(producto === elemLista){
+                  productosQuitarClick.splice(j,1)
+                  return;
+                }
+                j++;
+              })
+            }
+
             elemLista.style.opacity = "1";
             aEliminar = false;
           }        
@@ -525,25 +539,24 @@ const comprobarProductoEnCarrito = (videojuego) => {
       }
 
       botonQuitarProducto.addEventListener('click', () => {
-        if(productosAQuitar.length === 0){
+        if(productosQuitarClick.length === 0){
        
           console.log('No se han agregado productos a la lista de eliminar productos');
        
         } else {
-
+          console.log(productosQuitarClick)
           productosQuitarClick.forEach(producto => {
-          const nroElemento = producto.id;
-          const parteNroId = nroElemento.split('-');
-          const numberString = parseInt(parteNroId[1]);
+            const nroElemento = producto.id;
+            const parteNroId = nroElemento.split('-');
+            const numberString = parseInt(parteNroId[1]);
           
-          for(let i =  0; i < carrito.length; i++){
-            if(carrito[i].productoSeleccionado.idVideojuego === numberString){
-              carrito.splice(i,1);
+            for(let i =  0; i < carrito.length; i++){
+              if(carrito[i].productoSeleccionado.idVideojuego === numberString){
+                carrito.splice(i,1);
+              }
             }
-          }
 
-          producto.remove()
-    
+            producto.remove()  
         })
         
           const textoCartelPrecio = document.querySelector('.estilo-precio');
@@ -557,7 +570,6 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
           if(carrito.length === 0){
             textoCartelPrecio.textContent = `El carrito esta vacio`;
-            productosAQuitar = [];
           } else {
             textoCartelPrecio.textContent = `Total a pagar: 
             $${totalPrecioTexto}`;
