@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'GAME_glm';
+    src: url('./fonts/GAME_glm.ttf');
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -31,9 +36,11 @@ body {
 .titulo{
     color: #fff;
     margin-left: 5px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'GAME_glm';
     cursor: pointer;
     pointer-events: auto;
+    font-size: 2rem;
+    padding: 5px;
 }
 
 .formulario{
