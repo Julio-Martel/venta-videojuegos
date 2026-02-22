@@ -404,9 +404,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
             botonVerCarrito.style.opacity = "0.5";
             botonVerCarrito.style.pointerEvents = "none"
-      
-
-      
+            
           }
 
   } )
@@ -495,8 +493,6 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
       const botonQuitarProducto = document.querySelector('.boton-quitar-producto');
       const todosLosElementosLista = document.querySelectorAll('.elemento-lista');
-
-  
 
       let k = 0;
       for(const elemLista of todosLosElementosLista){
