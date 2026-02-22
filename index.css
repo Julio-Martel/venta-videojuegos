@@ -367,6 +367,8 @@ body {
 }
 .boton-ver-carrito{
     display: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .listado-productos{
