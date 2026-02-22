@@ -404,7 +404,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
             botonVerCarrito.style.opacity = "0.5";
             botonVerCarrito.style.pointerEvents = "none"
-            
+
           }
 
   } )
@@ -567,6 +567,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
           if(carrito.length === 0){
             textoCartelPrecio.textContent = `El carrito esta vacio`;
           } else {
+            // CORREGIR QUE SI AL REFRESCAR LA PAGINA SE ELIMINEN TODOS LOS ELEMENTOS DEL LISTADO
             textoCartelPrecio.textContent = `Total a pagar: 
             $${totalPrecioTexto}`;
           }
@@ -580,6 +581,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
       })
 
       botonDePagar.addEventListener('click', async() => {
+        const botonVerCarrito = document.getElementById('ver-carrito');
         const inputSaldoUsuario = document.getElementById('saldo-del-usuario');
 
         if(carrito.length === 0){
@@ -609,6 +611,9 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
           carrito = [];
           
+          botonVerCarrito.style.opacity = "0.1";
+          botonVerCarrito.style.pointerEvents = "none";
+
           await delay(500);
           mainContent.replaceChildren(contenedorImagenes);
           await delay(100);
