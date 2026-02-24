@@ -19,8 +19,8 @@ const tituloPagina = document.getElementById('titulo-pagina');
 const botonVerCarrito = document.getElementById('ver-carrito');
 
 
-botonVerCarrito.style.opacity = "0.5";
-botonVerCarrito.style.pointerEvents = "none";
+/*botonVerCarrito.style.opacity = "0.5";
+botonVerCarrito.style.pointerEvents = "none";*/
 
 const listadoProductos = [
   {idVideojuego: 0, nombreVideojuego: 'Resident Evil Requiem', descripcion: '', precio: 53000, stock: 5},
@@ -476,6 +476,7 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
         }
 
+
         totalParaPagar = totalParaPagar + producto.precioTotal
 
         contenidoInfo.appendChild(textoInfo);
@@ -484,6 +485,13 @@ const comprobarProductoEnCarrito = (videojuego) => {
 
         lista.appendChild(elementoDelListado);
         
+        if(totalParaPagar > saldoDelUsuario){
+          botonDePagar.textContent = "Saldo insuficiente"
+          botonDePagar.style.background = "darkred"          
+        } else {
+          botonDePagar.textContent = "Realizar pago";
+          botonDePagar.style.background = "Green";
+        }
 
         elementoPrecio.textContent = `Total a pagar: 
         $${totalParaPagar}`;
@@ -491,48 +499,8 @@ const comprobarProductoEnCarrito = (videojuego) => {
         contenedorPrecio.appendChild(elementoPrecio)
       });    
 
+
       const botonQuitarProducto = document.querySelector('.boton-quitar-producto');
-      const todosLosElementosLista = document.querySelectorAll('.elemento-lista');
-
-      let k = 0;
-      for(const elemLista of todosLosElementosLista){
-        let aEliminar = false;
-        elemLista.id = `elem-${productosAQuitar[k]}`;
-        const textElem = elemLista.id.split('-');
-        const nroElem = parseInt(textElem[1]); 
-        let elimProd = null;
-       
-        elimProd = nroElem;
-
-        elemLista.addEventListener('mouseover', () => {
-          elemLista.style.cursor = "pointer";
-        })
-
-        elemLista.addEventListener('click', () => {
-          if(!aEliminar) {
-            elemLista.style.opacity = "0.8";
-            aEliminar = true;
-            productosQuitarClick.push(elemLista);
-          } else {         
-             
-            if(productosQuitarClick.length !== 0 ){
-              let j = 0;
-              productosQuitarClick.some(producto => {
-                if(producto === elemLista){
-                  productosQuitarClick.splice(j,1)
-                  return;
-                }
-                j++;
-              })
-            }
-
-            elemLista.style.opacity = "1";
-            aEliminar = false;
-          }        
-        })
-      
-        k++;
-      }
 
       botonQuitarProducto.addEventListener('click', () => {
         if(productosQuitarClick.length === 0){
@@ -581,15 +549,18 @@ const comprobarProductoEnCarrito = (videojuego) => {
       })
 
       botonDePagar.addEventListener('click', async() => {
-        const botonVerCarrito = document.getElementById('ver-carrito');
+        //const botonVerCarrito = document.getElementById('ver-carrito');
         const inputSaldoUsuario = document.getElementById('saldo-del-usuario');
 
         if(carrito.length === 0){
           console.log('Para poder comprar necesitar ir a la pagina principal y comprar agregar productos al carrito');
         }else if(totalParaPagar > saldoDelUsuario){
+
+          // ARREGLAR ESTO PARA EVITAR LA CARGA 
           botonDePagar.style.backgroundColor = "darkred";
           botonDePagar.textContent = "Saldo insuficiente"
-          botonDePagar.style.pointerEvents = "none";
+          botonDePagar.style.pointerEvents = "auto";
+          console.log('No tienes mucho saldo')
         } else {
           botonDePagar.style.backgroundColor = "green";
           botonDePagar.textContent = "Pago realizado con exito!"          
@@ -610,9 +581,8 @@ const comprobarProductoEnCarrito = (videojuego) => {
           }
 
           carrito = [];
-          
-          botonVerCarrito.style.opacity = "0.1";
-          botonVerCarrito.style.pointerEvents = "none";
+          productosQuitarClick = [];
+          productosAQuitar = [];
 
           await delay(500);
           mainContent.replaceChildren(contenedorImagenes);
@@ -620,6 +590,64 @@ const comprobarProductoEnCarrito = (videojuego) => {
           contenedorImagenes.classList.remove('ocultar-contenido-imagenes');
         }
       })
+
+
+      const todosLosElementosLista = document.querySelectorAll('.elemento-lista');
+      const elemPrec = document.querySelector('.estilo-precio');
+
+
+      let k = 0;
+      for(const elemLista of todosLosElementosLista){
+        let aEliminar = false;
+        elemLista.id = `elem-${productosAQuitar[k]}`;
+        const textElem = elemLista.id.split('-');
+        const nroElem = parseInt(textElem[1]); 
+        let elimProd = null;
+       
+        elimProd = nroElem;
+
+        elemLista.addEventListener('mouseover', () => {
+          elemLista.style.cursor = "pointer";
+        })
+
+        elemLista.addEventListener('click', () => {
+    
+          if(!aEliminar) {
+
+            elemLista.style.opacity = "0.8";
+            aEliminar = true;
+            productosQuitarClick.push(elemLista);
+
+            /*AGREGAR SOLUCION AQUI*/ 
+
+
+            if(saldoDelUsuario < totalParaPagar){
+              botonDePagar.textContent = "Realizar pago";
+              botonDePagar.style.background = "green";
+              elemPrec.textContent = `Total a pagar: ${totalParaPagar}`;
+            }
+        
+          } else {         
+             
+            if(productosQuitarClick.length !== 0 ){
+              let j = 0;
+              productosQuitarClick.some(producto => {
+                if(producto === elemLista){
+                  productosQuitarClick.splice(j,1)
+                  return;
+                }
+                j++;
+              })
+            }
+
+            elemLista.style.opacity = "1";
+            aEliminar = false;
+          }        
+        })
+      
+        k++;
+      }
+
 
     }
   });
